@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sale_order_search_view_inherit" model="ir.ui.view">
+            <field name="name">sale.order.search.view.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='campaign_id']" position="after">
+                    <field name="warehouse_id" string="Almacén"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="helpdesk_ticket_search_view_inherit" model="ir.ui.view">
+            <field name="name">helpdesk.ticket.search.view.inherit</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk_mgmt.helpdesk_ticket_view_search"/>
+            <field name="arch" type="xml">
+                <xpath expr="//search" position="inside">
+                    <field name="x_warehouse" string="Almacén"/>
+                    <field name="x_support_user1" string="Usuario Soporte 1"/>
+                    <field name="x_support_user2" string="Usuario Soporte 2"/>
+                    <field name="x_support_user3" string="Usuario Soporte 3"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

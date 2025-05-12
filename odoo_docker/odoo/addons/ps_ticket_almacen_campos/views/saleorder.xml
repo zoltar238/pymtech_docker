@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_sale_order_form_inherit_helpdesk_ticket" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.helpdesk.ticket</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+
+            <field name="partner_id" position="after">
+                <field name="ticket_id" readonly="1" invisible="1"/>
+            </field>
+
+        </field>
+    </record>
+    <record id="view_sales_order_form_remove_catalog_button" model="ir.ui.view">
+        <field name="name">sale.order.form.remove.catalog.button</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+    </record>
+</odoo>
