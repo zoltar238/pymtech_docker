@@ -3,9 +3,9 @@ FROM odoo:18.0
 USER root
 
 # Instalar pip y entorno virtual, e instalar python-barcode sin romper el sistema
-RUN apt-get update && apt-get install -y python3-pip python3-venv && \
+RUN apt-get update && apt-get install -y python3-pip python3-venv python3-psycopg2 && \
     python3 -m venv /opt/odoo-venv && \
-    /opt/odoo-venv/bin/pip install python-barcode && \
+    /opt/odoo-venv/bin/pip install python-barcode  && \
     apt-get clean
 
 # Copiar el script y darle permisos de ejecución
