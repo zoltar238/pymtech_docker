@@ -1,4 +1,8 @@
-version: '3.8'
+import zipfile
+from pathlib import Path
+
+files = {
+    "docker-compose.yml": """version: '3.8'
 
 services:
   db:
@@ -30,6 +34,7 @@ services:
       - ./odoo/config:/etc/odoo
       - ./odoo/log:/var/log/odoo/
       - odoo-web-data:/var/lib/odoo
+    entrypoint: ["/wait-for-db.sh"]
     command: [
       "odoo",
       "--db_host=db",
@@ -44,3 +49,37 @@ volumes:
     name: odoo-18-docker_odoo-web-data
   odoo-db-data:
     name: odoo-18-docker_odoo-db-data
+""",
+    "odoo/Dockerfile": """FROM odoo:18.0
+
+USER root
+
+RUN apt-get update && apt-get install -y python3-pip && \\
+    pip3 install python-barcode && \\
+    apt-get clean
+
+COPY wait-for-db.sh /wait-for-db.sh
+RUN chmod +x /wait-for-db.sh
+
+USER odoo
+""",
+    "odoo/wait-for-db.sh": """#!/bin/bash
+
+echo "Esperando a que la base de datos esté disponible..."
+
+until pg_isready -h db -p 5432 -U odoo > /dev/null 2>&1; do
+  sleep 2
+done
+
+echo "Base de datos disponible, iniciando Odoo..."
+
+exec "$@"
+"""
+}
+
+zip_path = Path("odoo_docker_setup.zip")
+with zipfile.ZipFile(zip_path, "w") as zf:
+    for path, content in files.items():
+        zf.writestr(path, content)
+
+print(f"Archivo generado: {zip_path.resolve()}")

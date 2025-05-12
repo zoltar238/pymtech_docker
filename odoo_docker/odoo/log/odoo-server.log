@@ -1,0 +1,660 @@
+2025-05-12 12:48:28,484 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 12:48:28,486 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 12:48:28,704 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 12:48:28,750 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.266s 
+2025-05-12 12:48:28,755 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 12:48:28,759 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 12:53:29,068 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 12:53:29,070 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 12:53:29,455 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 12:53:29,464 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.397s 
+2025-05-12 12:53:29,469 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 12:53:29,473 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 12:57:44,773 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 12:57:44,775 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 12:57:44,895 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 12:57:44,905 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.132s 
+2025-05-12 12:57:44,910 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 12:57:44,912 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 13:02:50,236 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 13:02:50,240 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 13:02:50,370 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 13:02:50,388 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.152s 
+2025-05-12 13:02:50,394 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 13:02:50,397 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 13:07:55,769 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 13:07:55,780 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 13:07:55,868 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 13:07:55,877 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.107s 
+2025-05-12 13:07:55,881 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 13:07:55,884 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 13:10:21,145 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-12 13:10:21,145 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-12 13:10:21,155 1 ERROR ? odoo.addons.bus.models.bus: Bus.loop error, sleep and retry 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 255, in run
+    self.loop()
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 240, in loop
+    conn.poll()
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2025-05-12 13:10:21,161 1 INFO Sincatel odoo.sql_db: Connection to the database failed 
+2025-05-12 13:10:21,161 1 WARNING Sincatel odoo.addons.base.models.ir_cron: Exception in cron: 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_cron.py", line 132, in _process_jobs
+    with db.cursor() as cron_cr:
+         ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 795, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 722, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "db" (172.19.0.2), port 5432 failed: FATAL:  the database system is shutting down
+
+2025-05-12 13:10:21,164 1 INFO Sincatel odoo.sql_db: Connection to the database failed 
+2025-05-12 13:10:21,164 1 WARNING Sincatel odoo.addons.base.models.ir_cron: Exception in cron: 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_cron.py", line 132, in _process_jobs
+    with db.cursor() as cron_cr:
+         ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 795, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 722, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "db" (172.19.0.2), port 5432 failed: FATAL:  the database system is shutting down
+
+2025-05-12 13:10:21,355 1 INFO Sincatel odoo.sql_db: Connection to the database failed 
+2025-05-12 13:10:21,356 1 INFO Sincatel odoo.sql_db: Connection to the database failed 
+2025-05-12 13:10:21,362 1 ERROR Sincatel werkzeug: Error on request:
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 318, in get_messages
+    message = self._process_next_message()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 464, in _process_next_message
+    self._handle_control_frame(frame)
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 602, in _handle_control_frame
+    self._terminate()
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 583, in _terminate
+    with acquire_cursor(self._db) as cr:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 47, in acquire_cursor
+    return Registry(db).cursor()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 1005, in cursor
+    return self._db.cursor()
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 795, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 722, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "db" (172.19.0.2), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 359, in execute
+    application_iter.close()
+  File "/usr/lib/python3/dist-packages/werkzeug/wsgi.py", line 260, in close
+    callback()
+  File "/usr/lib/python3/dist-packages/werkzeug/wrappers/response.py", line 407, in close
+    func()
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 916, in <lambda>
+    response.call_on_close(lambda: cls._serve_forever(
+                                   ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 1030, in _serve_forever
+    for message in websocket.get_messages():
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 322, in get_messages
+    self._handle_transport_error(exc)
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 627, in _handle_transport_error
+    registry = registry.check_signaling()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 876, in check_signaling
+    with nullcontext(cr) if cr is not None else closing(self.cursor()) as cr:
+                                                        ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 1005, in cursor
+    return self._db.cursor()
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 795, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 722, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "db" (172.19.0.2), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections? - - -
+2025-05-12 13:10:27,912 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 13:10:27,912 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 13:10:27,912 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 13:10:27,912 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 13:10:28,023 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 13:10:28,029 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 13:10:28,155 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 1211d5d8983c:8069 
+2025-05-12 13:10:48,557 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 13:10:48,558 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 13:10:48,558 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 13:10:48,558 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 13:10:48,670 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 13:10:48,678 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 13:10:48,808 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 07659c5d3de5:8069 
+2025-05-12 13:10:55,559 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2025-05-12 13:10:55,564 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2025-05-12 13:10:55,568 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 13:10:55,572 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 13:10:55,576 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 13:10:55,605 1 INFO ? odoo.modules.loading: loading 131 modules... 
+2025-05-12 13:10:56,174 1 WARNING ? py.warnings: /usr/lib/python3/dist-packages/odoo/api.py:482: DeprecationWarning: The model odoo.addons.cap_product_ean13_generator.models.product_product is not overriding the create method in batch
+  File "/usr/lib/python3.12/threading.py", line 1030, in _bootstrap
+    self._bootstrap_inner()
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 390, in handle
+    super().handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1877, in _serve_db
+    self.registry, cr_readwrite = self._open_registry()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1487, in _open_registry
+    registry = Registry(self.db)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 106, in __new__
+    return cls.new(db_name)
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 127, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/usr/lib/python3/dist-packages/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/mnt/extra-addons/cap_product_ean13_generator/__init__.py", line 1, in <module>
+    from . import models
+  File "/mnt/extra-addons/cap_product_ean13_generator/models/__init__.py", line 3, in <module>
+    from . import product_product
+  File "/mnt/extra-addons/cap_product_ean13_generator/models/product_product.py", line 21, in <module>
+    class ProductProduct(models.Model):
+  File "/mnt/extra-addons/cap_product_ean13_generator/models/product_product.py", line 34, in ProductProduct
+    @api.model
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-05-12 13:10:56,174 1 WARNING ? odoo.models: The model cap.product.generate.barcode.manually has no _description 
+2025-05-12 13:10:56,174 1 WARNING ? odoo.models: The model cap.product.generate.barcode has no _description 
+2025-05-12 13:10:56,199 1 WARNING ? py.warnings: /usr/lib/python3/dist-packages/odoo/api.py:482: DeprecationWarning: The model odoo.addons.ps_ticket_almacen_campos.models.helpdeskticket is not overriding the create method in batch
+  File "/usr/lib/python3.12/threading.py", line 1030, in _bootstrap
+    self._bootstrap_inner()
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 390, in handle
+    super().handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1877, in _serve_db
+    self.registry, cr_readwrite = self._open_registry()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1487, in _open_registry
+    registry = Registry(self.db)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 106, in __new__
+    return cls.new(db_name)
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 127, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/usr/lib/python3/dist-packages/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/__init__.py", line 3, in <module>
+    from . import models
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/models/__init__.py", line 3, in <module>
+    from . import helpdeskticket
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/models/helpdeskticket.py", line 4, in <module>
+    class HelpdeskTicket(models.Model):
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/models/helpdeskticket.py", line 51, in HelpdeskTicket
+    @api.model
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-05-12 13:10:56,212 1 INFO ? odoo.modules.loading: 131 modules loaded in 0.61s, 0 queries (+0 extra) 
+2025-05-12 13:10:56,338 1 WARNING ? odoo.fields: Field cap.product.generate.barcode.overwrite: unknown parameter 'String', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-05-12 13:10:56,370 1 INFO ? odoo.modules.loading: Modules loaded. 
+2025-05-12 13:10:56,374 1 INFO ? odoo.modules.registry: Registry loaded in 0.832s 
+2025-05-12 13:10:56,374 1 INFO Sincatel odoo.addons.base.models.ir_http: Generating routing map for key None 
+2025-05-12 13:10:56,463 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:10:56] "GET / HTTP/1.1" 303 - 26 0.018 0.903
+2025-05-12 13:10:57,902 1 WARNING Sincatel odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 13:10:57,904 1 WARNING Sincatel odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 13:10:57,912 1 WARNING Sincatel odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 13:10:58,173 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:10:58] "GET /odoo HTTP/1.1" 200 - 112 0.036 1.662
+2025-05-12 13:10:58,650 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:10:58] "POST /hr_attendance/attendance_user_data HTTP/1.1" 200 - 8 0.004 0.009
+2025-05-12 13:10:58,719 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:10:58] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 10 0.015 0.024
+2025-05-12 13:10:58,720 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:10:58] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 16 0.013 0.028
+2025-05-12 13:10:58,724 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:10:58] "GET /websocket?version=18.0-4 HTTP/1.1" 101 - 1 0.001 0.019
+2025-05-12 13:10:58,735 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:10:58] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.001 0.003
+2025-05-12 13:10:58,750 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:10:58] "POST /mail/data HTTP/1.1" 200 - 34 0.020 0.033
+2025-05-12 13:10:58,890 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 13:10:58,891 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 13:10:58,899 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:10:58] "POST /web/action/load HTTP/1.1" 200 - 6 0.002 0.215
+2025-05-12 13:10:58,995 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:10:58] "POST /mail/data HTTP/1.1" 200 - 45 0.013 0.020
+2025-05-12 13:10:59,066 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:10:59] "POST /mail/inbox/messages HTTP/1.1" 200 - 5 0.004 0.006
+2025-05-12 13:10:59,068 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2025-05-12 13:10:59,179 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:10:59] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.002
+2025-05-12 13:11:35,356 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:35] "GET /odoo/discuss HTTP/1.1" 200 - 24 0.005 0.017
+2025-05-12 13:11:35,567 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:35] "POST /hr_attendance/attendance_user_data HTTP/1.1" 200 - 7 0.002 0.007
+2025-05-12 13:11:35,606 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:35] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 304 - 9 0.003 0.008
+2025-05-12 13:11:35,615 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:35] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 5 0.002 0.004
+2025-05-12 13:11:35,622 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:35] "POST /web/action/load HTTP/1.1" 200 - 7 0.003 0.005
+2025-05-12 13:11:35,639 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:35] "POST /mail/data HTTP/1.1" 200 - 20 0.010 0.012
+2025-05-12 13:11:35,706 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:35] "POST /mail/data HTTP/1.1" 200 - 38 0.011 0.019
+2025-05-12 13:11:35,767 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:35] "POST /mail/inbox/messages HTTP/1.1" 200 - 3 0.001 0.003
+2025-05-12 13:11:36,363 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:36] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.002
+2025-05-12 13:11:36,962 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:36] "POST /web/action/load HTTP/1.1" 200 - 10 0.003 0.064
+2025-05-12 13:11:37,020 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:37] "POST /web/dataset/call_kw/hr.attendance/get_views HTTP/1.1" 200 - 30 0.008 0.039
+2025-05-12 13:11:37,036 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:37] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.000 0.003
+2025-05-12 13:11:37,044 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:37] "POST /web/dataset/call_kw/hr.attendance/web_read_group HTTP/1.1" 200 - 11 0.004 0.008
+2025-05-12 13:11:37,073 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:37] "POST /web/dataset/call_kw/res.users/has_group HTTP/1.1" 200 - 1 0.000 0.002
+2025-05-12 13:11:37,085 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:37] "POST /web/dataset/call_kw/hr.attendance/has_demo_data HTTP/1.1" 200 - 4 0.001 0.002
+2025-05-12 13:11:37,109 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:11:37] "GET /hr_attendance/static/img/attendance_dot.gif HTTP/1.1" 200 - 0 0.000 0.001
+2025-05-12 13:11:37,110 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:11:37] "GET /hr_attendance/static/img/mock-tablet.png HTTP/1.1" 200 - 0 0.000 0.002
+2025-05-12 13:11:37,998 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:37] "POST /web/action/load HTTP/1.1" 200 - 9 0.002 0.005
+2025-05-12 13:11:38,079 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:38] "POST /web/dataset/call_kw/helpdesk.ticket.team/get_views HTTP/1.1" 200 - 89 0.024 0.046
+2025-05-12 13:11:38,102 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:38] "POST /web/dataset/call_kw/helpdesk.ticket.team/web_search_read HTTP/1.1" 200 - 14 0.009 0.006
+2025-05-12 13:11:39,663 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:39] "POST /web/action/load HTTP/1.1" 200 - 11 0.002 0.006
+2025-05-12 13:11:39,778 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:39] "POST /web/dataset/call_kw/res.partner/get_views HTTP/1.1" 200 - 88 0.021 0.076
+2025-05-12 13:11:39,839 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:39] "POST /web/dataset/call_kw/res.partner/web_search_read HTTP/1.1" 200 - 36 0.018 0.035
+2025-05-12 13:11:40,609 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:11:40] "POST /web/dataset/call_kw/helpdesk.ticket.team/web_search_read HTTP/1.1" 200 - 4 0.002 0.004
+2025-05-12 13:12:48,949 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 13:12:48,952 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 13:12:49,863 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 13:12:49,923 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.974s 
+2025-05-12 13:12:49,928 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 13:12:49,930 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 13:12:49,941 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2025-05-12 13:12:49,943 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.002s 
+2025-05-12 13:12:49,947 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2025-05-12 13:12:49,949 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2025-05-12 13:12:49,959 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2025-05-12 13:12:49,961 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.002s 
+2025-05-12 13:12:49,965 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2025-05-12 13:12:49,967 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2025-05-12 13:12:49,977 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2025-05-12 13:12:49,979 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.002s 
+2025-05-12 13:12:49,983 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2025-05-12 13:12:49,985 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2025-05-12 13:12:49,995 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2025-05-12 13:12:49,998 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2025-05-12 13:12:50,002 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2025-05-12 13:12:50,004 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2025-05-12 13:12:50,014 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2025-05-12 13:12:50,016 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.001s 
+2025-05-12 13:12:50,021 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2025-05-12 13:12:50,023 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2025-05-12 13:12:50,973 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) starting 
+2025-05-12 13:12:50,976 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) done in 0.003s 
+2025-05-12 13:12:50,981 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) processed 0 records, 0 records remaining 
+2025-05-12 13:12:50,984 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) completed 
+2025-05-12 13:13:13,492 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:13] "GET / HTTP/1.1" 303 - 1 0.002 0.018
+2025-05-12 13:13:13,514 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:13] "GET /odoo HTTP/1.1" 303 - 2 0.002 0.016
+2025-05-12 13:13:14,029 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/database/selector HTTP/1.1" 200 - 6 0.005 0.510
+2025-05-12 13:13:14,083 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/src/libs/fontawesome/css/font-awesome.css HTTP/1.1" 200 - 1 0.001 0.045
+2025-05-12 13:13:14,084 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/js/dist/util/index.js HTTP/1.1" 200 - 1 0.001 0.045
+2025-05-12 13:13:14,085 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/dist/css/bootstrap.css HTTP/1.1" 200 - 1 0.001 0.046
+2025-05-12 13:13:14,085 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/js/dist/dom/data.js HTTP/1.1" 200 - 1 0.001 0.045
+2025-05-12 13:13:14,086 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/js/dist/dom/event-handler.js HTTP/1.1" 200 - 1 0.001 0.046
+2025-05-12 13:13:14,086 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/js/dist/dom/manipulator.js HTTP/1.1" 200 - 1 0.001 0.045
+2025-05-12 13:13:14,133 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/js/dist/dom/selector-engine.js HTTP/1.1" 200 - 1 0.001 0.045
+2025-05-12 13:13:14,134 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/js/dist/util/config.js HTTP/1.1" 200 - 1 0.001 0.044
+2025-05-12 13:13:14,135 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/js/dist/util/component-functions.js HTTP/1.1" 200 - 1 0.001 0.045
+2025-05-12 13:13:14,137 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/js/dist/util/backdrop.js HTTP/1.1" 200 - 1 0.001 0.045
+2025-05-12 13:13:14,138 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/js/dist/util/focustrap.js HTTP/1.1" 200 - 1 0.001 0.046
+2025-05-12 13:13:14,139 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/js/dist/util/scrollbar.js HTTP/1.1" 200 - 1 0.002 0.045
+2025-05-12 13:13:14,161 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/js/dist/base-component.js HTTP/1.1" 200 - 1 0.001 0.024
+2025-05-12 13:13:14,161 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/lib/bootstrap/js/dist/modal.js HTTP/1.1" 200 - 1 0.001 0.023
+2025-05-12 13:13:14,162 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/src/public/database_manager.js HTTP/1.1" 200 - 1 0.001 0.022
+2025-05-12 13:13:14,173 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:13:14] "GET /web/static/img/logo2.png HTTP/1.1" 200 - 1 0.001 0.008
+2025-05-12 13:15:50,197 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'CRM: enrich leads (IAP)' (39) starting 
+2025-05-12 13:15:50,201 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'CRM: enrich leads (IAP)' (39) done in 0.003s 
+2025-05-12 13:15:50,205 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'CRM: enrich leads (IAP)' (39) processed 0 records, 0 records remaining 
+2025-05-12 13:15:50,207 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'CRM: enrich leads (IAP)' (39) completed 
+2025-05-12 13:17:50,337 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 13:17:50,339 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 13:17:50,588 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 13:17:50,639 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.302s 
+2025-05-12 13:17:50,644 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 13:17:50,646 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 13:22:50,956 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 13:22:50,959 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 13:22:51,221 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 13:22:51,289 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.332s 
+2025-05-12 13:22:51,293 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 13:22:51,295 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 13:27:36,922 1 ERROR ? odoo.addons.bus.models.bus: Bus.loop error, sleep and retry 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 255, in run
+    self.loop()
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 240, in loop
+    conn.poll()
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2025-05-12 13:29:44,252 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 13:29:44,253 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 13:29:44,253 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 13:29:44,253 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 13:29:44,365 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 13:29:44,373 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 13:29:44,502 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 48d79aea5822:8069 
+2025-05-12 13:30:40,531 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2025-05-12 13:30:40,536 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2025-05-12 13:30:40,540 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 13:30:40,544 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 13:30:40,548 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 13:30:40,576 1 INFO ? odoo.modules.loading: loading 131 modules... 
+2025-05-12 13:30:41,145 1 WARNING ? py.warnings: /usr/lib/python3/dist-packages/odoo/api.py:482: DeprecationWarning: The model odoo.addons.cap_product_ean13_generator.models.product_product is not overriding the create method in batch
+  File "/usr/lib/python3.12/threading.py", line 1030, in _bootstrap
+    self._bootstrap_inner()
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 390, in handle
+    super().handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1877, in _serve_db
+    self.registry, cr_readwrite = self._open_registry()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1487, in _open_registry
+    registry = Registry(self.db)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 106, in __new__
+    return cls.new(db_name)
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 127, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/usr/lib/python3/dist-packages/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/mnt/extra-addons/cap_product_ean13_generator/__init__.py", line 1, in <module>
+    from . import models
+  File "/mnt/extra-addons/cap_product_ean13_generator/models/__init__.py", line 3, in <module>
+    from . import product_product
+  File "/mnt/extra-addons/cap_product_ean13_generator/models/product_product.py", line 21, in <module>
+    class ProductProduct(models.Model):
+  File "/mnt/extra-addons/cap_product_ean13_generator/models/product_product.py", line 34, in ProductProduct
+    @api.model
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-05-12 13:30:41,145 1 WARNING ? odoo.models: The model cap.product.generate.barcode.manually has no _description 
+2025-05-12 13:30:41,146 1 WARNING ? odoo.models: The model cap.product.generate.barcode has no _description 
+2025-05-12 13:30:41,171 1 WARNING ? py.warnings: /usr/lib/python3/dist-packages/odoo/api.py:482: DeprecationWarning: The model odoo.addons.ps_ticket_almacen_campos.models.helpdeskticket is not overriding the create method in batch
+  File "/usr/lib/python3.12/threading.py", line 1030, in _bootstrap
+    self._bootstrap_inner()
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 390, in handle
+    super().handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1877, in _serve_db
+    self.registry, cr_readwrite = self._open_registry()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1487, in _open_registry
+    registry = Registry(self.db)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 106, in __new__
+    return cls.new(db_name)
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 127, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/usr/lib/python3/dist-packages/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/__init__.py", line 3, in <module>
+    from . import models
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/models/__init__.py", line 3, in <module>
+    from . import helpdeskticket
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/models/helpdeskticket.py", line 4, in <module>
+    class HelpdeskTicket(models.Model):
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/models/helpdeskticket.py", line 51, in HelpdeskTicket
+    @api.model
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-05-12 13:30:41,184 1 INFO ? odoo.modules.loading: 131 modules loaded in 0.61s, 0 queries (+0 extra) 
+2025-05-12 13:30:41,309 1 WARNING ? odoo.fields: Field cap.product.generate.barcode.overwrite: unknown parameter 'String', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-05-12 13:30:41,340 1 INFO ? odoo.modules.loading: Modules loaded. 
+2025-05-12 13:30:41,344 1 INFO ? odoo.modules.registry: Registry loaded in 0.828s 
+2025-05-12 13:30:41,345 1 INFO Sincatel odoo.addons.base.models.ir_http: Generating routing map for key None 
+2025-05-12 13:30:41,420 1 INFO Sincatel odoo.addons.base.models.res_device: User 2 inserts device log (ojEbl6-k_ZKmdnSJrdFF5SNsZrN-tiPsj9cI74qCCw) 
+2025-05-12 13:30:41,432 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:30:41] "GET /websocket?version=18.0-4 HTTP/1.1" 101 - 22 0.015 0.902
+2025-05-12 13:30:41,748 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2025-05-12 13:30:44,625 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 13:30:44,628 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 13:30:44,720 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 13:30:44,730 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.105s 
+2025-05-12 13:30:44,734 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 13:30:44,738 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 13:31:02,542 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:31:02] "GET / HTTP/1.1" 303 - 1 0.000 0.002
+2025-05-12 13:31:04,038 1 WARNING Sincatel odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 13:31:04,060 1 WARNING Sincatel odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 13:31:04,071 1 WARNING Sincatel odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 13:31:04,338 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:31:04] "GET /odoo HTTP/1.1" 200 - 109 0.031 1.749
+2025-05-12 13:31:04,618 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:31:04] "POST /hr_attendance/attendance_user_data HTTP/1.1" 200 - 8 0.003 0.007
+2025-05-12 13:31:04,667 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:31:04] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 304 - 10 0.009 0.010
+2025-05-12 13:31:04,669 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:31:04] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 200 - 16 0.010 0.013
+2025-05-12 13:31:04,711 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:31:04] "POST /mail/data HTTP/1.1" 200 - 34 0.014 0.013
+2025-05-12 13:31:04,869 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 13:31:04,870 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 13:31:04,876 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:31:04] "POST /web/action/load HTTP/1.1" 200 - 6 0.002 0.226
+2025-05-12 13:31:04,974 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:31:04] "POST /mail/data HTTP/1.1" 200 - 45 0.012 0.021
+2025-05-12 13:31:05,038 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:31:05] "POST /mail/inbox/messages HTTP/1.1" 200 - 5 0.002 0.003
+2025-05-12 13:31:05,366 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:31:05] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.002
+2025-05-12 13:31:58,900 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:31:58] "GET /web/database/selector HTTP/1.1" 200 - 6 0.005 0.498
+2025-05-12 13:31:58,925 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:31:58] "GET /web/static/src/libs/fontawesome/css/font-awesome.css HTTP/1.1" 200 - 0 0.000 0.001
+2025-05-12 13:32:02,982 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:32:02] "GET /web/database/manager HTTP/1.1" 200 - 6 0.002 0.491
+2025-05-12 13:32:44,870 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 13:32:44,873 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 13:32:45,102 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 13:32:45,154 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.283s 
+2025-05-12 13:32:45,158 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 13:32:45,160 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 13:37:45,466 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 13:37:45,468 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 13:37:45,574 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 13:37:45,584 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.117s 
+2025-05-12 13:37:45,588 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 13:37:45,590 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 13:42:45,900 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 13:42:45,902 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 13:42:46,009 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 13:42:46,019 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.119s 
+2025-05-12 13:42:46,024 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 13:42:46,026 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 13:47:46,336 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 13:47:46,338 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 13:47:46,411 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 13:47:46,422 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.085s 
+2025-05-12 13:47:46,426 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 13:47:46,429 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 13:49:50,837 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:50] "GET /web/database/manager HTTP/1.1" 200 - 6 0.003 0.499
+2025-05-12 13:49:54,310 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:54] "GET / HTTP/1.1" 303 - 1 0.000 0.002
+2025-05-12 13:49:54,347 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:54] "GET /odoo HTTP/1.1" 200 - 24 0.005 0.016
+2025-05-12 13:49:54,504 1 INFO ? werkzeug: 172.19.0.1 - - [12/May/2025 13:49:54] "GET /web/static/img/odoo-icon-ios.png HTTP/1.1" 200 - 0 0.000 0.001
+2025-05-12 13:49:54,511 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:54] "GET /web/image/res.company/1/favicon HTTP/1.1" 200 - 5 0.002 0.007
+2025-05-12 13:49:54,584 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:54] "POST /hr_attendance/attendance_user_data HTTP/1.1" 200 - 7 0.002 0.007
+2025-05-12 13:49:54,635 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:54] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 200 - 9 0.006 0.015
+2025-05-12 13:49:54,635 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:54] "POST /web/action/load HTTP/1.1" 200 - 6 0.007 0.012
+2025-05-12 13:49:54,635 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:54] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 200 - 5 0.007 0.012
+2025-05-12 13:49:54,649 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:54] "POST /mail/data HTTP/1.1" 200 - 20 0.006 0.022
+2025-05-12 13:49:54,723 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:54] "POST /mail/data HTTP/1.1" 200 - 38 0.008 0.019
+2025-05-12 13:49:54,782 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:54] "POST /mail/inbox/messages HTTP/1.1" 200 - 3 0.001 0.003
+2025-05-12 13:49:54,793 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:54] "GET /web/image/discuss.channel/2/avatar_128?unique=8375fef0cdb8f97be7be3a0cacec27bc97a03eab43507df6a05a9f2c5723e8b89d256ecf708703c4c84829c0b2b84dd49fa81d452feab9a3d695f54fb25f0372 HTTP/1.1" 200 - 4 0.001 0.004
+2025-05-12 13:49:55,380 1 INFO Sincatel werkzeug: 172.19.0.1 - - [12/May/2025 13:49:55] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.002
+2025-05-12 13:52:46,740 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 13:52:46,742 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 13:52:46,860 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 13:52:46,869 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.130s 
+2025-05-12 13:52:46,874 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 13:52:46,877 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 13:57:24,005 1 ERROR ? odoo.addons.bus.models.bus: Bus.loop error, sleep and retry 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 255, in run
+    self.loop()
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 240, in loop
+    conn.poll()
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
