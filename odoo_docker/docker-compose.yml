@@ -13,15 +13,21 @@ services:
     volumes:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
     restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo -d odoo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   odoo:
     image: odoo:18.0
     container_name: odoo
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
       - "8069:8069"
-    # Activar para ver logs en vivo en vez del archivo de logs
+    # Enable to see live logs instead of log file
     tty: true
     volumes:
       - ./odoo/addons:/mnt/extra-addons
@@ -30,11 +36,21 @@ services:
       - odoo-web-data:/var/lib/odoo
     environment:
       - HOST=db
+      - DATABASE=odoo
       - USER=odoo
       - PASSWORD=odoo
       - ADMIN_PASSWORD=odoo
-    # Usar el UID 1000 que suele ser el primer usuario en muchos sistemas Linux
-#    user: "1000:1000"
+    # Use root user
+    user: root
+    command: >
+      bash -c "
+      until pg_isready -h db -p 5432 -U odoo; do
+        echo 'Waiting for PostgreSQL to be ready...';
+        sleep 2;
+      done
+      && pip install python-barcode --break-system-packages
+      && exec odoo --db_host=db --db_port=5432 --db_user=odoo --db_password=odoo
+      "
     restart: always
 
 volumes:
