@@ -1,0 +1,44 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      - POSTGRES_DB=odoo
+      - POSTGRES_USER=odoo
+      - POSTGRES_PASSWORD=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    ports:
+      - '5433:5432'
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+    restart: always
+
+  odoo:
+    image: odoo:18.0
+    container_name: odoo
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+    # Activar para ver logs en vivo en vez del archivo de logs
+    tty: true
+    volumes:
+      - ./odoo/addons:/mnt/extra-addons
+      - ./odoo/config:/etc/odoo
+      - ./odoo/log:/var/log/odoo/
+      - odoo-web-data:/var/lib/odoo
+    environment:
+      - HOST=db
+      - USER=odoo
+      - PASSWORD=odoo
+      - ADMIN_PASSWORD=odoo
+    # Usar el UID 1000 que suele ser el primer usuario en muchos sistemas Linux
+#    user: "1000:1000"
+    restart: always
+
+volumes:
+  odoo-web-data:
+    name: odoo-18-docker_odoo-web-data
+  odoo-db-data:
+    name: odoo-18-docker_odoo-db-data
