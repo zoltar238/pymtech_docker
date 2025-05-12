@@ -1477,3 +1477,105 @@ psycopg2.OperationalError: connection to server at "db" (172.18.0.2), port 5432 
 2025-05-12 17:16:47,026 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) done in 2.104s 
 2025-05-12 17:16:47,032 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) processed 0 records, 0 records remaining 
 2025-05-12 17:16:47,034 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) completed 
+2025-05-12 17:17:46,862 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 17:17:46,864 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 17:17:47,016 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 17:17:47,024 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.162s 
+2025-05-12 17:17:47,029 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 17:17:47,032 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 17:22:47,360 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 17:22:47,365 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 17:22:47,504 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 17:22:47,532 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.172s 
+2025-05-12 17:22:47,539 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 17:22:47,543 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 17:27:47,855 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 17:27:47,857 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 17:27:48,062 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 17:27:48,105 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.249s 
+2025-05-12 17:27:48,109 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 17:27:48,112 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 17:32:48,423 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 17:32:48,426 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 17:32:48,522 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 17:32:48,532 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.109s 
+2025-05-12 17:32:48,537 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 17:32:48,541 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 17:37:48,795 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 17:37:48,797 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 17:37:49,069 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 17:37:49,126 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.331s 
+2025-05-12 17:37:49,130 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 17:37:49,133 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 17:38:16,880 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-12 17:38:16,881 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-12 17:38:16,941 1 ERROR ? odoo.addons.bus.models.bus: Bus.loop error, sleep and retry 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 255, in run
+    self.loop()
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 240, in loop
+    conn.poll()
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2025-05-12 17:38:16,946 1 INFO Sincatel odoo.sql_db: Connection to the database failed 
+2025-05-12 17:38:16,946 1 WARNING Sincatel odoo.addons.base.models.ir_cron: Exception in cron: 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_cron.py", line 132, in _process_jobs
+    with db.cursor() as cron_cr:
+         ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 795, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 722, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "db" (172.18.0.2), port 5432 failed: FATAL:  the database system is shutting down
+
+2025-05-12 17:38:16,950 1 INFO Sincatel odoo.sql_db: Connection to the database failed 
+2025-05-12 17:38:16,950 1 WARNING Sincatel odoo.addons.base.models.ir_cron: Exception in cron: 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_cron.py", line 132, in _process_jobs
+    with db.cursor() as cron_cr:
+         ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 795, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 722, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "db" (172.18.0.2), port 5432 failed: FATAL:  the database system is shutting down
+
+2025-05-12 17:38:17,366 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+2025-05-12 17:40:39,094 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 17:40:39,094 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 17:40:39,094 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 17:40:39,095 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 17:40:39,266 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 17:40:39,319 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 17:40:39,545 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 724b9b255fd1:8069 

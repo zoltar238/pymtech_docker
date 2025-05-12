@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_task_form_inherit" model="ir.ui.view">
+        <field name="name">helpdesk_mgmt.ticket.view.form.custom.fields</field>
+        <field name="model">helpdesk.ticket</field>
+        <field name="inherit_id" ref="helpdesk_mgmt.ticket_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/header" position="inside">
+                <button name="action_crear_presupuesto"
+                        type="object"
+                        class="oe_highlight"
+                        string="Crear Presupuesto"
+                        icon="fa-money"/>
+            </xpath>
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Actuación">
+                    <group>
+                        <group>
+                            <field name="fecha_aviso"/>
+                            <field name="fecha_salida"/>
+                            <field name="sistema"/>
+                            <field name="kilometros"/>
+                            <field name="solucion_provisional"/>
+                            <field name="solucion_definitiva"/>
+                        </group>
+                        <group>
+                            <field name="actuacion"/>
+                            <field name="observaciones"/>
+                            <field name="documentos" widget="many2many_binary"/>
+                            <field name="estado"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

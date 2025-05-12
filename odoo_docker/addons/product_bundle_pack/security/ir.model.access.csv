@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_pack_public_user,product.bundle.public.user,model_product_pack,base.group_user,1,1,1,0
+access_product_pack_manager,product.bundle.manager,model_product_pack,sales_team.group_sale_salesman_all_leads,1,1,1,1
+access_wizard_product_bundle_bi,wizard.product.bundle.bi,model_wizard_product_bundle_bi,base.group_user,1,1,1,1
+product_bundle_pack.access_wizard_explore_bundle_bi,access_wizard_explore_bundle_bi,product_bundle_pack.model_wizard_explore_bundle_bi,base.group_user,1,1,1,1
+product_bundle_pack.access_purchase_explore_bundle_bi,access_purchase_explore_bundle_bi,product_bundle_pack.model_purchase_explore_bundle_bi,base.group_user,1,1,1,1
+product_bundle_pack.access_purchase_product_bundle_wizard,access_purchase_product_bundle_wizard,product_bundle_pack.model_purchase_product_bundle_wizard,base.group_user,1,1,1,1

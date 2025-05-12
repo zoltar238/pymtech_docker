@@ -1,0 +1,19 @@
+<odoo>
+    <data>
+        <record id="view_partner_form_inherit_name_width" model="ir.ui.view">
+            <field name="name">res.partner.form.inherit.name.width</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@id='individual']" position="attributes">
+                    <attribute name="colspan">4</attribute>
+                    <attribute name="style">width: 100%;</attribute>
+                </xpath>
+                <xpath expr="//field[@id='company']" position="attributes">
+                    <attribute name="colspan">4</attribute>
+                    <attribute name="style">width: 100%;</attribute>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
