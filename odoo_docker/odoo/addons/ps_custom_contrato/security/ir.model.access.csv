@@ -1,4 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_contrato_users,Access for contrato users,model_ps_custom_contrato_contrato,base.group_user,1,1,1,0
-access_contrato_managers,Access for contrato managers,model_ps_custom_contrato_contrato,base.group_erp_manager,1,1,1,1
-access_contrato_admin,Access for all users (admin/dev),model_ps_custom_contrato_contrato,,1,1,1,1

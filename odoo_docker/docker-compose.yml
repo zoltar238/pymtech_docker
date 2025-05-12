@@ -1,50 +1,38 @@
 version: '3.8'
-services:
-  db:
-    image: postgres:15
-    container_name: postgres
-    environment:
-      - POSTGRES_DB=odoo
-      - POSTGRES_USER=odoo
-      - POSTGRES_PASSWORD=odoo
-      - PGDATA=/var/lib/postgresql/data/pgdata
-    ports:
-      - '5432:5432'
-    volumes:
-      - odoo-db-data:/var/lib/postgresql/data/pgdata
-    restart: always
 
-  odoo:
-    image: odoo:18.0
-    container_name: odoo
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
     depends_on:
       - db
     ports:
       - "8069:8069"
-    # Enable to see live logs instead of log file
-    # tty: true
     volumes:
-      - ./odoo/addons:/mnt/extra-addons
-      - ./odoo/config:/etc/odoo
-      - ./odoo/log:/var/log/odoo/
       - odoo-web-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./log:/var/log/odoo
+      - ./addons:/mnt/extra-addons
     environment:
       - HOST=db
-      - DATABASE=odoo
+      - DATABASE=postgres
       - USER=odoo
       - PASSWORD=odoo
-      - ADMIN_PASSWORD=odoo
-    # Use root user
-    user: root
-    command: >
-      bash -c "
-      pip install python-barcode --break-system-packages
-      && exec odoo --db_host=db --db_port=5432 --db_user=odoo --db_password=odoo
-      "
+      - ADMIN_PASSWORD=admin
+    restart: always
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
     restart: always
 
 volumes:
   odoo-web-data:
-    name: odoo-18-docker_odoo-web-data
   odoo-db-data:
-    name: odoo-18-docker_odoo-db-data

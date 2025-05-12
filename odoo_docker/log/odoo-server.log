@@ -1,0 +1,1479 @@
+2025-05-12 16:07:58,777 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 16:07:58,777 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 16:07:58,777 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 16:07:58,777 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 16:07:58,886 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 16:07:58,893 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 16:07:59,013 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on d39f2987f4c7:8069 
+2025-05-12 16:08:10,561 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2025-05-12 16:08:10,566 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2025-05-12 16:08:10,573 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 16:08:10,576 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 16:08:10,580 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 16:08:10,609 1 INFO ? odoo.modules.loading: loading 131 modules... 
+2025-05-12 16:08:11,160 1 WARNING ? py.warnings: /usr/lib/python3/dist-packages/odoo/api.py:482: DeprecationWarning: The model odoo.addons.cap_product_ean13_generator.models.product_product is not overriding the create method in batch
+  File "/usr/lib/python3.12/threading.py", line 1030, in _bootstrap
+    self._bootstrap_inner()
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 390, in handle
+    super().handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1877, in _serve_db
+    self.registry, cr_readwrite = self._open_registry()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1487, in _open_registry
+    registry = Registry(self.db)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 106, in __new__
+    return cls.new(db_name)
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 127, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/usr/lib/python3/dist-packages/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/mnt/extra-addons/cap_product_ean13_generator/__init__.py", line 1, in <module>
+    from . import models
+  File "/mnt/extra-addons/cap_product_ean13_generator/models/__init__.py", line 3, in <module>
+    from . import product_product
+  File "/mnt/extra-addons/cap_product_ean13_generator/models/product_product.py", line 21, in <module>
+    class ProductProduct(models.Model):
+  File "/mnt/extra-addons/cap_product_ean13_generator/models/product_product.py", line 34, in ProductProduct
+    @api.model
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-05-12 16:08:11,160 1 WARNING ? odoo.models: The model cap.product.generate.barcode.manually has no _description 
+2025-05-12 16:08:11,160 1 WARNING ? odoo.models: The model cap.product.generate.barcode has no _description 
+2025-05-12 16:08:11,185 1 WARNING ? py.warnings: /usr/lib/python3/dist-packages/odoo/api.py:482: DeprecationWarning: The model odoo.addons.ps_ticket_almacen_campos.models.helpdeskticket is not overriding the create method in batch
+  File "/usr/lib/python3.12/threading.py", line 1030, in _bootstrap
+    self._bootstrap_inner()
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 390, in handle
+    super().handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1877, in _serve_db
+    self.registry, cr_readwrite = self._open_registry()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1487, in _open_registry
+    registry = Registry(self.db)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 106, in __new__
+    return cls.new(db_name)
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 127, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/usr/lib/python3/dist-packages/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/__init__.py", line 3, in <module>
+    from . import models
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/models/__init__.py", line 3, in <module>
+    from . import helpdeskticket
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/models/helpdeskticket.py", line 4, in <module>
+    class HelpdeskTicket(models.Model):
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/models/helpdeskticket.py", line 51, in HelpdeskTicket
+    @api.model
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-05-12 16:08:11,198 1 INFO ? odoo.modules.loading: 131 modules loaded in 0.59s, 0 queries (+0 extra) 
+2025-05-12 16:08:11,338 1 WARNING ? odoo.fields: Field cap.product.generate.barcode.overwrite: unknown parameter 'String', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-05-12 16:08:11,372 1 INFO ? odoo.modules.loading: Modules loaded. 
+2025-05-12 16:08:11,381 1 INFO ? odoo.modules.registry: Registry loaded in 0.871s 
+2025-05-12 16:08:11,382 1 INFO Sincatel odoo.addons.base.models.ir_http: Generating routing map for key None 
+2025-05-12 16:08:11,469 1 INFO Sincatel odoo.addons.base.models.res_device: User 2 inserts device log (QG87Csr-haA5n5yJGgAsgmqJmDcoH9hN2-d9io3eJ6) 
+2025-05-12 16:08:12,968 1 WARNING Sincatel odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 16:08:12,979 1 WARNING Sincatel odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 16:08:12,983 1 WARNING Sincatel odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 16:08:13,228 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:13] "GET /odoo HTTP/1.1" 200 - 137 0.220 2.498
+2025-05-12 16:08:13,771 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:08:13,771 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:08:13,772 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:08:13,772 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:08:13,773 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:08:13,774 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:08:13,775 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:08:13,827 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:13] "GET /web/assets/1bca537/web.assets_web.min.css HTTP/1.1" 200 - 3 0.013 0.573
+2025-05-12 16:08:13,831 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:13] "GET /web/webclient/translations/980033c52ae91fff20c0c5d06e098e5f8711e377?lang=es_ES HTTP/1.1" 200 - 1 0.001 0.579
+2025-05-12 16:08:13,831 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:13] "GET /web/assets/0139f08/web.assets_web.min.js HTTP/1.1" 200 - 3 0.015 0.567
+2025-05-12 16:08:13,857 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:13] "GET /web/assets/2e366f9/web.assets_web_print.min.css HTTP/1.1" 200 - 3 0.002 0.005
+2025-05-12 16:08:13,910 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:13] "GET /web/webclient/load_menus/f68abfa4db8fcb0c75121b778885c44ab7466d7e21a2e6d475187c7078910d2c HTTP/1.1" 200 - 165 0.060 0.600
+2025-05-12 16:08:14,108 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "GET /bus/websocket_worker_bundle?v=18.0-4 HTTP/1.1" 304 - 4 0.002 0.002
+2025-05-12 16:08:14,168 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "POST /hr_attendance/attendance_user_data HTTP/1.1" 200 - 7 0.008 0.008
+2025-05-12 16:08:14,203 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "POST /web/action/load HTTP/1.1" 200 - 6 0.009 0.006
+2025-05-12 16:08:14,210 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 200 - 10 0.012 0.010
+2025-05-12 16:08:14,217 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 200 - 16 0.018 0.012
+2025-05-12 16:08:14,217 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "GET /web/image/res.partner/3/avatar_128?unique=1746597395000 HTTP/1.1" 200 - 15 0.018 0.013
+2025-05-12 16:08:14,321 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "POST /mail/data HTTP/1.1" 200 - 34 0.036 0.013
+2025-05-12 16:08:14,371 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "POST /mail/data HTTP/1.1" 200 - 45 0.022 0.024
+2025-05-12 16:08:14,372 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "GET /websocket?version=18.0-4 HTTP/1.1" 101 - 1 0.000 0.004
+2025-05-12 16:08:14,449 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "POST /mail/inbox/messages HTTP/1.1" 200 - 5 0.003 0.003
+2025-05-12 16:08:14,464 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "GET /web/image/discuss.channel/1/avatar_128?unique=930dc76c888efc49810c32632a8f282be282cc3dcbad2ca17d1cd753986591a0ec9a1847ca7447e5946fa7b9a00ff444cae08986377214ecd4b8001bf30d7e95 HTTP/1.1" 200 - 9 0.009 0.008
+2025-05-12 16:08:14,465 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "GET /web/image/discuss.channel/2/avatar_128?unique=8375fef0cdb8f97be7be3a0cacec27bc97a03eab43507df6a05a9f2c5723e8b89d256ecf708703c4c84829c0b2b84dd49fa81d452feab9a3d695f54fb25f0372 HTTP/1.1" 200 - 9 0.009 0.009
+2025-05-12 16:08:14,466 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:14] "GET /web/image/res.partner/2/avatar_128?unique=1746176444000 HTTP/1.1" 200 - 7 0.006 0.011
+2025-05-12 16:08:14,757 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2025-05-12 16:08:16,002 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:16] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.002
+2025-05-12 16:08:35,791 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 16:08:35] "GET /web/database/selector HTTP/1.1" 200 - 6 0.026 0.499
+2025-05-12 16:08:59,104 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 16:08:59,109 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 16:08:59,228 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 16:08:59,241 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.136s 
+2025-05-12 16:08:59,245 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 16:08:59,248 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 16:08:59,257 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2025-05-12 16:08:59,259 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.002s 
+2025-05-12 16:08:59,264 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2025-05-12 16:08:59,266 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2025-05-12 16:08:59,276 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2025-05-12 16:08:59,279 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.003s 
+2025-05-12 16:08:59,283 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2025-05-12 16:08:59,286 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2025-05-12 16:08:59,297 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2025-05-12 16:08:59,300 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2025-05-12 16:08:59,304 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2025-05-12 16:08:59,306 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2025-05-12 16:08:59,317 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'PEPPOL: retrieve new documents' (20) starting 
+2025-05-12 16:08:59,321 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'PEPPOL: retrieve new documents' (20) done in 0.004s 
+2025-05-12 16:08:59,325 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'PEPPOL: retrieve new documents' (20) processed 0 records, 0 records remaining 
+2025-05-12 16:08:59,327 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'PEPPOL: retrieve new documents' (20) completed 
+2025-05-12 16:08:59,337 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'CRM: enrich leads (IAP)' (39) starting 
+2025-05-12 16:08:59,344 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'CRM: enrich leads (IAP)' (39) done in 0.006s 
+2025-05-12 16:08:59,348 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'CRM: enrich leads (IAP)' (39) processed 0 records, 0 records remaining 
+2025-05-12 16:08:59,350 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'CRM: enrich leads (IAP)' (39) completed 
+2025-05-12 16:08:59,360 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2025-05-12 16:08:59,364 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.004s 
+2025-05-12 16:08:59,368 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2025-05-12 16:08:59,370 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2025-05-12 16:08:59,380 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2025-05-12 16:08:59,382 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.001s 
+2025-05-12 16:08:59,386 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2025-05-12 16:08:59,388 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2025-05-12 16:10:38,587 1 ERROR ? odoo.addons.bus.models.bus: Bus.loop error, sleep and retry 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 255, in run
+    self.loop()
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 240, in loop
+    conn.poll()
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2025-05-12 16:11:24,926 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 16:11:24,927 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 16:11:24,927 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 16:11:24,927 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 16:11:25,043 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 16:11:25,050 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 16:11:25,174 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 746a144ea1a8:8069 
+2025-05-12 16:11:25,176 1 INFO ? odoo.sql_db: Connection to the database failed 
+2025-05-12 16:11:25,176 1 INFO ? odoo.sql_db: Connection to the database failed 
+2025-05-12 16:11:34,880 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 16:11:34,886 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 16:11:34,886 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:11:34,887 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 16:11:34,887 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:11:34,909 1 ERROR ? odoo.modules.loading: Database odoo not initialized, you can force it with `-i base` 
+2025-05-12 16:11:34,909 1 INFO ? odoo.modules.registry: Registry loaded in 0.021s 
+2025-05-12 16:11:34,910 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:11:34,911 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:11:34] "GET /web/database/selector HTTP/1.1" 500 - 20 0.008 0.216
+2025-05-12 16:16:04,194 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-12 16:16:04,194 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-12 16:16:04,454 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+2025-05-12 16:16:17,045 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 16:16:17,045 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 16:16:17,045 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 16:16:17,045 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 16:16:17,156 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 16:16:17,163 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 16:16:17,308 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 61574e95212a:8069 
+2025-05-12 16:16:18,803 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 16:16:18,809 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 16:16:18,809 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:16:18,810 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 16:16:18,810 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:16:18,823 1 ERROR ? odoo.modules.loading: Database odoo not initialized, you can force it with `-i base` 
+2025-05-12 16:16:18,823 1 INFO ? odoo.modules.registry: Registry loaded in 0.012s 
+2025-05-12 16:16:18,824 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:16:18,825 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:16:18] "GET /web/database/selector HTTP/1.1" 500 - 8 0.006 0.206
+2025-05-12 16:16:19,706 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:16:19,706 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:16:19] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:16:20,272 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:16:20,273 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:16:20] "GET /web/database/selector HTTP/1.1" 500 - 2 0.002 0.009
+2025-05-12 16:16:20,759 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:16:20,760 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:16:20] "GET /web/database/selector HTTP/1.1" 500 - 2 0.002 0.009
+2025-05-12 16:16:21,076 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:16:21,076 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:16:21] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.008
+2025-05-12 16:16:32,967 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:16:32,968 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:16:32] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:16:33,577 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:16:33,577 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:16:33] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:17:17,369 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:17:17,369 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:17:18,398 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:17:18,398 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:17:52,927 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-12 16:17:52,927 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-12 16:17:53,144 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 3 connections  
+2025-05-12 16:17:55,530 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 16:17:55,530 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 16:17:55,531 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 16:17:55,531 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 16:17:55,643 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 16:17:55,650 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 16:17:55,774 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 7b33d7c4063e:8069 
+2025-05-12 16:18:03,834 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 16:18:03,839 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 16:18:03,840 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:18:03,840 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 16:18:03,841 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:18:03,853 1 ERROR ? odoo.modules.loading: Database odoo not initialized, you can force it with `-i base` 
+2025-05-12 16:18:03,853 1 INFO ? odoo.modules.registry: Registry loaded in 0.011s 
+2025-05-12 16:18:03,854 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:18:03,855 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:18:03] "GET /web/database/selector HTTP/1.1" 500 - 8 0.004 0.206
+2025-05-12 16:18:04,495 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:18:04,495 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:18:04] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:18:55,835 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:18:55,835 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:18:56,862 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:18:56,862 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:19:55,875 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:19:55,875 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:19:57,934 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:19:57,934 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:20:55,936 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:20:55,936 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:20:58,715 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-12 16:20:58,715 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-12 16:20:59,005 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:20:59,005 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:20:59,155 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 3 connections  
+2025-05-12 16:21:01,489 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 16:21:01,489 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 16:21:01,489 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 16:21:01,490 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 16:21:01,601 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 16:21:01,608 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 16:21:01,732 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 5dfccd838869:8069 
+2025-05-12 16:21:10,147 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 16:21:10,152 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 16:21:10,153 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:21:10,153 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 16:21:10,154 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:21:10,166 1 ERROR ? odoo.modules.loading: Database odoo not initialized, you can force it with `-i base` 
+2025-05-12 16:21:10,166 1 INFO ? odoo.modules.registry: Registry loaded in 0.011s 
+2025-05-12 16:21:10,167 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:21:10,168 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:21:10] "GET /web/database/selector HTTP/1.1" 500 - 8 0.004 0.200
+2025-05-12 16:22:01,802 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:22:01,802 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:22:02,821 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:22:02,821 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:22:59,243 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 16:22:59,243 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 16:22:59,243 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 16:22:59,243 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 16:22:59,354 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 16:22:59,360 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 16:22:59,489 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on c5574211963b:8069 
+2025-05-12 16:23:02,473 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 16:23:02,479 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 16:23:02,479 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:23:02,480 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 16:23:02,480 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:23:02,500 1 ERROR ? odoo.modules.loading: Database odoo not initialized, you can force it with `-i base` 
+2025-05-12 16:23:02,501 1 INFO ? odoo.modules.registry: Registry loaded in 0.019s 
+2025-05-12 16:23:02,501 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:23:02,502 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:23:02] "GET /web/database/selector HTTP/1.1" 500 - 20 0.008 0.215
+2025-05-12 16:23:59,562 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:23:59,562 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:24:00,578 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:24:00,578 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:27:51,788 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 16:27:51,788 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 16:27:51,788 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 16:27:51,788 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 16:27:51,902 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 16:27:51,909 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 16:27:52,043 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on e7df124d2598:8069 
+2025-05-12 16:27:57,893 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 16:27:57,898 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 16:27:57,898 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:27:57,899 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 16:27:57,899 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:27:57,919 1 ERROR ? odoo.modules.loading: Database odoo not initialized, you can force it with `-i base` 
+2025-05-12 16:27:57,919 1 INFO ? odoo.modules.registry: Registry loaded in 0.018s 
+2025-05-12 16:27:57,919 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:27:57,920 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:27:57] "GET /web/database/selector HTTP/1.1" 500 - 20 0.007 0.207
+2025-05-12 16:27:58,471 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:27:58,472 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:27:58] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:28:04,933 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:28:04,934 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:28:04] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:28:52,115 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:28:52,115 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:28:53,093 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:28:53,093 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:29:25,893 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-12 16:29:25,893 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-12 16:29:26,000 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 3 connections  
+2025-05-12 16:29:56,064 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 16:29:56,064 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 16:29:56,064 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 16:29:56,064 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 16:29:56,177 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 16:29:56,184 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 16:29:56,306 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on ad27bd15f49b:8069 
+2025-05-12 16:29:59,252 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 16:29:59,258 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 16:29:59,258 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:29:59,259 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 16:29:59,259 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:29:59,280 1 ERROR ? odoo.modules.loading: Database odoo not initialized, you can force it with `-i base` 
+2025-05-12 16:29:59,280 1 INFO ? odoo.modules.registry: Registry loaded in 0.019s 
+2025-05-12 16:29:59,281 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:29:59,282 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:29:59] "GET /web/database/selector HTTP/1.1" 500 - 20 0.008 0.209
+2025-05-12 16:30:04,917 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:30:04,917 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:30:04] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:30:56,378 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:30:56,379 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:30:57,397 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:30:57,397 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:31:56,438 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:31:56,438 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:31:58,444 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:31:58,444 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:32:56,499 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:32:56,499 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:32:59,466 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:32:59,466 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:33:56,533 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:33:56,533 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:34:00,536 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:34:00,537 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:34:56,588 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:34:56,588 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:35:07,147 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 16:35:07,147 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 16:35:07,147 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 16:35:07,147 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 16:35:07,258 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 16:35:07,265 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 16:35:07,395 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on e50a4a2d11aa:8069 
+2025-05-12 16:35:13,877 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 16:35:13,883 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 16:35:13,883 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:35:13,884 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 16:35:13,884 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:35:13,900 1 ERROR ? odoo.modules.loading: Database odoo not initialized, you can force it with `-i base` 
+2025-05-12 16:35:13,900 1 INFO ? odoo.modules.registry: Registry loaded in 0.015s 
+2025-05-12 16:35:13,901 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:35:13,902 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:35:13] "GET /web/database/selector HTTP/1.1" 500 - 8 0.006 0.201
+2025-05-12 16:35:14,455 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:35:14,455 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:35:14] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:35:20,762 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:35:20,763 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:35:20] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.008
+2025-05-12 16:36:07,467 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:36:07,467 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:36:08,485 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:36:08,486 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:37:07,502 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:37:07,502 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:37:09,557 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:37:09,557 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:38:07,540 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:38:07,540 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:38:10,628 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:38:10,628 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:39:07,563 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:39:07,563 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:39:11,698 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:39:11,698 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:40:07,613 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:40:07,613 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:40:12,763 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:40:12,764 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:41:07,673 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:41:07,673 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:41:13,835 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:41:13,835 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:41:19,540 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:19,540 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:19] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.008
+2025-05-12 16:41:22,863 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-12 16:41:22,863 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-12 16:41:23,033 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 3 connections  
+2025-05-12 16:41:39,969 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 16:41:39,970 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 16:41:39,970 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 16:41:39,970 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 16:41:40,089 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 16:41:40,096 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 16:41:40,239 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on e50a4a2d11aa:8069 
+2025-05-12 16:41:41,182 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 16:41:41,187 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 16:41:41,187 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:41:41,188 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 16:41:41,188 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:41:41,201 1 ERROR ? odoo.modules.loading: Database odoo not initialized, you can force it with `-i base` 
+2025-05-12 16:41:41,201 1 INFO ? odoo.modules.registry: Registry loaded in 0.011s 
+2025-05-12 16:41:41,201 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:41,202 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:41] "GET /web/database/selector HTTP/1.1" 500 - 8 0.004 0.202
+2025-05-12 16:41:41,650 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:41,650 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:41] "GET /web/database/selector HTTP/1.1" 500 - 2 0.002 0.009
+2025-05-12 16:41:41,991 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:41,992 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:41] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:41:42,241 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:42,241 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:42] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:41:42,392 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:42,392 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:42] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.008
+2025-05-12 16:41:42,526 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:42,527 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:42] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:41:42,659 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:42,659 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:42] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:41:42,787 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:42,787 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:42] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.008
+2025-05-12 16:41:42,917 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:42,917 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:42] "GET /web/database/selector HTTP/1.1" 500 - 2 0.002 0.009
+2025-05-12 16:41:43,049 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:43,049 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:43] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:41:46,223 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-12 16:41:46,223 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-12 16:41:46,227 1 INFO odoo odoo.sql_db: Connection to the database failed 
+2025-05-12 16:41:46,227 1 WARNING odoo odoo.addons.base.models.ir_cron: Exception in cron: 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_cron.py", line 132, in _process_jobs
+    with db.cursor() as cron_cr:
+         ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 795, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 722, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "db" (172.18.0.2), port 5432 failed: FATAL:  the database system is shutting down
+
+2025-05-12 16:41:46,235 1 INFO odoo odoo.sql_db: Connection to the database failed 
+2025-05-12 16:41:46,235 1 WARNING odoo odoo.addons.base.models.ir_cron: Exception in cron: 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_cron.py", line 132, in _process_jobs
+    with db.cursor() as cron_cr:
+         ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 795, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 722, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "db" (172.18.0.2), port 5432 failed: FATAL:  the database system is shutting down
+
+2025-05-12 16:41:46,543 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+2025-05-12 16:41:48,131 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 16:41:48,131 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 16:41:48,131 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 16:41:48,131 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 16:41:48,239 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 16:41:48,246 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 16:41:48,362 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on e50a4a2d11aa:8069 
+2025-05-12 16:41:53,034 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 16:41:53,039 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 16:41:53,040 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 16:41:53,040 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 16:41:53,041 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 16:41:53,057 1 ERROR ? odoo.modules.loading: Database odoo not initialized, you can force it with `-i base` 
+2025-05-12 16:41:53,057 1 INFO ? odoo.modules.registry: Registry loaded in 0.015s 
+2025-05-12 16:41:53,058 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:53,059 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:53] "GET /web/database/selector HTTP/1.1" 500 - 8 0.006 0.188
+2025-05-12 16:41:53,981 1 ERROR odoo odoo.http: Exception during request handling. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1881, in _serve_db
+    rule, args = self.registry['ir.http']._match(self.httprequest.path)
+                 ~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 240, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'ir.http'
+2025-05-12 16:41:53,981 1 INFO odoo werkzeug: 172.18.0.1 - - [12/May/2025 16:41:53] "GET /web/database/selector HTTP/1.1" 500 - 2 0.001 0.009
+2025-05-12 16:42:48,432 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:42:48,432 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:42:49,451 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:42:49,452 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:43:48,461 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:43:48,461 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:43:50,523 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:43:50,523 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:44:48,521 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:44:48,522 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:44:51,592 1 ERROR odoo odoo.sql_db: bad query: b"\n            SELECT latest_version\n            FROM ir_module_module\n             WHERE name='base'\n        "
+ERROR: relation "ir_module_module" does not exist
+LINE 3:             FROM ir_module_module
+                         ^
+ 
+2025-05-12 16:44:51,592 1 WARNING odoo odoo.addons.base.models.ir_cron: Tried to poll an undefined table on database odoo. 
+2025-05-12 16:45:43,998 1 INFO odoo odoo.sql_db: Connection to the database failed 
+2025-05-12 16:45:43,998 1 WARNING odoo odoo.addons.base.models.ir_cron: Exception in cron: 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_cron.py", line 132, in _process_jobs
+    with db.cursor() as cron_cr:
+         ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 795, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 722, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "db" (172.18.0.2), port 5432 failed: FATAL:  the database system is shutting down
+
+2025-05-12 16:45:44,006 1 INFO odoo odoo.sql_db: Connection to the database failed 
+2025-05-12 16:45:44,006 1 WARNING odoo odoo.addons.base.models.ir_cron: Exception in cron: 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_cron.py", line 132, in _process_jobs
+    with db.cursor() as cron_cr:
+         ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 795, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 722, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "db" (172.18.0.2), port 5432 failed: FATAL:  the database system is shutting down
+
+2025-05-12 16:45:44,377 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-12 16:45:44,378 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-12 16:45:44,690 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+2025-05-12 17:15:43,799 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-12 17:15:43,799 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-12 17:15:43,799 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-12 17:15:43,799 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-12 17:15:43,911 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-12 17:15:43,922 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-12 17:15:44,050 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 724b9b255fd1:8069 
+2025-05-12 17:15:55,734 1 INFO ? odoo.modules.loading: loading 1 modules... 
+2025-05-12 17:15:55,738 1 INFO ? odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2025-05-12 17:15:55,742 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 17:15:55,746 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 17:15:55,750 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 17:15:55,780 1 INFO ? odoo.modules.loading: loading 131 modules... 
+2025-05-12 17:15:56,433 1 WARNING ? py.warnings: /usr/lib/python3/dist-packages/odoo/api.py:482: DeprecationWarning: The model odoo.addons.cap_product_ean13_generator.models.product_product is not overriding the create method in batch
+  File "/usr/lib/python3.12/threading.py", line 1030, in _bootstrap
+    self._bootstrap_inner()
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 390, in handle
+    super().handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1877, in _serve_db
+    self.registry, cr_readwrite = self._open_registry()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1487, in _open_registry
+    registry = Registry(self.db)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 106, in __new__
+    return cls.new(db_name)
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 127, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/usr/lib/python3/dist-packages/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/mnt/extra-addons/cap_product_ean13_generator/__init__.py", line 1, in <module>
+    from . import models
+  File "/mnt/extra-addons/cap_product_ean13_generator/models/__init__.py", line 3, in <module>
+    from . import product_product
+  File "/mnt/extra-addons/cap_product_ean13_generator/models/product_product.py", line 21, in <module>
+    class ProductProduct(models.Model):
+  File "/mnt/extra-addons/cap_product_ean13_generator/models/product_product.py", line 34, in ProductProduct
+    @api.model
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-05-12 17:15:56,433 1 WARNING ? odoo.models: The model cap.product.generate.barcode.manually has no _description 
+2025-05-12 17:15:56,434 1 WARNING ? odoo.models: The model cap.product.generate.barcode has no _description 
+2025-05-12 17:15:56,462 1 WARNING ? py.warnings: /usr/lib/python3/dist-packages/odoo/api.py:482: DeprecationWarning: The model odoo.addons.ps_ticket_almacen_campos.models.helpdeskticket is not overriding the create method in batch
+  File "/usr/lib/python3.12/threading.py", line 1030, in _bootstrap
+    self._bootstrap_inner()
+  File "/usr/lib/python3.12/threading.py", line 1073, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.12/threading.py", line 1010, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/lib/python3.12/socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/usr/lib/python3.12/socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/usr/lib/python3.12/socketserver.py", line 761, in __init__
+    self.handle()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 390, in handle
+    super().handle()
+  File "/usr/lib/python3.12/http/server.py", line 436, in handle
+    self.handle_one_request()
+  File "/usr/lib/python3.12/http/server.py", line 424, in handle_one_request
+    method()
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 323, in execute
+    application_iter = app(environ, start_response)
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 2373, in __call__
+    response = request._serve_db()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1877, in _serve_db
+    self.registry, cr_readwrite = self._open_registry()
+  File "/usr/lib/python3/dist-packages/odoo/http.py", line 1487, in _open_registry
+    registry = Registry(self.db)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 106, in __new__
+    return cls.new(db_name)
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 127, in new
+    odoo.modules.load_modules(registry, force_demo, status, update_module)
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 480, in load_modules
+    processed_modules += load_marked_modules(env, graph,
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 365, in load_marked_modules
+    loaded, processed = load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 186, in load_module_graph
+    load_openerp_module(package.name)
+  File "/usr/lib/python3/dist-packages/odoo/modules/module.py", line 384, in load_openerp_module
+    __import__(qualname)
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/__init__.py", line 3, in <module>
+    from . import models
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/models/__init__.py", line 3, in <module>
+    from . import helpdeskticket
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/models/helpdeskticket.py", line 4, in <module>
+    class HelpdeskTicket(models.Model):
+  File "/mnt/extra-addons/ps_ticket_almacen_campos/models/helpdeskticket.py", line 51, in HelpdeskTicket
+    @api.model
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 429, in model
+    return model_create_single(method)
+  File "/usr/lib/python3/dist-packages/odoo/api.py", line 482, in model_create_single
+    warnings.warn(
+ 
+2025-05-12 17:15:56,477 1 INFO ? odoo.modules.loading: 131 modules loaded in 0.70s, 0 queries (+0 extra) 
+2025-05-12 17:15:56,605 1 WARNING ? odoo.fields: Field cap.product.generate.barcode.overwrite: unknown parameter 'String', if this is an actual parameter you may want to override the method _valid_field_parameter on the relevant model in order to allow it 
+2025-05-12 17:15:56,638 1 INFO ? odoo.modules.loading: Modules loaded. 
+2025-05-12 17:15:56,642 1 INFO ? odoo.modules.registry: Registry loaded in 0.922s 
+2025-05-12 17:15:56,642 1 INFO Sincatel odoo.addons.base.models.ir_http: Generating routing map for key None 
+2025-05-12 17:15:56,728 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:15:56] "GET / HTTP/1.1" 303 - 22 0.014 0.995
+2025-05-12 17:15:56,748 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:15:56] "GET /odoo HTTP/1.1" 303 - 4 0.001 0.004
+2025-05-12 17:15:56,805 1 WARNING Sincatel odoo.modules.module: Missing `license` key in manifest for 'ps_productos_addons', defaulting to LGPL-3 
+2025-05-12 17:15:56,806 1 WARNING Sincatel odoo.modules.module: Missing `license` key in manifest for 'project_task_custom_fields', defaulting to LGPL-3 
+2025-05-12 17:15:56,816 1 WARNING Sincatel odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_almacen_campos', defaulting to LGPL-3 
+2025-05-12 17:15:57,155 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:15:57] "GET /web/login?redirect=/odoo? HTTP/1.1" 200 - 63 0.013 0.391
+2025-05-12 17:15:57,332 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_botonera_contacto', defaulting to LGPL-3 
+2025-05-12 17:15:57,333 1 WARNING ? odoo.modules.module: Missing `license` key in manifest for 'ps_ticket_rel_almacen', defaulting to LGPL-3 
+2025-05-12 17:15:57,339 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:15:57] "GET /web/binary/company_logo HTTP/1.1" 304 - 5 0.002 0.158
+2025-05-12 17:15:57,419 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:15:57] "GET /website/translations/df2472761acf45f2d01f3722cb7ab3bb3a581930 HTTP/1.1" 200 - 9 0.002 0.018
+2025-05-12 17:15:57,810 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:15:57] "GET /web/service-worker.js HTTP/1.1" 200 - 5 0.002 0.005
+2025-05-12 17:16:32,967 1 INFO Sincatel odoo.addons.base.models.res_users: Login successful for db:Sincatel login:info@nibafa.com from 172.18.0.1 
+2025-05-12 17:16:32,973 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:32] "POST /web/login HTTP/1.1" 303 - 40 0.017 0.499
+2025-05-12 17:16:32,983 1 INFO Sincatel odoo.addons.base.models.res_device: User 2 inserts device log (9LvEgSgvBiahyJludtJDqwvu904JxV2gVN5w0Inr_A) 
+2025-05-12 17:16:34,523 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:34] "GET /odoo HTTP/1.1" 200 - 102 0.026 1.516
+2025-05-12 17:16:34,641 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:34] "GET /web/webclient/load_menus/f68abfa4db8fcb0c75121b778885c44ab7466d7e21a2e6d475187c7078910d2c HTTP/1.1" 200 - 164 0.029 0.051
+2025-05-12 17:16:34,715 1 INFO ? werkzeug: 172.18.0.1 - - [12/May/2025 17:16:34] "GET /web/static/img/odoo-icon-ios.png HTTP/1.1" 200 - 0 0.000 0.002
+2025-05-12 17:16:34,811 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:34] "POST /hr_attendance/attendance_user_data HTTP/1.1" 200 - 7 0.003 0.007
+2025-05-12 17:16:34,856 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:34] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 200 - 9 0.004 0.011
+2025-05-12 17:16:34,874 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:34] "POST /web/action/load HTTP/1.1" 200 - 6 0.005 0.025
+2025-05-12 17:16:34,874 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:34] "GET /web/image?model=res.company&field=appbar_image&id=1 HTTP/1.1" 200 - 10 0.009 0.021
+2025-05-12 17:16:34,886 1 INFO Sincatel odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ba037c6/bus.websocket_worker_assets.min.js (id:1382) 
+2025-05-12 17:16:34,888 1 INFO Sincatel odoo.addons.base.models.assetsbundle: Deleting attachments [20] (matching /web/assets/_______/bus.websocket_worker_assets.min.js) because it was replaced with /web/assets/ba037c6/bus.websocket_worker_assets.min.js 
+2025-05-12 17:16:34,899 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:34] "GET /bus/websocket_worker_bundle?v=18.0-4 HTTP/1.1" 200 - 13 0.019 0.022
+2025-05-12 17:16:34,904 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:34] "POST /mail/data HTTP/1.1" 200 - 34 0.016 0.028
+2025-05-12 17:16:34,962 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:34] "GET /websocket?version=18.0-4 HTTP/1.1" 101 - 1 0.001 0.006
+2025-05-12 17:16:35,002 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:35] "POST /mail/data HTTP/1.1" 200 - 45 0.017 0.029
+2025-05-12 17:16:35,075 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:35] "POST /mail/inbox/messages HTTP/1.1" 200 - 5 0.002 0.003
+2025-05-12 17:16:35,087 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:35] "GET /web/image/discuss.channel/2/avatar_128?unique=8375fef0cdb8f97be7be3a0cacec27bc97a03eab43507df6a05a9f2c5723e8b89d256ecf708703c4c84829c0b2b84dd49fa81d452feab9a3d695f54fb25f0372 HTTP/1.1" 200 - 9 0.003 0.006
+2025-05-12 17:16:35,281 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2025-05-12 17:16:35,529 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:35] "GET /web/service-worker.js HTTP/1.1" 200 - 1 0.000 0.002
+2025-05-12 17:16:35,549 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:35] "GET /odoo/offline HTTP/1.1" 200 - 6 0.002 0.007
+2025-05-12 17:16:37,841 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:37] "POST /web/action/load HTTP/1.1" 200 - 9 0.003 0.061
+2025-05-12 17:16:37,921 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:37] "POST /web/dataset/call_kw/helpdesk.ticket.team/get_views HTTP/1.1" 200 - 94 0.023 0.048
+2025-05-12 17:16:37,939 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:37] "POST /web/dataset/call_kw/helpdesk.ticket.team/web_search_read HTTP/1.1" 200 - 14 0.004 0.006
+2025-05-12 17:16:39,421 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:39] "POST /web/action/load HTTP/1.1" 200 - 11 0.002 0.006
+2025-05-12 17:16:39,532 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:39] "POST /web/dataset/call_kw/res.partner/get_views HTTP/1.1" 200 - 88 0.022 0.079
+2025-05-12 17:16:39,592 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:39] "POST /web/dataset/call_kw/res.partner/web_search_read HTTP/1.1" 200 - 36 0.016 0.035
+2025-05-12 17:16:39,946 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:39] "GET /web/image/res.partner/2047/avatar_128?unique=1746112860000 HTTP/1.1" 200 - 6 0.003 0.010
+2025-05-12 17:16:39,973 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:39] "GET /web/image/res.partner/802/avatar_128?unique=1746107013000 HTTP/1.1" 200 - 6 0.005 0.018
+2025-05-12 17:16:39,974 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:39] "GET /web/image/res.partner/2060/avatar_128?unique=1746715939000 HTTP/1.1" 200 - 6 0.008 0.017
+2025-05-12 17:16:39,974 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:39] "GET /web/image/res.partner/803/avatar_128?unique=1746107013000 HTTP/1.1" 200 - 6 0.008 0.017
+2025-05-12 17:16:40,861 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:40] "POST /web/dataset/call_kw/res.partner/web_read HTTP/1.1" 200 - 75 0.028 0.443
+2025-05-12 17:16:40,988 1 INFO ? werkzeug: 172.18.0.1 - - [12/May/2025 17:16:40] "GET /web/static/img/placeholder.png HTTP/1.1" 200 - 0 0.000 0.002
+2025-05-12 17:16:40,999 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:40] "POST /mail/thread/data HTTP/1.1" 200 - 22 0.007 0.010
+2025-05-12 17:16:41,014 1 INFO Sincatel werkzeug: 172.18.0.1 - - [12/May/2025 17:16:41] "POST /mail/thread/messages HTTP/1.1" 200 - 3 0.002 0.003
+2025-05-12 17:16:44,100 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) starting 
+2025-05-12 17:16:44,117 1 INFO Sincatel odoo.addons.base.models.ir_attachment: filestore gc 7 checked, 3 removed 
+2025-05-12 17:16:44,128 1 INFO Sincatel odoo.models.unlink: User #1 deleted ir.cron.progress records with IDs: [189, 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 300, 301, 302, 303, 304, 305, 306, 307, 308, 309, 310, 311, 312, 313, 314, 315, 316, 317, 318, 319, 320, 321, 322, 323, 324, 325, 326, 327, 328, 329, 330, 331, 332, 333, 334, 335, 336, 337, 338, 339, 340, 341, 342, 343, 344, 345, 346, 347, 348, 349, 350, 351, 352, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 365, 366, 367, 368, 369, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 383, 384, 385, 386, 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 406, 407, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 418, 419, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 464, 465, 466, 467, 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 554, 555, 556, 557, 558, 559, 560, 561, 562, 563, 564, 565, 566, 567, 568, 569, 570, 571, 572, 573, 574, 575, 576, 577, 578, 579, 580, 581, 582, 583, 584, 585, 586, 587, 588, 589, 590, 591, 592, 593, 594, 595, 596, 597, 598, 599, 600, 601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 627, 628, 629, 630, 631, 632, 633, 634, 635, 636, 637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 666, 667, 668, 669, 670, 671, 672, 673, 674, 675, 676, 677, 678, 679, 680, 681, 682, 683, 684, 685, 686, 687, 688, 689, 690, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734, 735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747, 748, 749, 750, 751, 752, 753, 754, 755, 756, 757, 758, 759, 760, 761, 762, 763, 764, 765, 766, 767, 768, 769, 770, 771, 772, 773, 774, 775, 776, 777, 778, 779, 780, 781, 782, 783, 784, 785, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 818, 819, 820, 821, 822, 823, 824, 825, 826, 827, 828, 829, 830, 831, 832, 833, 834, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856, 857, 858, 859, 860, 861, 862, 863, 864, 865, 866, 867, 868, 869, 870, 871, 872, 873, 874, 875, 876, 877, 878, 879, 880, 881, 882, 883, 884, 885, 886, 887, 888, 889, 890, 891, 892, 893, 894, 895, 896, 897, 898, 899, 900, 901, 902, 903, 904, 905, 906, 907, 908, 909, 910, 911, 912, 913, 914, 915, 916, 917, 918, 919, 920, 921, 922, 923, 924, 925, 926, 927, 928, 929, 930, 931, 932, 933, 934, 935, 936, 937, 938, 939, 940, 941, 942, 943, 944, 945, 946, 947, 948, 949, 950, 951, 952, 953, 954, 955, 956, 957, 958, 959, 960, 961, 962, 963] 
+2025-05-12 17:16:44,167 1 INFO Sincatel odoo.addons.base.models.res_users: GC'd 8 user log entries 
+2025-05-12 17:16:44,176 1 INFO Sincatel odoo.addons.base.models.res_users: GC 'res.users.apikeys' delete 0 entries 
+2025-05-12 17:16:44,179 1 INFO Sincatel odoo.addons.base.models.res_device: GC device logs delete 8 entries 
+2025-05-12 17:16:44,183 1 INFO Sincatel odoo.addons.base.models.res_device: GC device logs delete 0 entries 
+2025-05-12 17:16:44,189 1 INFO Sincatel odoo.models.unlink: User #1 deleted base.language.export records with IDs: [1] 
+2025-05-12 17:16:44,197 1 INFO Sincatel odoo.models.unlink: User #1 deleted base.partner.merge.line records with IDs: [1137, 1138, 1139, 1140, 1141, 1142, 1143, 1144, 1145, 1146, 1147, 1148, 1149, 1150, 1151, 1152, 1153, 1154, 1155, 1156, 1157, 1158, 1159, 1160, 1161, 1162, 1163, 1164, 1165, 1166, 1167, 1168, 1169, 1170, 1171, 1172, 1173, 1174, 1175, 1176, 1177, 1178, 1179, 1180, 1181, 1182, 1183, 1184, 1185, 1186, 1187, 1188, 1189, 1190, 1191, 1192, 1193, 1194, 1195, 1196, 1197, 1198, 1199, 1200, 1201, 1202, 1203, 1204, 1205, 1206, 1207, 1208, 1209, 1210, 1211, 1212, 1213, 1214, 1215, 1216, 1217, 1218, 1219, 1220, 1221, 1222, 1223, 1224, 1225, 1226, 1227, 1228, 1229, 1230, 1231, 1232, 1233, 1234, 1235, 1236, 1237, 1238, 1239, 1240, 1241, 1242, 1243, 1244, 1245, 1246, 1247, 1248, 1249, 1250, 1251, 1252, 1253, 1254, 1255, 1256, 1257, 1258, 1259, 1260, 1261, 1262, 1263, 1264, 1265, 1266, 1267, 1268, 1269, 1270, 1271, 1272, 1273, 1274, 1275] 
+2025-05-12 17:16:44,202 1 INFO Sincatel odoo.models.unlink: User #1 deleted base.partner.merge.automatic.wizard records with IDs: [17, 18, 15, 16] 
+2025-05-12 17:16:44,208 1 INFO Sincatel odoo.addons.base.models.res_users: GC 'auth_totp.device' delete 0 entries 
+2025-05-12 17:16:44,213 1 INFO Sincatel odoo.models.unlink: User #1 deleted base_import.import records with IDs: [82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 81] 
+2025-05-12 17:16:44,220 1 INFO Sincatel odoo.models.unlink: User #1 deleted bus.bus records with IDs: [599, 600, 601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612, 613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 627, 628, 629, 630, 631, 632, 633, 634, 635, 636, 637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649, 650, 651, 652, 653, 654, 655, 656, 657, 658, 659] 
+2025-05-12 17:16:44,229 1 INFO Sincatel odoo.models.unlink: User #1 deleted bus.presence records with IDs: [4, 8] 
+2025-05-12 17:16:44,322 1 INFO Sincatel odoo.addons.sms.models.sms_sms: GC'd 0 sms marked for deletion 
+2025-05-12 17:16:44,416 1 INFO Sincatel odoo.models.unlink: User #1 deleted stock.inventory.adjustment.name records with IDs: [49, 50, 51, 52, 53, 54, 55] 
+2025-05-12 17:16:44,477 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) done in 0.377s 
+2025-05-12 17:16:44,482 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) processed 0 records, 0 records remaining 
+2025-05-12 17:16:44,484 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Base: Auto-vacuum internal data' (1) completed 
+2025-05-12 17:16:44,495 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) starting 
+2025-05-12 17:16:44,498 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) done in 0.003s 
+2025-05-12 17:16:44,502 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) processed 0 records, 0 records remaining 
+2025-05-12 17:16:44,504 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Delete Notifications older than 6 Month' (5) completed 
+2025-05-12 17:16:44,514 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) starting 
+2025-05-12 17:16:44,516 1 INFO Sincatel odoo.addons.mail.models.fetchmail: start checking for new emails on imap server Gestio Sincatel (Servidor Entrada) 
+2025-05-12 17:16:44,726 1 INFO Sincatel odoo.addons.mail.models.fetchmail: Fetched 0 email(s) on imap server Gestio Sincatel (Servidor Entrada); 0 succeeded, 0 failed. 
+2025-05-12 17:16:44,770 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) done in 0.256s 
+2025-05-12 17:16:44,775 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) processed 0 records, 0 records remaining 
+2025-05-12 17:16:44,781 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Fetchmail Service' (6) completed 
+2025-05-12 17:16:44,791 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) starting 
+2025-05-12 17:16:44,793 1 INFO Sincatel odoo.addons.mail.models.mail_scheduled_message: Posting 0 scheduled messages 
+2025-05-12 17:16:44,794 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) done in 0.002s 
+2025-05-12 17:16:44,798 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) processed 0 records, 0 records remaining 
+2025-05-12 17:16:44,801 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Post scheduled messages' (7) completed 
+2025-05-12 17:16:44,812 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2025-05-12 17:16:44,814 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.002s 
+2025-05-12 17:16:44,818 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2025-05-12 17:16:44,821 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2025-05-12 17:16:44,831 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) starting 
+2025-05-12 17:16:44,833 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) done in 0.002s 
+2025-05-12 17:16:44,838 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) processed 0 records, 0 records remaining 
+2025-05-12 17:16:44,840 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: send web push notification' (9) completed 
+2025-05-12 17:16:44,851 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) starting 
+2025-05-12 17:16:44,852 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) done in 0.002s 
+2025-05-12 17:16:44,857 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) processed 0 records, 0 records remaining 
+2025-05-12 17:16:44,859 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Discuss: channel member unmute' (10) completed 
+2025-05-12 17:16:44,868 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) starting 
+2025-05-12 17:16:44,870 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) done in 0.002s 
+2025-05-12 17:16:44,874 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) processed 0 records, 0 records remaining 
+2025-05-12 17:16:44,876 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Discuss: users settings unmute' (11) completed 
+2025-05-12 17:16:44,886 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2025-05-12 17:16:44,888 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.002s 
+2025-05-12 17:16:44,892 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2025-05-12 17:16:44,894 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2025-05-12 17:16:44,904 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2025-05-12 17:16:44,906 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.002s 
+2025-05-12 17:16:44,910 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2025-05-12 17:16:44,912 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2025-05-12 17:16:44,922 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) starting 
+2025-05-12 17:16:45,163 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Account: Post draft entries with auto_post enabled and accounting date up to today' (18) starting 
+2025-05-12 17:16:45,182 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Account: Post draft entries with auto_post enabled and accounting date up to today' (18) done in 0.018s 
+2025-05-12 17:16:45,188 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Account: Post draft entries with auto_post enabled and accounting date up to today' (18) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,190 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Account: Post draft entries with auto_post enabled and accounting date up to today' (18) completed 
+2025-05-12 17:16:45,205 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Send invoices automatically' (19) starting 
+2025-05-12 17:16:45,213 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Send invoices automatically' (19) done in 0.007s 
+2025-05-12 17:16:45,218 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Send invoices automatically' (19) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,221 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Send invoices automatically' (19) completed 
+2025-05-12 17:16:45,233 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'PEPPOL: retrieve new documents' (20) starting 
+2025-05-12 17:16:45,236 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'PEPPOL: retrieve new documents' (20) done in 0.003s 
+2025-05-12 17:16:45,241 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'PEPPOL: retrieve new documents' (20) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,244 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'PEPPOL: retrieve new documents' (20) completed 
+2025-05-12 17:16:45,256 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'PEPPOL: update message status' (21) starting 
+2025-05-12 17:16:45,260 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'PEPPOL: update message status' (21) done in 0.003s 
+2025-05-12 17:16:45,265 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'PEPPOL: update message status' (21) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,268 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'PEPPOL: update message status' (21) completed 
+2025-05-12 17:16:45,280 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Sales: Send pending emails' (24) starting 
+2025-05-12 17:16:45,288 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Sales: Send pending emails' (24) done in 0.004s 
+2025-05-12 17:16:45,293 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Sales: Send pending emails' (24) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,296 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Sales: Send pending emails' (24) completed 
+2025-05-12 17:16:45,309 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Calendar: Event Reminder' (27) starting 
+2025-05-12 17:16:45,313 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Calendar: Event Reminder' (27) done in 0.004s 
+2025-05-12 17:16:45,320 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Calendar: Event Reminder' (27) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,323 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Calendar: Event Reminder' (27) completed 
+2025-05-12 17:16:45,335 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Fleet: Generate contracts costs based on costs frequency' (28) starting 
+2025-05-12 17:16:45,341 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Fleet: Generate contracts costs based on costs frequency' (28) done in 0.006s 
+2025-05-12 17:16:45,348 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Fleet: Generate contracts costs based on costs frequency' (28) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,352 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Fleet: Generate contracts costs based on costs frequency' (28) completed 
+2025-05-12 17:16:45,365 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (31) starting 
+2025-05-12 17:16:45,369 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (31) done in 0.003s 
+2025-05-12 17:16:45,375 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (31) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,381 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'HR Employee: check work permit validity' (31) completed 
+2025-05-12 17:16:45,394 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Project: Send rating' (32) starting 
+2025-05-12 17:16:45,399 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Project: Send rating' (32) done in 0.005s 
+2025-05-12 17:16:45,406 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Project: Send rating' (32) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,409 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Project: Send rating' (32) completed 
+2025-05-12 17:16:45,422 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Procurement: run scheduler' (33) starting 
+2025-05-12 17:16:45,454 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Procurement: run scheduler' (33) done in 0.032s 
+2025-05-12 17:16:45,460 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Procurement: run scheduler' (33) processed 3 records, 0 records remaining 
+2025-05-12 17:16:45,464 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Procurement: run scheduler' (33) completed 
+2025-05-12 17:16:45,478 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (34) starting 
+2025-05-12 17:16:45,482 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (34) done in 0.004s 
+2025-05-12 17:16:45,487 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (34) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,490 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Attendance: Automatically check-out employees' (34) completed 
+2025-05-12 17:16:45,507 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (35) starting 
+2025-05-12 17:16:45,510 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (35) done in 0.003s 
+2025-05-12 17:16:45,515 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (35) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,518 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Attendance: Detect Absences for employees' (35) completed 
+2025-05-12 17:16:45,531 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Accrual Time Off: Updates the number of time off' (36) starting 
+2025-05-12 17:16:45,564 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Accrual Time Off: Updates the number of time off' (36) done in 0.032s 
+2025-05-12 17:16:45,569 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Accrual Time Off: Updates the number of time off' (36) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,573 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Accrual Time Off: Updates the number of time off' (36) completed 
+2025-05-12 17:16:45,588 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Time Off: Cancel invalid leaves' (37) starting 
+2025-05-12 17:16:45,594 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Time Off: Cancel invalid leaves' (37) done in 0.006s 
+2025-05-12 17:16:45,600 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Time Off: Cancel invalid leaves' (37) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,607 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Time Off: Cancel invalid leaves' (37) completed 
+2025-05-12 17:16:45,619 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Purchase reminder' (38) starting 
+2025-05-12 17:16:45,630 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Purchase reminder' (38) done in 0.011s 
+2025-05-12 17:16:45,635 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Purchase reminder' (38) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,638 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Purchase reminder' (38) completed 
+2025-05-12 17:16:45,651 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'CRM: enrich leads (IAP)' (39) starting 
+2025-05-12 17:16:45,655 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'CRM: enrich leads (IAP)' (39) done in 0.004s 
+2025-05-12 17:16:45,661 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'CRM: enrich leads (IAP)' (39) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,664 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'CRM: enrich leads (IAP)' (39) completed 
+2025-05-12 17:16:45,681 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2025-05-12 17:16:45,684 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.003s 
+2025-05-12 17:16:45,689 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,692 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2025-05-12 17:16:45,707 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) starting 
+2025-05-12 17:16:45,713 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) done in 0.005s 
+2025-05-12 17:16:45,722 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,726 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Users: Notify About Unregistered Users' (12) completed 
+2025-05-12 17:16:45,738 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2025-05-12 17:16:45,744 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.005s 
+2025-05-12 17:16:45,749 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,756 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2025-05-12 17:16:45,769 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) starting 
+2025-05-12 17:16:45,775 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) done in 0.005s 
+2025-05-12 17:16:45,779 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) processed 0 records, 0 records remaining 
+2025-05-12 17:16:45,782 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Base: Portal Users Deletion' (2) completed 
+2025-05-12 17:16:47,026 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) done in 2.104s 
+2025-05-12 17:16:47,032 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) processed 0 records, 0 records remaining 
+2025-05-12 17:16:47,034 1 INFO Sincatel odoo.addons.base.models.ir_cron: Job 'Digest Emails' (16) completed 
