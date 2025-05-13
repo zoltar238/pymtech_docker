@@ -8,5 +8,9 @@ RUN apt-get update && apt-get install -y python3-pip \
  && pip install python-barcode --break-system-packages \
  && apt-get clean && rm -rf /var/lib/apt/lists/*
 
+#COPY requirements.txt /requirements.txt
+#RUN pip install -r /requirements.txt --break-system-packages
+
 # Volver al usuario por defecto de Odoo
 USER odoo
+
