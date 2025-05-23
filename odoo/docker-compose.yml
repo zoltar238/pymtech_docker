@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   web:
     build:
@@ -7,8 +5,8 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - db
-    ports:
-      - "8069:8069"
+#    ports:
+#      - "8069:8069"
     volumes:
       - odoo-web-data:/var/lib/odoo
       - ./config:/etc/odoo
@@ -19,7 +17,6 @@ services:
       - DATABASE=postgres
       - USER=odoo
       - PASSWORD=odoo
-      - ADMIN_PASSWORD=admin
     restart: always
 
   db:
@@ -33,6 +30,22 @@ services:
       - odoo-db-data:/var/lib/postgresql/data/pgdata
     restart: always
 
+  https-portal:
+    image: steveltn/https-portal:latest
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: always
+    depends_on:
+      - web
+    environment:
+      DOMAINS: 'zoltar238.me -> http://web:8069'
+      STAGE: 'staging'
+      # FORCE_RENEW: 'true'
+    volumes:
+      - https-portal-data:/var/lib/https-portal
+
 volumes:
+  https-portal-data:
   odoo-web-data:
   odoo-db-data:

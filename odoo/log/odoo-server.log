@@ -1762,3 +1762,44 @@ psycopg2.OperationalError: connection to server at "db" (172.18.0.3), port 5432 
 2025-05-22 20:37:29,796 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
 2025-05-22 20:37:29,908 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
 2025-05-22 20:37:30,387 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 724b9b255fd1:8069 
+2025-05-23 15:02:37,566 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-23 15:02:37,566 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-23 15:02:37,566 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-23 15:02:37,566 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-23 15:02:37,750 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-23 15:02:37,794 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-23 15:02:38,042 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 5495d3c7b574:8069 
+2025-05-23 15:03:01,324 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:01] "GET / HTTP/1.1" 303 - 1 0.014 0.078
+2025-05-23 15:03:01,359 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:01] "GET /odoo HTTP/1.1" 303 - 2 0.002 0.018
+2025-05-23 15:03:02,379 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/service-worker.js HTTP/1.1" 404 - 1 0.001 0.013
+2025-05-23 15:03:02,546 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/database/selector HTTP/1.1" 200 - 6 0.085 1.099
+2025-05-23 15:03:02,628 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/js/dist/dom/data.js HTTP/1.1" 200 - 1 0.001 0.052
+2025-05-23 15:03:02,628 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/js/dist/dom/event-handler.js HTTP/1.1" 200 - 1 0.001 0.052
+2025-05-23 15:03:02,629 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/dist/css/bootstrap.css HTTP/1.1" 200 - 1 0.001 0.054
+2025-05-23 15:03:02,629 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/js/dist/util/index.js HTTP/1.1" 200 - 1 0.001 0.053
+2025-05-23 15:03:02,629 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/js/dist/dom/manipulator.js HTTP/1.1" 200 - 1 0.002 0.051
+2025-05-23 15:03:02,631 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/src/libs/fontawesome/css/font-awesome.css HTTP/1.1" 200 - 1 0.002 0.056
+2025-05-23 15:03:02,681 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/js/dist/dom/selector-engine.js HTTP/1.1" 200 - 1 0.001 0.049
+2025-05-23 15:03:02,681 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/js/dist/util/config.js HTTP/1.1" 200 - 1 0.001 0.049
+2025-05-23 15:03:02,682 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/js/dist/util/component-functions.js HTTP/1.1" 200 - 1 0.002 0.048
+2025-05-23 15:03:02,683 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/js/dist/util/backdrop.js HTTP/1.1" 200 - 1 0.001 0.048
+2025-05-23 15:03:02,684 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/js/dist/util/focustrap.js HTTP/1.1" 200 - 1 0.001 0.049
+2025-05-23 15:03:02,686 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/js/dist/util/scrollbar.js HTTP/1.1" 200 - 1 0.002 0.049
+2025-05-23 15:03:02,708 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/js/dist/base-component.js HTTP/1.1" 200 - 1 0.001 0.023
+2025-05-23 15:03:02,709 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/lib/bootstrap/js/dist/modal.js HTTP/1.1" 200 - 1 0.001 0.023
+2025-05-23 15:03:02,710 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/src/public/database_manager.js HTTP/1.1" 200 - 1 0.001 0.022
+2025-05-23 15:03:02,722 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/img/logo2.png HTTP/1.1" 200 - 1 0.001 0.009
+2025-05-23 15:03:02,772 1 INFO ? werkzeug: 172.18.0.1 - - [23/May/2025 15:03:02] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 1 0.001 0.010
+2025-05-23 15:07:08,512 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-23 15:07:08,512 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-23 15:07:08,799 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 2 connections  
+2025-05-23 15:25:51,745 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-23 15:25:51,746 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-23 15:25:51,746 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-23 15:25:51,746 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-23 15:25:51,857 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-23 15:25:51,863 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-23 15:25:51,995 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 5495d3c7b574:8069 
+2025-05-23 15:27:31,938 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-23 15:27:31,938 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-23 15:27:32,089 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 2 connections  
