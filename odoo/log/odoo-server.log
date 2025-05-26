@@ -1803,3 +1803,23 @@ psycopg2.OperationalError: connection to server at "db" (172.18.0.3), port 5432 
 2025-05-23 15:27:31,938 1 INFO ? odoo.service.server: Initiating shutdown 
 2025-05-23 15:27:31,938 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
 2025-05-23 15:27:32,089 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 2 connections  
+2025-05-23 15:49:15,552 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-23 15:49:15,552 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-23 15:49:15,900 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 4 connections  
+2025-05-26 06:47:05,185 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-26 06:47:05,185 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-26 06:47:05,185 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-26 06:47:05,185 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-26 06:47:05,367 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-26 06:47:05,414 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-26 06:47:05,647 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 5495d3c7b574:8069 
+2025-05-26 07:13:15,878 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-05-26 07:13:15,878 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-05-26 07:13:15,961 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 2 connections  
+2025-05-26 07:13:17,017 1 INFO ? odoo: Odoo version 18.0-20250428 
+2025-05-26 07:13:17,017 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-05-26 07:13:17,017 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-05-26 07:13:17,017 1 INFO ? odoo: database: odoo@db:5432 
+2025-05-26 07:13:17,124 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-05-26 07:13:17,131 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-05-26 07:13:17,250 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 5495d3c7b574:8069 
