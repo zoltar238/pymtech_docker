@@ -1,0 +1,52 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+#    ports:
+#      - "8069:8069"
+    volumes:
+      - odoo-web-data:/var/lib/odoo
+      - ./config:/etc/odoo
+      - ./log:/var/log/odoo
+      - ./addons:/mnt/extra-addons
+    environment:
+      - HOST=db
+      - DATABASE=postgres
+      - USER=odoo
+      - PASSWORD=odoo
+    restart: always
+
+  db:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - odoo-db-data:/var/lib/postgresql/data/pgdata
+    restart: always
+
+# Easy to set up reverse proxy
+#  https-portal:
+#    image: steveltn/https-portal:latest
+#    ports:
+#      - '80:80'
+#      - '443:443'
+#    restart: always
+#    depends_on:
+#      - web
+#    environment:
+#      DOMAINS: 'zoltar283.site -> http://web:8069'
+#      STAGE: 'staging'
+#      # FORCE_RENEW: 'true'
+#    volumes:
+#      - https-portal-data:/var/lib/https-portal
+
+volumes:
+  https-portal-data:
+  odoo-web-data:
+  odoo-db-data:
