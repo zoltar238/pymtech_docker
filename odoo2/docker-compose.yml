@@ -1,48 +1,48 @@
 version: '3.8'
 
 services:
-  odoo1:
+  odoo2:
     image: odoo:18
-    container_name: odoo1
+    container_name: odoo2
     labels:
       - traefik.enable=true
-      - traefik.http.routers.odoo1.rule=Host(`odoo1.loxika.com`)
-      - traefik.http.routers.odoo1.entrypoints=websecure
-      - traefik.http.routers.odoo1.tls.certresolver=myresolver
-      - traefik.http.services.odoo1.loadbalancer.server.port=8069
+      - traefik.http.routers.odoo2.rule=Host(`odoo2.loxika.com`)
+      - traefik.http.routers.odoo2.entrypoints=websecure
+      - traefik.http.routers.odoo2.tls.certresolver=myresolver
+      - traefik.http.services.odoo2.loadbalancer.server.port=8069
     ports:
-      - "8070:8069"  # solo si quieres acceder localmente
+      - "8071:8069"  # puerto diferente para acceso local
     volumes:
       - ./config:/etc/odoo
       - ./addons:/mnt/extra-addons
       - ./log:/var/log/odoo
-      - odoo-web-data1:/var/lib/odoo
+      - odoo-web-data2:/var/lib/odoo
     environment:
-      - HOST=db
+      - HOST=db2
       - DATABASE=postgres
       - USER=odoo
       - PASSWORD=odoo
     depends_on:
-      - db
+      - db2
     networks:
       - traefik
 
-  db:
+  db2:
     image: postgres:15
-    container_name: odoo1-db
+    container_name: odoo2-db
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - odoo-db-data1:/var/lib/postgresql/data/pgdata
+      - odoo-db-data2:/var/lib/postgresql/data/pgdata
     networks:
       - traefik
 
 volumes:
-  odoo-web-data1:
-  odoo-db-data1:
+  odoo-web-data2:
+  odoo-db-data2:
 
 networks:
   traefik:
