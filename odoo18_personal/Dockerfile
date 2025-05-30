@@ -1,4 +1,4 @@
-ARG ODOO_VERSION
+ARG ODOO_VERSION=18
 FROM odoo:${ODOO_VERSION}
 
 # Change user to root to install needed dependencies

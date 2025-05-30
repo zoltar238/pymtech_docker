@@ -1,34 +1,4 @@
 services:
-  odoo:
-    container_name: ${COMPOSE_PROJECT_NAME}_odoo
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        ODOO_VERSION: ${ODOO_VERSION}
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo.rule=Host(`${DNS}`)
-      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo.entrypoints=websecure
-      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo.tls.certresolver=myresolver
-      - traefik.http.services.${COMPOSE_PROJECT_NAME}_odoo.loadbalancer.server.port=${ODOO_INTERNAL_PORT}
-    ports:
-      - "${ODOO_EXPOSED_PORT}:${ODOO_INTERNAL_PORT}"
-    volumes:
-      - ./config:/etc/odoo
-      - ./addons:/mnt/extra-addons
-      - ./log:/var/log/odoo
-      - odoo_data:/var/lib/odoo
-    environment:
-      - HOST=${COMPOSE_PROJECT_NAME}_db
-      - DATABASE=postgres
-      - USER=odoo
-      - PASSWORD=odoo
-    depends_on:
-      - db
-    networks:
-      - traefik
-
   db:
     image: postgres:${POSTGRES_VERSION}
     container_name: ${COMPOSE_PROJECT_NAME}_db
@@ -40,12 +10,65 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data/pgdata
     networks:
-      - traefik
+      - internal_network  # Red interna aislada
+      - traefik          # Solo para traefik si es necesario
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U odoo -d postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+    restart: unless-stopped
+
+  odoo:
+    container_name: ${COMPOSE_PROJECT_NAME}_odoo
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ODOO_VERSION: ${ODOO_VERSION}
+        ODOO_REQUIREMENTS: ${ODOO_REQUIREMENTS}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo.rule=Host(`${DNS}`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo.entrypoints=websecure
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo.tls.certresolver=myresolver
+      - traefik.http.services.${COMPOSE_PROJECT_NAME}_odoo.loadbalancer.server.port=${ODOO_INTERNAL_PORT}
+      # Especificar la red para traefik
+      - traefik.docker.network=traefik
+    ports:
+      - "${ODOO_EXPOSED_PORT}:${ODOO_INTERNAL_PORT}"
+    volumes:
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+      - ./log:/var/log/odoo
+      - odoo_data:/var/lib/odoo
+    environment:
+      # Usar el nombre específico del contenedor de DB
+      - HOST=${COMPOSE_PROJECT_NAME}_db
+      - USER=odoo
+      - PASSWORD=odoo
+      - DB_MAXCONN=64
+      - DB_TEMPLATE=template0
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - internal_network  # Red interna aislada
+      - traefik          # Red externa para traefik
+    restart: unless-stopped
 
 volumes:
   odoo_data:
+    name: ${COMPOSE_PROJECT_NAME}_odoo_data
   db_data:
+    name: ${COMPOSE_PROJECT_NAME}_db_data
 
 networks:
+  # Red interna solo para este proyecto
+  internal_network:
+    name: ${COMPOSE_PROJECT_NAME}_internal
+    driver: bridge
+  # Red externa existente para traefik
   traefik:
     external: true
