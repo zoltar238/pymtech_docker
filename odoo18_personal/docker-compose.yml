@@ -1,17 +1,22 @@
 services:
-  web:
+  # Odoo service
+  odoo:
+    container_name: ${COMPOSE_PROJECT_NAME}_odoo
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        ODOO_VERSION: ${ODOO_VERSION}
+        ODOO_REQUIREMENTS: ${ODOO_REQUIREMENTS}
     depends_on:
       - db
-#    ports:
-#      - "8069:8069"
+    ports:
+      - "${ODOO_EXPOSED_PORT}:${ODOO_INTERNAL_PORT}"
     volumes:
-      - odoo-web-data:/var/lib/odoo
+      - odoo_data:/var/lib/odoo
       - ./config:/etc/odoo
       - ./log:/var/log/odoo
-      - ./addons:/mnt/extra-addons
+      - /home/andrei/IdeaProjects/pymtech_modulos_odoo/tetralogik:/mnt/extra-addons
     environment:
       - HOST=db
       - DATABASE=postgres
@@ -19,18 +24,20 @@ services:
       - PASSWORD=odoo
     restart: always
 
+  # Database service
   db:
-    image: postgres:15
+    image: postgres:${POSTGRES_VERSION}
+    container_name: ${COMPOSE_PROJECT_NAME}_db
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
-      - odoo-db-data:/var/lib/postgresql/data/pgdata
+      - db_data:/var/lib/postgresql/data/pgdata
     restart: always
 
-# Easy to set up reverse proxy
+  # Reverse proxy service
 #  https-portal:
 #    image: steveltn/https-portal:latest
 #    ports:
@@ -47,6 +54,6 @@ services:
 #      - https-portal-data:/var/lib/https-portal
 
 volumes:
-  https-portal-data:
-  odoo-web-data:
-  odoo-db-data:
+  odoo_data:
+  db_data:
+#  https-portal-data:

@@ -1,0 +1,51 @@
+services:
+  odoo:
+    container_name: ${COMPOSE_PROJECT_NAME}_odoo
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        ODOO_VERSION: ${ODOO_VERSION}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo.rule=Host(`${DNS}`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo.entrypoints=websecure
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo.tls.certresolver=myresolver
+      - traefik.http.services.${COMPOSE_PROJECT_NAME}_odoo.loadbalancer.server.port=${ODOO_INTERNAL_PORT}
+    ports:
+      - "${ODOO_EXPOSED_PORT}:${ODOO_INTERNAL_PORT}"
+    volumes:
+      - ./config:/etc/odoo
+      - ./addons:/mnt/extra-addons
+      - ./log:/var/log/odoo
+      - odoo_data:/var/lib/odoo
+    environment:
+      - HOST=${COMPOSE_PROJECT_NAME}_db
+      - DATABASE=postgres
+      - USER=odoo
+      - PASSWORD=odoo
+    depends_on:
+      - db
+    networks:
+      - traefik
+
+  db:
+    image: postgres:${POSTGRES_VERSION}
+    container_name: ${COMPOSE_PROJECT_NAME}_db
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - db_data:/var/lib/postgresql/data/pgdata
+    networks:
+      - traefik
+
+volumes:
+  odoo_data:
+  db_data:
+
+networks:
+  traefik:
+    external: true
