@@ -13,10 +13,10 @@ services:
     ports:
       - "${ODOO_EXPOSED_PORT}:${ODOO_INTERNAL_PORT}"
     volumes:
+      - ${ODOO_CONFIG}:/etc/odoo
+      - ${ODOO_ADDONS}:/mnt/extra-addons
+      - ${ODOO_LOG}:/var/log/odoo
       - odoo_data:/var/lib/odoo
-      - ./config:/etc/odoo
-      - ./log:/var/log/odoo
-      - /home/andrei/IdeaProjects/pymtech_modulos_odoo/tetralogik:/mnt/extra-addons
     environment:
       - HOST=db
       - DATABASE=postgres

@@ -10,8 +10,9 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data/pgdata
     networks:
-      - internal_network  # Red interna aislada
-      - traefik          # Solo para traefik si es necesario
+      # Red interna aislada para evitar problemas con las bases de datos
+      - internal_network
+      - traefik
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U odoo -d postgres"]
       interval: 10s
@@ -39,9 +40,9 @@ services:
     ports:
       - "${ODOO_EXPOSED_PORT}:${ODOO_INTERNAL_PORT}"
     volumes:
-      - ./config:/etc/odoo
-      - ./addons:/mnt/extra-addons
-      - ./log:/var/log/odoo
+      - ${ODOO_CONFIG}:/etc/odoo
+      - ${ODOO_ADDONS}:/mnt/extra-addons
+      - ${ODOO_LOG}:/var/log/odoo
       - odoo_data:/var/lib/odoo
     environment:
       # Usar el nombre específico del contenedor de DB
