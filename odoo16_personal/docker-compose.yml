@@ -12,7 +12,6 @@ services:
       - db
     ports:
       - "${ODOO_EXPOSED_PORT}:${ODOO_INTERNAL_PORT}"
-    command: odoo -u de_school -d master
     volumes:
       - ${ODOO_CONFIG}:/etc/odoo
       - ${ODOO_ADDONS}:/mnt/extra-addons

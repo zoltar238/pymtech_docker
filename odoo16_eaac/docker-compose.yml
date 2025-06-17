@@ -12,18 +12,20 @@ services:
       - db
     ports:
       - "${ODOO_EXPOSED_PORT}:${ODOO_INTERNAL_PORT}"
-    command: odoo -u de_school -d master
+#    command: odoo --upgrade-path=/mnt/extra-addons/openupgrade_scripts/scripts --update all --stop-after-init --load=base,web,openupgrade_framework
     volumes:
       - ${ODOO_CONFIG}:/etc/odoo
       - ${ODOO_ADDONS}:/mnt/extra-addons
       - ${ODOO_LOG}:/var/log/odoo
       - odoo_data:/var/lib/odoo
+    networks:
+      - internal_network
     environment:
       - HOST=db
       - DATABASE=postgres
       - USER=odoo
       - PASSWORD=odoo
-    restart: always
+#    restart: always
 
   # Database service
   db:
@@ -36,6 +38,8 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - db_data:/var/lib/postgresql/data/pgdata
+    networks:
+      - internal_network
     restart: always
 
   # Reverse proxy service
@@ -56,5 +60,13 @@ services:
 
 volumes:
   odoo_data:
+    name: ${COMPOSE_PROJECT_NAME}_odoo_data
   db_data:
+    name: ${COMPOSE_PROJECT_NAME}_db_data
 #  https-portal-data:
+
+networks:
+  # Red interna solo para este proyecto
+  internal_network:
+    name: ${COMPOSE_PROJECT_NAME}_internal
+    driver: bridge

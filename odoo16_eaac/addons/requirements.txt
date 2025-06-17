@@ -1,0 +1,5 @@
+openpyxl
+ofxparse
+qifparse
+astor
+graphviz
