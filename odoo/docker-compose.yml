@@ -29,13 +29,13 @@ services:
       dockerfile: Dockerfile
       args:
         ODOO_VERSION: ${ODOO_VERSION}
+        ODOO_VERSION_2: ${ODOO_VERSION}
         ODOO_REQUIREMENTS: ${ODOO_REQUIREMENTS}
+        OPTIONAL_WHISPER: ${OPTIONAL_WHISPER}
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik
       - traefik.http.services.${COMPOSE_PROJECT_NAME}_odoo.loadbalancer.server.port=${ODOO_INTERNAL_PORT}
-
-
     ports:
       - "${ODOO_EXPOSED_PORT}:${ODOO_INTERNAL_PORT}"
     volumes:

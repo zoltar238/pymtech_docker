@@ -48,7 +48,7 @@ check_containers() {
     print_status "${CYAN}" "Checking container health status..."
 
     # Verify every container is running
-    FAILED_CONTAINERS=$(docker-compose -f docker-compose.yml -f labels-${1}.yml ps -q | xargs docker inspect --format='{{.Name}}: {{.State.Status}}' | grep -v "running" || true)
+    FAILED_CONTAINERS=$(docker-compose -f docker-compose.yml -f labels/labels-${1}.yml ps -q | xargs docker inspect --format='{{.Name}}: {{.State.Status}}' | grep -v "running" || true)
 
     if [ -n "$FAILED_CONTAINERS" ]; then
         print_error "Some containers are not running:"
@@ -62,7 +62,7 @@ check_containers() {
 
 # Function to check odoo service health
 check_service_health() {
-    local max_attempts=30
+    local max_attempts=10
     local attempt=1
     local wait_time=1
 
@@ -101,7 +101,7 @@ show_logs_on_error() {
 
     # Show docker logs
     print_status "${BLUE}" "Displaying Docker container logs:"
-    docker-compose -f docker-compose.yml -f labels-${1}.yml logs --tail=30
+    docker-compose -f docker-compose.yml -f labels/labels-${1}.yml logs --tail=30
 
     echo ""
 
@@ -115,24 +115,40 @@ show_logs_on_error() {
 }
 
 # Determine environment mode
-LABEL_FILE=labels-prod.yml
+LABEL_FILE=labels/labels-prod.yml
 TEST_URL=""
+MODE=""
 
+print_header "Checking environment variables"
 if [ "$ENVIRONMENT" = "dev" ]; then
-    print_success "Starting Odoo in DEVELOPMENT mode"
-    LABEL_FILE=labels-dev.yml
+    MODE="DEVELOPMENT"
+    LABEL_FILE=labels/labels-dev.yml
     TEST_URL="test."
 elif [ "$ENVIRONMENT" = "prod" ]; then
-    print_success "Starting Odoo in PRODUCTION mode"
+    MODE="PRODUCTION"
 else
     print_error "Unknown environment mode. ENVIRONMENT variable in .env should be 'dev' or 'prod'"
     exit 1
 fi
 
+URL="${TEST_URL}${DNS}"
+print_success "Environment variables verified"
+print_status "${CYAN}" "Project name: $COMPOSE_PROJECT_NAME"
+print_status "${CYAN}" "Odoo version: $ODOO_VERSION"
+print_status "${CYAN}" "Deploying in $MODE mode"
+print_status "${CYAN}" "On URL: $URL"
+print_status "${CYAN}" "Using label file: $LABEL_FILE"
+print_status "${CYAN}" "Optional parameters:"
+print_status "${CYAN}" "Install whisper speech recognition: $OPTIONAL_WHISPER"
+
 # Start containers
 print_header "STARTING CONTAINERS"
-docker-compose -f docker-compose.yml -f $LABEL_FILE up -d
+print_status "${CYAN}" "Building containers"
+docker-compose -f docker-compose.yml -f $LABEL_FILE build
+echo ""
 
+print_status "${CYAN}" "Spinning up containers"
+docker-compose -f docker-compose.yml -f $LABEL_FILE up -d
 echo ""
 
 # Check containers and service health
