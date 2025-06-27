@@ -10,11 +10,12 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data/pgdata
     networks:
-      # Red interna aislada para evitar problemas con las bases de datos
+      # Internal network
       - internal_network
+      # External traefik network
       - traefik
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U odoo -d postgres"]
+      test: [ "CMD-SHELL", "pg_isready -U odoo -d postgres" ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -31,12 +32,10 @@ services:
         ODOO_REQUIREMENTS: ${ODOO_REQUIREMENTS}
     labels:
       - traefik.enable=true
-      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo.rule=Host(`${DNS}`)
-      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo.entrypoints=websecure
-      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo.tls.certresolver=myresolver
-      - traefik.http.services.${COMPOSE_PROJECT_NAME}_odoo.loadbalancer.server.port=${ODOO_INTERNAL_PORT}
-      # Especificar la red para traefik
       - traefik.docker.network=traefik
+      - traefik.http.services.${COMPOSE_PROJECT_NAME}_odoo.loadbalancer.server.port=${ODOO_INTERNAL_PORT}
+
+
     ports:
       - "${ODOO_EXPOSED_PORT}:${ODOO_INTERNAL_PORT}"
     volumes:
@@ -45,18 +44,21 @@ services:
       - ${ODOO_LOG}:/var/log/odoo
       - odoo_data:/var/lib/odoo
     environment:
-      # Usar el nombre específico del contenedor de DB
+      # Postgres container name
       - HOST=${COMPOSE_PROJECT_NAME}_db
+      # Postgres user
       - USER=odoo
+      # Postgres password
       - PASSWORD=odoo
-      - DB_MAXCONN=64
       - DB_TEMPLATE=template0
     depends_on:
       db:
         condition: service_healthy
     networks:
-      - internal_network  # Red interna aislada
-      - traefik          # Red externa para traefik
+      # Internal network for containers
+      - internal_network
+      # External traefik network
+      - traefik
     restart: unless-stopped
 
 volumes:
@@ -66,10 +68,10 @@ volumes:
     name: ${COMPOSE_PROJECT_NAME}_db_data
 
 networks:
-  # Red interna solo para este proyecto
+  # Internal name with custom name for this environment
   internal_network:
     name: ${COMPOSE_PROJECT_NAME}_internal
     driver: bridge
-  # Red externa existente para traefik
+  # Existing external traefik network
   traefik:
     external: true
