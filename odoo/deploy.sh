@@ -75,7 +75,7 @@ check_service_health() {
         if [ -n "${1}" ]; then
             STATUS=$(curl -Is "${1}${DNS}" 2>/dev/null | head -n 1 | cut -d' ' -f2 || echo "")
         else
-            STATUS=$(curl -Is "${DNS}" 2>/dev/null | head -n 1 | cut -d' ' -f2 || echo "")
+            STATUS=$(curl -Is "https://${DNS}" 2>/dev/null | head -n 1 | cut -d' ' -f2 || echo "")
         fi
 
         if [ "$STATUS" = "303" ]; then

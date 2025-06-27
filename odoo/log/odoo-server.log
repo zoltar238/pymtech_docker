@@ -324,3 +324,13 @@
 2025-06-27 10:19:33,540 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
 2025-06-27 10:19:33,668 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 65cf0bc2e9cf:8069 
 2025-06-27 10:19:35,050 1 INFO ? werkzeug: 172.26.0.2 - - [27/Jun/2025 10:19:35] "HEAD / HTTP/1.1" 303 - 1 0.002 0.017
+2025-06-27 13:25:17,407 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-06-27 13:25:17,420 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-06-27 13:25:18,443 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 2 connections  
+2025-06-27 13:26:32,143 1 INFO ? odoo: Odoo version 18.0-20250618 
+2025-06-27 13:26:32,144 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-06-27 13:26:32,144 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-06-27 13:26:32,144 1 INFO ? odoo: database: odoo@test_odoo_db:5432 
+2025-06-27 13:26:32,802 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-06-27 13:26:32,944 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-06-27 13:26:33,752 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 65cf0bc2e9cf:8069 
