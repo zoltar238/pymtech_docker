@@ -37,8 +37,6 @@ async def main():
     auto_update_modules(env_variables)
 
     # Determine environment mode
-    label_file = "labels/labels-prod.yml"
-    test_url = ""
     mode = "Producción" if env_variables['DEPLOYMENT_TARGET'] == "prod" else "Desarrollo"
 
     # Verify environment variables
