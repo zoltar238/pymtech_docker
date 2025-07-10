@@ -1,18 +1,15 @@
-#!/usr/bin/env python3
 import asyncio
 import os
 import sys
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
-
 from dotenv import load_dotenv
-
-from commands import env_verify, start_containers, auto_update_modules
-from printers import print_status, print_success, print_header
-
+from services.commands import Commands
 
 async def main():
+    start_time = time.time()
     # Load environment variables from .env file
     load_dotenv()
 
@@ -32,32 +29,19 @@ async def main():
         'OPTIONAL_WHISPER': os.getenv('OPTIONAL_WHISPER'),
         'AUTO_INSTALL_MODULES': os.getenv('AUTO_INSTALL_MODULES'),
         'AUTO_UPDATE_MODULES': os.getenv('AUTO_UPDATE_MODULES'),
+        'SCRIPT_OUTPUT': os.getenv('SCRIPT_OUTPUT'),
     }
 
-    auto_update_modules(env_variables)
-
-    # Determine environment mode
-    mode = "Producción" if env_variables['DEPLOYMENT_TARGET'] == "prod" else "Desarrollo"
+    # Create a command class
+    commands = Commands("odoo_deploy", env_variables['SCRIPT_OUTPUT'], env_variables)
 
     # Verify environment variables
-    print_header("VERIFICANDO VARIABLES DE ENTORNO")
-    env_verify(env_variables)
-    print_success("Las variables de entorno son válidas")
+    commands.env_verify(env_variables)
 
-    # Star containers
-    print_header("CONFIGURACION DEL ENTORNO")
-
-    print_status(f"Nombre del proyecto: {env_variables['COMPOSE_PROJECT_NAME']}")
-    print_status(f"Version de Odoo: {env_variables['ODOO_VERSION']}")
-    print_status(f"Version de Postgres: {env_variables['POSTGRES_VERSION']}")
-    print_status(f"Lanzando en modo:{mode}")
-    print_status(f"Dominio: {env_variables['DOMAIN']}")
-    print_status("Paquetes opcionales:")
-    print_status(f"Instalar whisper para el reconocimiento de voz: {env_variables['OPTIONAL_WHISPER']}")
-
-    # Start containers
-    print_header("ARRANCANDO CONTENEDORES")
-    await start_containers(env_variables)
+    # Start the containers
+    await commands.start_containers(env_variables)
+    end_time = time.time() - start_time
+    print(f"Total time:{end_time}")
 
 
 if __name__ == "__main__":

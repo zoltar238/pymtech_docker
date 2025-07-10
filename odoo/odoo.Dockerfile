@@ -12,6 +12,8 @@ COPY ${ODOO_REQUIREMENTS} requirements.txt
 # Install pip, mandatory packages, and specific odoo python requirements
 ARG ODOO_VERSION_2
 ARG OPTIONAL_WHISPER
+ARG AUTO_UPDATE_MODULES
+ARG AUTO_INSTALL_MODULES
 RUN apt-get update && \
     apt-get install -y \
         python3-pip \
