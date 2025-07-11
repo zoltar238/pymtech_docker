@@ -6,6 +6,7 @@ import time
 import webbrowser
 from os.path import dirname
 from typing import Any
+from xxsubtype import bench
 
 import requests
 
@@ -130,10 +131,12 @@ class Commands:
             databases = self.get_database_names()
 
             # Get the list of addons that need to be updated
-            addons_cache_file = f"{self.parent_dir}/cache/addons_cache.json"
-            # addons_list, addons_cache = list_updated_addons(environment['ODOO_ADDONS'])
-            addons_list = list_updated_addons_2(environment['ODOO_ADDONS'])
-            addons_string = ','.join(addons_list)
+            addons_list = []
+            if self.environment['UPDATE_MODULE_LIST']:
+                addons_string = self.environment['UPDATE_MODULE_LIST']
+            else:
+                addons_list = list_updated_addons_2(environment['ODOO_ADDONS'])
+                addons_string = ','.join(addons_list)
 
             # Update and install modules
             if len(addons_list) > 0 and len(databases) > 0:
@@ -267,6 +270,22 @@ class Commands:
     def get_database_names(self) -> list[Any] | None:
         for i in range(10):
             try:
+                # Verify that the container is running properly before attemting to get the database names
+                while True:
+                    cmd_check = f"docker exec {self.environment['COMPOSE_PROJECT_NAME']}_db pg_isready -U odoo"
+                    result = subprocess.run(
+                        cmd_check,
+                        shell=True,
+                        check=True,
+                        capture_output=True,
+                        text=True,
+                        cwd=self.parent_dir,
+                    )
+
+                    if "accepting connections" in result.stdout:
+                        self.logger.print_success("PostgreSQL is ready!")
+                        break
+
                 cmd_list_databases = f"docker exec {self.environment['COMPOSE_PROJECT_NAME']}_db psql -U odoo -l -A"
                 result = subprocess.run(
                     cmd_list_databases,
@@ -289,9 +308,7 @@ class Commands:
 
                 return databases
             except subprocess.CalledProcessError as e:
-                self.logger.print_warning(
-                    f"Failed getting databases names on try {i + 1}: \n{str(e)} \n{e.stderr} \n{e.stdout}")
-                pass
+                self.logger.print_warning(f"Failed getting databases names on try {i + 1}: \n{str(e)} \n{e.stderr} \n{e.stdout}")
         return None
 
     async def check_service_health(self, port=None, domain=None, deployment_target="dev"):
