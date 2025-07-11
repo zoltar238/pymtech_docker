@@ -12,8 +12,6 @@ COPY ${ODOO_REQUIREMENTS} requirements.txt
 # Install pip, mandatory packages, and specific odoo python requirements
 ARG ODOO_VERSION_2
 ARG OPTIONAL_WHISPER
-ARG AUTO_UPDATE_MODULES
-ARG AUTO_INSTALL_MODULES
 RUN apt-get update && \
     apt-get install -y \
         python3-pip \
@@ -23,14 +21,14 @@ RUN apt-get update && \
         pip3 install python-barcode gevent gevent-websocket && \
         pip3 install -r requirements.txt; \
         if [ "$OPTIONAL_WHISPER" = "true" ]; then \
-            pip3 install whisper && \
+            pip3 install openai && \
             apt-get install ffmpeg -y; \
         fi; \
     else \
         pip3 install python-barcode gevent gevent-websocket --break-system-packages && \
         pip3 install -r requirements.txt --break-system-packages; \
         if [ "$OPTIONAL_WHISPER" = "true" ]; then \
-            pip3 install whisper --break-system-packages && \
+            apt install python3-openai -y && \
             apt-get install ffmpeg -y; \
         fi; \
     fi && \

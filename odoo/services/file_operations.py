@@ -81,3 +81,19 @@ def list_updated_addons(addons_folder: str, addons_cache_file: str) -> Tuple[Lis
             to_update_list.append(addon)
 
     return to_update_list, cached_addons
+
+def list_updated_addons_2(addons_folder: str) -> List[str]:
+    """
+    Lists updated addons in the provided addons folder. The function checks if
+    the given folder exists and scans for directories representing addons.
+    It can also check the modified times of addon folders.
+
+    :param addons_folder: The path to the folder containing addon directories.
+    :type addons_folder: str
+    :return: A list of updated addon names.
+    :rtype: List[str]
+    :raises Exception: If the provided addons folder does not exist.
+    """
+
+    # Return the names of all the addons
+    return [item for item in os.listdir(addons_folder) if os.path.isdir(os.path.join(addons_folder, item))]

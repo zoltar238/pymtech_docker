@@ -3,12 +3,13 @@ import json
 import os
 import subprocess
 import time
+import webbrowser
 from os.path import dirname
 from typing import Any
 
 import requests
 
-from .file_operations import compare_files, replace_cache_file, list_updated_addons
+from .file_operations import compare_files, replace_cache_file, list_updated_addons_2
 from .printers import CustomLogger
 
 
@@ -130,8 +131,8 @@ class Commands:
 
             # Get the list of addons that need to be updated
             addons_cache_file = f"{self.parent_dir}/cache/addons_cache.json"
-
-            addons_list, addons_cache = list_updated_addons(environment['ODOO_ADDONS'], addons_cache_file)
+            # addons_list, addons_cache = list_updated_addons(environment['ODOO_ADDONS'])
+            addons_list = list_updated_addons_2(environment['ODOO_ADDONS'])
             addons_string = ','.join(addons_list)
 
             # Update and install modules
@@ -145,17 +146,14 @@ class Commands:
                         self.logger.print_success(f"Installing modules on database {db} completed")
                     if self.environment['AUTO_UPDATE_MODULES'] == "true":
                         self.logger.print_status(f"Updating modules on database {db}")
-                        cmd = f"odoo -d {db} -u {addons_string} --stop-after-init"
+                        cmd = f"odoo -d {db} -u {addons_string} --dev=all --stop-after-init"
                         self.launch_containers(cmd)
                         self.logger.print_success(f"Updating modules on database {db} completed")
-                with open(addons_cache_file, "w") as f:
-                    json.dump(addons_cache, f)
             self.launch_containers()
         else:
             # Fully launch containers
             self.logger.print_header("DEPLOYING ENVIRONMENT")
             self.launch_containers()
-
 
         # Check odoo state
         self.logger.print_header("Verifying Odoo state")
@@ -215,7 +213,6 @@ class Commands:
             self.logger.print_error(f"Error building docker images: {str(e)} \n {e.stderr} \n {e.stdout}")
             exit(1)
 
-
     def launch_database_only(self) -> None:
         try:
             subprocess.run(
@@ -253,7 +250,7 @@ class Commands:
                     cwd=self.parent_dir
                 )
                 self.logger.print_success("Containers were successfully started")
-            else :
+            else:
                 subprocess.run(
                     f"{base_cmd} up -d",
                     shell=True,
@@ -292,7 +289,8 @@ class Commands:
 
                 return databases
             except subprocess.CalledProcessError as e:
-                self.logger.print_warning(f"Failed getting databases names on try {i+1}: \n{str(e)} \n{e.stderr} \n{e.stdout}")
+                self.logger.print_warning(
+                    f"Failed getting databases names on try {i + 1}: \n{str(e)} \n{e.stderr} \n{e.stdout}")
                 pass
         return None
 
@@ -317,8 +315,9 @@ class Commands:
                 status = response.status_code
 
                 if status == 303:
-                    self.logger.print_success(
-                        f"Odoo is working properly on: {url} (HTTP {status})")
+                    self.logger.print_success(f"Odoo is working properly on: {url} (HTTP {status})")
+                    if not url.startswith("http://test"):
+                        webbrowser.open(url)
                     return True
             except requests.RequestException:
                 pass
