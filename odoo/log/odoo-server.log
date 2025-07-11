@@ -1,0 +1,165 @@
+2025-07-11 07:03:27,383 1 INFO hola odoo.addons.base.models.res_device: User 2 inserts device log (gIcoj5phcGvbG55eo6tPj31l5nIFAAVndwxiV_8Eoi) 
+2025-07-11 07:03:27,387 1 INFO hola werkzeug: 172.27.0.1 - - [11/Jul/2025 07:03:27] "GET /websocket?version=18.0-5 HTTP/1.1" 101 - 2 0.005 0.005
+2025-07-11 07:03:27,507 1 INFO hola werkzeug: 172.27.0.1 - - [11/Jul/2025 07:03:27] "POST /bus/has_missed_notifications HTTP/1.1" 200 - 2 0.001 0.002
+2025-07-11 07:04:06,380 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) starting 
+2025-07-11 07:04:06,384 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) done in 0.004s 
+2025-07-11 07:04:06,388 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) processed 0 records, 0 records remaining 
+2025-07-11 07:04:06,389 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Notification: Notify scheduled messages' (8) completed 
+2025-07-11 07:04:06,398 1 INFO hola odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) starting 
+2025-07-11 07:04:06,400 1 INFO hola odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) done in 0.002s 
+2025-07-11 07:04:06,404 1 INFO hola odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) processed 0 records, 0 records remaining 
+2025-07-11 07:04:06,405 1 INFO hola odoo.addons.base.models.ir_cron: Job 'SMS: SMS Queue Manager' (14) completed 
+2025-07-11 07:04:06,413 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) starting 
+2025-07-11 07:04:06,415 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) done in 0.003s 
+2025-07-11 07:04:06,419 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) processed 0 records, 0 records remaining 
+2025-07-11 07:04:06,420 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Snailmail: process letters queue' (15) completed 
+2025-07-11 07:04:06,428 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Account: Post draft entries with auto_post enabled and accounting date up to today' (18) starting 
+2025-07-11 07:04:06,444 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Account: Post draft entries with auto_post enabled and accounting date up to today' (18) done in 0.016s 
+2025-07-11 07:04:06,448 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Account: Post draft entries with auto_post enabled and accounting date up to today' (18) processed 0 records, 0 records remaining 
+2025-07-11 07:04:06,450 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Account: Post draft entries with auto_post enabled and accounting date up to today' (18) completed 
+2025-07-11 07:04:06,458 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) starting 
+2025-07-11 07:04:06,463 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) done in 0.005s 
+2025-07-11 07:04:06,467 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) processed 0 records, 0 records remaining 
+2025-07-11 07:04:06,468 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Mail: Email Queue Manager' (3) completed 
+2025-07-11 07:04:06,476 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) starting 
+2025-07-11 07:04:06,477 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) done in 0.001s 
+2025-07-11 07:04:06,481 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) processed 0 records, 0 records remaining 
+2025-07-11 07:04:06,482 1 INFO hola odoo.addons.base.models.ir_cron: Job 'Partner Autocomplete: Sync with remote DB' (13) completed 
+2025-07-11 07:04:54,928 1 INFO ? odoo.service.server: Initiating shutdown 
+2025-07-11 07:04:54,928 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2025-07-11 07:04:54,946 1 ERROR ? odoo.addons.bus.models.bus: Bus.loop error, sleep and retry 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 257, in run
+    self.loop()
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/models/bus.py", line 242, in loop
+    conn.poll()
+psycopg2.OperationalError: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+2025-07-11 07:04:54,959 1 INFO hola odoo.sql_db: Connection to the database failed 
+2025-07-11 07:04:54,967 1 ERROR hola werkzeug: Error on request:
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 318, in get_messages
+    message = self._process_next_message()
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 462, in _process_next_message
+    frame = self._get_next_frame()
+            ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 423, in _get_next_frame
+    first_byte, second_byte = recv_bytes(2)
+                              ^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 402, in recv_bytes
+    raise ConnectionClosed()
+odoo.addons.bus.websocket.ConnectionClosed
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 362, in run_wsgi
+    execute(self.server.app)
+  File "/usr/lib/python3/dist-packages/werkzeug/serving.py", line 359, in execute
+    application_iter.close()
+  File "/usr/lib/python3/dist-packages/werkzeug/wsgi.py", line 260, in close
+    callback()
+  File "/usr/lib/python3/dist-packages/werkzeug/wrappers/response.py", line 407, in close
+    func()
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 916, in <lambda>
+    response.call_on_close(lambda: cls._serve_forever(
+                                   ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 1030, in _serve_forever
+    for message in websocket.get_messages():
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 322, in get_messages
+    self._handle_transport_error(exc)
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 632, in _handle_transport_error
+    self.disconnect(code, reason)
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 336, in disconnect
+    self._terminate()
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 583, in _terminate
+    with acquire_cursor(self._db) as cr:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/bus/websocket.py", line 47, in acquire_cursor
+    return Registry(db).cursor()
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/modules/registry.py", line 1013, in cursor
+    return self._db.cursor()
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 796, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 723, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "pruebas2_db" (172.27.0.2), port 5432 failed: FATAL:  the database system is shutting down - - -
+2025-07-11 07:04:54,975 1 INFO hola odoo.sql_db: Connection to the database failed 
+2025-07-11 07:04:54,976 1 WARNING hola odoo.addons.base.models.ir_cron: Exception in cron: 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_cron.py", line 132, in _process_jobs
+    with db.cursor() as cron_cr:
+         ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 796, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 723, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "pruebas2_db" (172.27.0.2), port 5432 failed: FATAL:  the database system is shutting down
+
+2025-07-11 07:04:54,984 1 INFO hola odoo.sql_db: Connection to the database failed 
+2025-07-11 07:04:54,984 1 WARNING hola odoo.addons.base.models.ir_cron: Exception in cron: 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_cron.py", line 132, in _process_jobs
+    with db.cursor() as cron_cr:
+         ^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 796, in cursor
+    return Cursor(self.__pool, self.__dbname, self.__dsn)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 288, in __init__
+    self._cnx = pool.borrow(dsn)
+                ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/decorator.py", line 232, in fun
+    return caller(func, *(extras + args), **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 97, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 723, in borrow
+    result = psycopg2.connect(
+             ^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/psycopg2/__init__.py", line 122, in connect
+    conn = _connect(dsn, connection_factory=connection_factory, **kwasync)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+psycopg2.OperationalError: connection to server at "pruebas2_db" (172.27.0.2), port 5432 failed: FATAL:  the database system is shutting down
+
+2025-07-11 07:04:55,091 1 INFO ? odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 2 connections  
+2025-07-11 07:07:37,758 1 INFO ? odoo: Odoo version 18.0-20250710 
+2025-07-11 07:07:37,758 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2025-07-11 07:07:37,758 1 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/18.0', '/mnt/extra-addons'] 
+2025-07-11 07:07:37,758 1 INFO ? odoo: database: odoo@pruebas2_db:5432 
+2025-07-11 07:07:38,002 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2025-07-11 07:07:38,079 1 INFO ? odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2025-07-11 07:07:38,344 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 9ef846170b15:8069 
