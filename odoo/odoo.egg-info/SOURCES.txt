@@ -1,0 +1,9 @@
+setup.py
+odoo.egg-info/PKG-INFO
+odoo.egg-info/SOURCES.txt
+odoo.egg-info/dependency_links.txt
+odoo.egg-info/top_level.txt
+services/__init__.py
+services/commands.py
+services/file_operations.py
+services/printers.py
