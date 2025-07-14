@@ -138,6 +138,9 @@ class Commands:
                 addons_list = list_updated_addons_2(environment['ODOO_ADDONS'])
                 addons_string = ','.join(addons_list)
 
+            # Force update option
+            force_update = '--dev=all' if self.environment['FORCE_UPDATE'] == 'true' else ''
+
             # Update and install modules
             if len(addons_list) > 0 and len(databases) > 0:
                 for index, db in enumerate(databases):
@@ -149,7 +152,7 @@ class Commands:
                         self.logger.print_success(f"Installing modules on database {db} completed")
                     if self.environment['AUTO_UPDATE_MODULES'] == "true":
                         self.logger.print_status(f"Updating modules on database {db}")
-                        cmd = f"odoo -d {db} -u {addons_string} --dev=all --stop-after-init"
+                        cmd = f"odoo -d {db} -u {addons_string} {force_update} --stop-after-init"
                         self.launch_containers(cmd)
                         self.logger.print_success(f"Updating modules on database {db} completed")
             self.launch_containers()

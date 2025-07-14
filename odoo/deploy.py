@@ -30,7 +30,8 @@ async def main():
         'AUTO_INSTALL_MODULES': os.getenv('AUTO_INSTALL_MODULES'),
         'AUTO_UPDATE_MODULES': os.getenv('AUTO_UPDATE_MODULES'),
         'SCRIPT_OUTPUT': os.getenv('SCRIPT_OUTPUT'),
-        'UPDATE_MODULE_LIST': os.getenv('UPDATE_MODULE_LIST')
+        'UPDATE_MODULE_LIST': os.getenv('UPDATE_MODULE_LIST'),
+        'FORCE_UPDATE': os.getenv('FORCE_UPDATE'),
     }
 
     # Create a command class
