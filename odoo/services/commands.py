@@ -1,12 +1,9 @@
 import asyncio
-import json
 import os
 import subprocess
 import time
-import webbrowser
 from os.path import dirname
 from typing import Any
-from xxsubtype import bench
 
 import requests
 
@@ -336,8 +333,6 @@ class Commands:
 
                 if status == 303:
                     self.logger.print_success(f"Odoo is working properly on: {url} (HTTP {status})")
-                    if not url.startswith("http://test"):
-                        webbrowser.open(url)
                     return True
             except requests.RequestException:
                 pass
