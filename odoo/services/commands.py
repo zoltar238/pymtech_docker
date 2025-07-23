@@ -265,6 +265,7 @@ class Commands:
         except subprocess.CalledProcessError as e:
             self.logger.print_error(f"Error launching containers: {str(e)}")
             self.logger.print_critical(f"Aborting deployment: {e.stderr}")
+            self.show_logs_on_error()
             exit(1)
 
     def get_database_names(self) -> list[Any] | None:
@@ -355,7 +356,7 @@ class Commands:
         try:
             cmd = f"docker compose -f docker-compose.yml -f labels/labels-{self.environment['DEPLOYMENT_TARGET']}.yml logs --tail=30"
             output = subprocess.check_output(cmd, shell=True).decode()
-            print(output)
+            self.logger.print_warning(output)
         except subprocess.CalledProcessError as e:
             self.logger.print_error(f"Error getting Docker logs: {str(e)}")
 
@@ -366,7 +367,7 @@ class Commands:
         if os.path.exists(odoo_logs_path):
             self.logger.print_status("Displaying Odoo server logs:")
             with open(odoo_logs_path, "r") as f:
-                lines = f.readlines()[-30:]
-                print("".join(lines))
+                lines = f.readlines()[-50:]
+                self.logger.print_warning("".join(lines))
         else:
             self.logger.print_warning(f"Odoo log file not found at path: {odoo_logs_path}")
