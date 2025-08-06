@@ -12,104 +12,13 @@ from .printers import CustomLogger
 
 
 class Commands:
-    def __init__(self, name: str, level: str, environment: dict):
-        # Create logger
-        self.name = name
-        self.level = level
-        self.logger = CustomLogger(name, level)
-
+    def __init__(self, logger: CustomLogger, environment: dict):
+        # logger
+        self.logger = logger
         # Environmental variables
         self.environment = environment
-
         # Get the parent directory of this file
         self.parent_dir = dirname(dirname(os.path.abspath(__file__)))
-
-    def env_verify(self, env_variables) -> None:
-        """
-        Method that verifies that the set environment variables are correct.
-        :param env_variables:
-        :return: None
-        """
-
-        # Determine environment mode
-        mode = "Producción" if env_variables['DEPLOYMENT_TARGET'] == "prod" else "Desarrollo"
-
-        self.logger.print_header("VERIFYING ENVIRONMENT VARIABLES")
-        self.logger.print_status(f"Nombre del proyecto: {env_variables['COMPOSE_PROJECT_NAME']}")
-        self.logger.print_status(f"Version de Odoo: {env_variables['ODOO_VERSION']}")
-        self.logger.print_status(f"Version de Postgres: {env_variables['POSTGRES_VERSION']}")
-        self.logger.print_status(f"Lanzando en modo:{mode}")
-        self.logger.print_status(f"Dominio: {env_variables['DOMAIN']}")
-        self.logger.print_status("Paquetes opcionales:")
-        self.logger.print_status(f"Instalar whisper para el reconocimiento de voz: {env_variables['OPTIONAL_WHISPER']}")
-
-        # Variables cant be null
-        for variable, value in env_variables.items():
-            if variable != 'DOMAIN' and value is None:
-                self.logger.print_error(f"La variable {variable} no puede ser nula")
-                exit(1)
-
-        try:
-            # Odoo version must be correct
-            if env_variables['ODOO_VERSION'] not in ['16', '17', '18']:
-                self.logger.print_error(
-                    f"La versión de Odoo: {env_variables['ODOO_VERSION']} no es válida. Debe ser 16, 17 o 18")
-                exit(1)
-            # Deployment target must be correct
-            if env_variables['DEPLOYMENT_TARGET'] not in ['dev', 'prod']:
-                self.logger.print_error(f"Target inválido. Debe ser 'dev' o 'prod'")
-                exit(1)
-
-            # Verify port
-            port = int(env_variables['ODOO_EXPOSED_PORT'])
-            containers = self.get_containers_using_port(port)
-
-            if containers:
-                # Verificar si el contenedor que usa el puerto es parte del proyecto actual
-                current_project = env_variables['COMPOSE_PROJECT_NAME']
-                for container in containers:
-                    if not container['name'].startswith(current_project):
-                        self.logger.print_error(
-                            f"El puerto {port} está siendo usado por el servicio: {container['name']}")
-                        exit(1)
-
-            self.logger.print_success("Environment variables verified successfully")
-
-        except ValueError:
-            self.logger.print_error(f"Port {env_variables['ODOO_EXPOSED_PORT']} must be a number")
-
-    def get_containers_using_port(self, port):
-        """
-        Method that returns all containers that use a specific port.
-        :param port:
-        :return:
-        """
-        try:
-            # List every container running
-            result = subprocess.run([
-                'docker', 'ps', '--format', '{{.Names}}\t{{.Ports}}'
-            ], capture_output=True, text=True, check=True)
-
-            using_port = []
-            for line in result.stdout.strip().split('\n'):
-                if line:
-                    name, ports = line.split('\t')
-                    if f":{port}->" in ports or f"0.0.0.0:{port}" in ports:
-                        using_port.append({
-                            'name': name,
-                            'ports': ports
-                        })
-
-            return using_port
-
-        except subprocess.CalledProcessError as e:
-            self.logger.print_error(f"Error al verificar los puertos: {e}")
-            if e.stderr:
-                self.logger.print_error(f"Detalles del error: {e.stderr}")
-            exit(1)
-        except Exception as e:
-            self.logger.print_error(f"Error al verificar los puertos: {e}")
-            exit(1)
 
     async def start_containers(self, environment):
         # Stop running containers
@@ -198,7 +107,7 @@ class Commands:
             label_file = f"labels/labels-{self.environment['DEPLOYMENT_TARGET']}.yml"
 
             # Build images only if environment variables have been modified
-            if not compare_files(env_file, cached_env_file):
+            if not compare_files(env_file, cached_env_file) or self.environment['FORCE_REBUILD'] == "true":
                 self.logger.print_status("Detected changes in environment variables, building images")
                 subprocess.run(
                     f"docker compose -f docker-compose.yml -f {label_file} build",
@@ -252,7 +161,6 @@ class Commands:
                     text=True,
                     cwd=self.parent_dir
                 )
-                self.logger.print_success("Containers were successfully started")
             else:
                 subprocess.run(
                     f"{base_cmd} up -d",
@@ -262,6 +170,8 @@ class Commands:
                     text=True,
                     cwd=self.parent_dir
                 )
+                self.logger.print_success("Containers were successfully started")
+
         except subprocess.CalledProcessError as e:
             self.logger.print_error(f"Error launching containers: {str(e)}")
             self.logger.print_critical(f"Aborting deployment: {e.stderr}")
@@ -309,7 +219,9 @@ class Commands:
 
                 return databases
             except subprocess.CalledProcessError as e:
-                self.logger.print_warning(f"Failed getting databases names on try {i + 1}: \n{str(e)} \n{e.stderr} \n{e.stdout}")
+                if i > 9:
+                    self.logger.print_warning(
+                        f"Failed getting databases names on try {i + 1}: \n{str(e)} \n{e.stderr} \n{e.stdout}")
         return None
 
     async def check_service_health(self, port=None, domain=None, deployment_target="dev"):

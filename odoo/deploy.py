@@ -3,10 +3,14 @@ import os
 import sys
 import time
 
+from odoo.services.printers import CustomLogger
+from odoo.services.startup_validator import env_verify
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from dotenv import load_dotenv
 from services.commands import Commands
+
 
 async def main():
     start_time = time.time()
@@ -32,19 +36,22 @@ async def main():
         'SCRIPT_OUTPUT': os.getenv('SCRIPT_OUTPUT'),
         'UPDATE_MODULE_LIST': os.getenv('UPDATE_MODULE_LIST'),
         'FORCE_UPDATE': os.getenv('FORCE_UPDATE'),
+        'FORCE_REBUILD': os.getenv('FORCE_REBUILD'),
     }
 
-    # Create a command class
-    commands = Commands("odoo_deploy", env_variables['SCRIPT_OUTPUT'], env_variables)
+    # Create logger
+    logger = CustomLogger("odoo_deploy", env_variables['SCRIPT_OUTPUT'])
 
     # Verify environment variables
-    commands.env_verify(env_variables)
+    env_verify(env_variables=env_variables, logger=logger)
+
+    # Create a command class
+    commands = Commands(logger=logger, environment=env_variables)
 
     # Start the containers
     await commands.start_containers(env_variables)
     end_time = time.time() - start_time
-    print(f"Total time:{end_time}")
-
+    logger.print_success(f"Total time:{end_time}")
 
 if __name__ == "__main__":
     asyncio.run(main())
