@@ -1,0 +1,3 @@
+/.venv/
+/odoo/dist/
+/odoo/odoo.egg-info/
