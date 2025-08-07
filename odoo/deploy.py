@@ -3,8 +3,8 @@ import os
 import sys
 import time
 
-from odoo.services.printers import CustomLogger
-from odoo.services.startup_validator import env_verify
+from services.printers import CustomLogger
+from services.startup_validator import env_verify
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 

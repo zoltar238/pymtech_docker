@@ -1,7 +1,7 @@
 import os
 import subprocess
 
-from test_dockers.sincatel_docker.services.printers import CustomLogger
+from .printers import CustomLogger
 
 
 def env_verify(logger: CustomLogger, env_variables: dict) -> None:
@@ -9,7 +9,7 @@ def env_verify(logger: CustomLogger, env_variables: dict) -> None:
     Method that verifies that the set environment variables are correct.
     :param env_variables:
     :param logger:
-    :return: None
+   :return: None
     """
 
     # Determine environment mode
