@@ -32,8 +32,6 @@ tanto entornos de desarrollo como de producción.
    Usa el mismo comando para reiniciar los contenedores de odoo. Usa `docker compose down` en caso
    de que sea necesario detener el servicio de odoo
 
-## ⚙️ Configuración
-
 ## ⚙️ Configuración Detallada del Archivo .env
 
 ### Configuración Principal
