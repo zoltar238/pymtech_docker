@@ -2,3 +2,4 @@
 /odoo/dist/
 /odoo/odoo.egg-info/
 /.idea/
+/pymtech_docker.iml
