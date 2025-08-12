@@ -16,7 +16,11 @@ RUN apt-get update && \
     apt-get install -y \
         python3-pip \
         fonts-liberation \
+        wget xfonts-75dpi \
     && \
+    wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb && \
+    dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb && \
+    apt-get install -f && \
     if [ "$ODOO_VERSION_2" = "16" ]; then \
         pip3 install python-barcode gevent gevent-websocket && \
         pip3 install -r requirements.txt; \
