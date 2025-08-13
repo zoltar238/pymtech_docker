@@ -1,11 +1,10 @@
 import hashlib
 import json
 import os
-import shutil
 from typing import List, Tuple, Dict
 
-
 from .printers import CustomLogger
+
 
 def compare_files(file1: str, file2: str) -> bool:
     """
@@ -32,20 +31,56 @@ def compare_files(file1: str, file2: str) -> bool:
     return True
 
 
-def replace_cache_file(env_file: str, cache_env_file: str) -> None:
-    """
-    Replace the cache file with the current environment file.
-    :param env_file: Original .env file
-    :param cache_env_file: Copied file for chache
-    :return: None
-    """
-    # Remove original cache file
-    os.remove(cache_env_file)
-    # Create new cache file
-    shutil.copyfile(env_file, cache_env_file)
+def check_config_changes(env_file: str, dockerfile_file: str, config_cache_file: str, logger: CustomLogger) -> Tuple[
+    bool, Dict[str, str]]:
+
+    # Get modification dates
+    env_file_modified_time = os.path.getmtime(env_file)
+    dockerfile_file_modified_time = os.path.getmtime(dockerfile_file)
+
+    # Read the addons' cache file, if any error occurs, return an empty dict
+    cached_config_json = {}
+    try:
+        with open(config_cache_file, "r") as f:
+            cached_config_json = json.load(f)
+    except Exception as e:
+        logger.print_warning(f"Error reading config cache file: {e}. New cache file will be created.")
+        # Assign the new values to the json config
+        cached_config_json['env_file_modified_time'] = env_file_modified_time
+        cached_config_json['dockerfile_file_modified_time'] = dockerfile_file_modified_time
+        return True, cached_config_json
+
+    # Verify if the values match
+    if cached_config_json.get('env_file_modified_time', '') != env_file_modified_time or cached_config_json.get(
+            'dockerfile_file_modified_time', '') != dockerfile_file_modified_time:
+
+        # Assign new values to the json cache
+        cached_config_json['env_file_modified_time'] = env_file_modified_time
+        cached_config_json['dockerfile_file_modified_time'] = dockerfile_file_modified_time
+        return True, cached_config_json
+    else:
+        return False, cached_config_json
 
 
-def list_updated_addons(addons_folder: str, addons_cache_file: str, logger: CustomLogger) -> Tuple[List[str], Dict[str, Dict[str, str]]]:
+def replace_cache_file(cached_config_json: Dict[str, str], base_cache_dir:str, config_cache_file: str) -> None:
+    """
+    Replace the cache file with the new data.
+    :param cached_config_json: json containing the new data.
+    :param config_cache_file: path to the cache file.
+    :param base_cache_dir: path to the base cache directory, needed to create the cache directory if it doesn't exist.
+    :return:
+    """
+
+    # Create the cache directory if it doesn't exist
+    if not os.path.exists(base_cache_dir):
+        os.makedirs(base_cache_dir)
+
+    # Write the json data to the document
+    json.dump(cached_config_json, open(config_cache_file, "w"))
+
+
+def list_updated_addons(addons_folder: str, addons_cache_file: str, logger: CustomLogger) -> Tuple[
+    List[str], Dict[str, Dict[str, str]]]:
     """
     Lists updated addons in the provided addons folder. The function checks if
     the given folder exists and scans for directories representing addons.

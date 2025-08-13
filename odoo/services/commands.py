@@ -7,8 +7,8 @@ from typing import Any
 
 import requests
 
-from .file_operations import compare_files, replace_cache_file, list_updated_addons_2, list_updated_addons, \
-    update_addons_cache
+from .file_operations import replace_cache_file, list_updated_addons_2, list_updated_addons, \
+    update_addons_cache, check_config_changes
 from .printers import CustomLogger
 
 
@@ -24,6 +24,9 @@ class Commands:
     async def start_containers(self, environment):
         # Stop running containers
         self.stop_running_containers()
+
+        # Create traefik network if it doesn't exist
+        self._create_traefik_network()
 
         # Rebuild images if necessary
         self.build_docker_images()
@@ -98,6 +101,39 @@ class Commands:
                 self.check_service_health(port=environment['ODOO_EXPOSED_PORT']),
             )
 
+    # Method to create traefik network
+    def _create_traefik_network(self):
+        """
+        This method creates a traefik network if it doesn't exist.
+        Traefik network is necessary for routing traffic to the containers.
+        :return:
+        """
+
+        try:
+            # Shut down running containers
+            # Check if traefik network exists
+            self.logger.print_status("Verifying traefik network")
+            output = subprocess.check_output("docker network ls", shell=True).decode()
+
+            if "traefik" in output:
+                self.logger.print_success("Traefik network already exists")
+            else:
+                self.logger.print_status("Creating traefik network")
+                subprocess.run(
+                    "docker network create traefik",
+                    shell=True,
+                    check=True,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                    cwd=self.parent_dir
+                )
+                self.logger.print_success("Traefik network created successfully")
+        except subprocess.CalledProcessError as e:
+            self.logger.print_error(f"Error verifying traefik network: {str(e)}")
+            self.logger.print_critical(f"Aborting deployment: {e.stderr}")
+            exit(1)
+
     def stop_running_containers(self) -> None:
         """
         Stops all running containers of this deployment
@@ -125,12 +161,17 @@ class Commands:
     def build_docker_images(self) -> None:
         try:
             # Necessary files
-            env_file = f"{self.parent_dir}/.env"
-            cached_env_file = f"{self.parent_dir}/cache/cached.env"
+            env_file = os.path.join(self.parent_dir, ".env")
+            dockerfile_file = os.path.join(self.parent_dir, "odoo.Dockerfile")
+            cache_file_dir = os.path.join(self.parent_dir, "cache")
+            cached_config_file = os.path.join(self.parent_dir, "cache", "config_cache.json")
             label_file = f"labels/labels-{self.environment['DEPLOYMENT_TARGET']}.yml"
 
+            changes_found, cached_config_json = check_config_changes(env_file, dockerfile_file, cached_config_file,
+                                                                     self.logger)
+
             # Build images only if environment variables have been modified
-            if not compare_files(env_file, cached_env_file) or self.environment['FORCE_REBUILD'] == "true":
+            if changes_found or self.environment['FORCE_REBUILD'] == "true":
                 self.logger.print_status("Detected changes in environment variables, building images")
                 subprocess.run(
                     f"docker compose -f docker-compose.yml -f {label_file} build",
@@ -141,8 +182,8 @@ class Commands:
                     cwd=self.parent_dir
                 )
 
-                # Copy .env file to cache
-                replace_cache_file(env_file, cached_env_file)
+                # Save the config data in the json after successfully building the images
+                replace_cache_file(cached_config_json, cache_file_dir, cached_config_file)
                 self.logger.print_success("Container images were successfully built")
         except subprocess.CalledProcessError as e:
             self.logger.print_error(f"Error building docker images: {str(e)} \n {e.stderr} \n {e.stdout}")
