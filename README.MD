@@ -15,20 +15,16 @@ tanto entornos de desarrollo como de producción.
 1. Clona el repositorio:
    `git clone https://github.com/zoltar238/pymtech_docker.git`
 
-2. Crea la red externa de traefik:
-   `docker network create traefik`. La red externa de traefik deberá existir tanto
-   en entornos de producción como de desarrollo
-
-3. Determina el entorno:
+2. Determina el entorno:
     1. En entornos de producción será necesario el contenedor de "traefik" para el proxy inverso.
        Dentro de la carpeta de traefik, con la red externa creada, ejecuta `docker compose up -d`
        para iniciar el servicio y `docker compose down` para detenerlo
     2. En entornos de desarrollo el contenedor de traefik no es necesario y se puede eliminar
 
-4. Accede a la carpeta del contenedor de odoo y modifica los parámetros del servicio
+3. Accede a la carpeta del contenedor de odoo y modifica los parámetros del servicio
    contenidos en el archivo: `.env`
 
-5. Lanza el servicio de Odoo desde la carpeta del contenedor ejecutando: `python3 deploy.py`
+4. Lanza el servicio de Odoo desde la carpeta del contenedor ejecutando: `python3 deploy.py`
    Usa el mismo comando para reiniciar los contenedores de odoo. Usa `docker compose down` en caso
    de que sea necesario detener el servicio de odoo
 
