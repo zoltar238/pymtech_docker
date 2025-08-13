@@ -335,7 +335,7 @@ class Commands:
         odoo_logs_path = f"{self.parent_dir}/log/odoo-server.log"
         if os.path.exists(odoo_logs_path):
             self.logger.print_status("Displaying Odoo server logs:")
-            with open(odoo_logs_path, "r") as f:
+            with open(odoo_logs_path, "r", encoding="UTF-8") as f:
                 lines = f.readlines()[-50:]
                 self.logger.print_warning("".join(lines))
         else:
