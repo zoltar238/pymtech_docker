@@ -7,7 +7,8 @@ from typing import Any
 
 import requests
 
-from .file_operations import compare_files, replace_cache_file, list_updated_addons_2
+from .file_operations import compare_files, replace_cache_file, list_updated_addons_2, list_updated_addons, \
+    update_addons_cache
 from .printers import CustomLogger
 
 
@@ -37,31 +38,49 @@ class Commands:
             databases = self.get_database_names()
 
             # Get the list of addons that need to be updated
-            addons_list = []
+            install_addons_list = []
+            update_addons_list = []
+            update_addons_json = {}
+            install_addons_string = ''
+            update_addons_string = ''
             if self.environment['UPDATE_MODULE_LIST']:
-                addons_string = self.environment['UPDATE_MODULE_LIST']
+                update_addons_string = self.environment['UPDATE_MODULE_LIST']
             else:
-                addons_list = list_updated_addons_2(environment['ODOO_ADDONS'])
-                addons_string = ','.join(addons_list)
+                # Get the list of addons that need to be updated
+                install_addons_list = list_updated_addons_2(environment['ODOO_ADDONS'])
+                update_addons_list, update_addons_json = list_updated_addons(environment['ODOO_ADDONS'],
+                                                                             './cache/addons_cache.json', self.logger)
+                # Transform addons list to string
+                install_addons_string = ','.join(install_addons_list)
+                update_addons_string = ','.join(update_addons_list)
 
             # Force update option
             force_update = '--dev=all' if self.environment['FORCE_UPDATE'] == 'true' else ''
 
             # Update and install modules
-            if len(addons_list) > 0 and len(databases) > 0:
+            if len(databases) > 0:
                 for index, db in enumerate(databases):
-                    # Run update on each database
-                    if self.environment['AUTO_INSTALL_MODULES'] == "true":
-                        self.logger.print_status(f"Installing modules on database {db}")
-                        cmd = f"odoo -d {db} -i {addons_string} --stop-after-init"
-                        self.launch_containers(cmd)
-                        self.logger.print_success(f"Installing modules on database {db} completed")
-                    if self.environment['AUTO_UPDATE_MODULES'] == "true":
-                        self.logger.print_status(f"Updating modules on database {db}")
-                        cmd = f"odoo -d {db} -u {addons_string} {force_update} --stop-after-init"
-                        self.launch_containers(cmd)
-                        self.logger.print_success(f"Updating modules on database {db} completed")
+                    # Install modules
+                    if len(install_addons_list) > 0:
+                        if self.environment['AUTO_INSTALL_MODULES'] == "true":
+                            self.logger.print_status(f"Installing modules on database {db}")
+                            cmd = f"odoo -d {db} -i {install_addons_string} --stop-after-init"
+                            self.launch_containers(cmd)
+                            self.logger.print_success(f"Installing modules on database {db} completed")
+                    # Update modules
+                    if len(update_addons_list) > 0:
+                        if self.environment['AUTO_UPDATE_MODULES'] == "true":
+                            self.logger.print_status(f"Updating modules on database {db}")
+                            cmd = f"odoo -d {db} -u {update_addons_string} {force_update} --stop-after-init"
+                            self.launch_containers(cmd)
+                            self.logger.print_success(f"Updating modules on database {db} completed")
+                    else:
+                        self.logger.print_success(f"No modules to update or install on database {db}")
             self.launch_containers()
+
+            # Update addons_cache.json
+            update_addons_cache(update_addons_json, './cache/addons_cache.json')
+
         else:
             # Fully launch containers
             self.logger.print_header("DEPLOYING ENVIRONMENT")
@@ -69,11 +88,15 @@ class Commands:
 
         # Check odoo state
         self.logger.print_header("Verifying Odoo state")
-        await asyncio.gather(
-            self.check_service_health(port=environment['ODOO_EXPOSED_PORT']),
-            self.check_service_health(domain=environment['DOMAIN'],
-                                      deployment_target=environment['DEPLOYMENT_TARGET'])
-        )
+        if environment['DEPLOYMENT_TARGET'] == 'prod':
+            await asyncio.gather(
+                self.check_service_health(port=environment['ODOO_EXPOSED_PORT']),
+                self.check_service_health(domain=environment['DOMAIN'])
+            )
+        else:
+            await asyncio.gather(
+                self.check_service_health(port=environment['ODOO_EXPOSED_PORT']),
+            )
 
     def stop_running_containers(self) -> None:
         """
@@ -146,12 +169,9 @@ class Commands:
         """
         try:
             label_file = f"labels/labels-{self.environment['DEPLOYMENT_TARGET']}.yml"
-            # Spin up containers
-            self.logger.print_status("Spinning up containers")
 
             # Base command
             base_cmd = f"docker compose -f docker-compose.yml -f {label_file}"
-
             if command:
                 subprocess.run(
                     f"{base_cmd} run --rm odoo {command}",
@@ -162,6 +182,7 @@ class Commands:
                     cwd=self.parent_dir
                 )
             else:
+                self.logger.print_status("Spinning up containers")
                 subprocess.run(
                     f"{base_cmd} up -d",
                     shell=True,
@@ -224,16 +245,14 @@ class Commands:
                         f"Failed getting databases names on try {i + 1}: \n{str(e)} \n{e.stderr} \n{e.stdout}")
         return None
 
-    async def check_service_health(self, port=None, domain=None, deployment_target="dev"):
+    async def check_service_health(self, port=None, domain=None):
         max_attempts = 10
         attempt = 1
         wait_time = 0.5
         url = ""
 
-        if domain is not None and deployment_target == "prod":
+        if domain is not None:
             url = f"https://{domain}"
-        elif domain is not None and deployment_target == "dev":
-            url = f"http://test.{domain}"
         elif port is not None and domain is None:
             url = f"http://localhost:{port}"
 
@@ -253,10 +272,7 @@ class Commands:
             time.sleep(wait_time)
             attempt += 1
 
-        if url.startswith("http://test"):
-            self.logger.print_error("You can add local this local domain by modifying: /etc/hosts")
-        else:
-            self.logger.print_error("Check service logs")
+        self.logger.print_error("Check service logs")
         self.logger.print_error(f"Service not available on {url} after {max_attempts * wait_time} seconds")
         return False
 
