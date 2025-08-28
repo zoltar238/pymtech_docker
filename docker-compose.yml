@@ -47,12 +47,32 @@ services:
       - DB_TEMPLATE=template0
     depends_on:
       - db
-#    command: "odoo -d master -u ps_factura_rozas"
+    #    command: "odoo -d master -u ps_factura_rozas"
     networks:
       # Internal network for containers
       - internal_network
       # External traefik network
       - traefik
+    restart: unless-stopped
+
+  logrotate:
+    image: blacklabelops/logrotate
+    container_name: ${COMPOSE_PROJECT_NAME}_logrotate
+    volumes:
+      - ${ODOO_LOG}:/var/log/odoo
+    environment:
+      - LOGS_DIRECTORIES=/var/log/odoo
+      - LOGROTATE_LOGFILES=/var/log/odoo/*.log
+      - LOGROTATE_SIZE=2M
+      - LOGROTATE_ROTATIONS=7
+      - LOGROTATE_COPYTRUNCATE=true
+      - LOGROTATE_CREATE=true
+      - LOGROTATE_SU=odoo:odoo
+      - LOGROTATE_DATEEXT=true
+      - LOGROTATE_DATEFORMAT=-%Y%m%d-%H%M%S
+      - LOGROTATE_INTERVAL=hourly
+    networks:
+      - internal_network
     restart: unless-stopped
 
 volumes:

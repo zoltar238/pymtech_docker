@@ -1,6 +1,7 @@
 import os.path
 import shutil
 import subprocess
+import configparser
 
 from dotenv import load_dotenv
 from .printers import CustomLogger
@@ -64,9 +65,11 @@ def configure_traefik(target: str, traefik_version: str, odoo_dir: str, logger: 
                     text=True,
                     cwd=parent_dir
                 )
-                logger.print_success("Traefik version has been updated")
+                logger.print_success("Traefik container has been updated")
+            else:
+                logger.print_success("Traefik container is up to date")
 
-            # Launch the traefik container, verify if it's running, and update it if it's not running
+            # Verify that the traefik container is running, launch it if it's not
             logger.print_status("Checking if traefik container is running")
             result = subprocess.run(
                 "docker ps --filter name=traefik --format '{{.Names}}'",
@@ -78,7 +81,7 @@ def configure_traefik(target: str, traefik_version: str, odoo_dir: str, logger: 
             if not result.stdout.strip():
                 logger.print_status("Traefik container is not running, starting it")
                 subprocess.run(
-                    f"docker compose up -d",
+                    f"docker compose -p traefik up -d",
                     shell=True,
                     check=True,
                     stdout=subprocess.DEVNULL,
@@ -87,7 +90,11 @@ def configure_traefik(target: str, traefik_version: str, odoo_dir: str, logger: 
                     cwd=os.path.join(parent_dir, "traefik")
                 )
                 logger.print_success("Traefik container has been started")
+            else:
+                logger.print_success("Traefik container is running")
 
+        # Update odoo config
+        update_odoo_config(odoo_dir, logger, target)
     except subprocess.CalledProcessError as e:
         logger.print_error(f"Error verifying traefik network: {str(e)}")
         logger.print_critical(f"Aborting deployment: {e.stderr}")
@@ -160,3 +167,36 @@ def delete_traefik_container(logger: CustomLogger) -> None:
         logger.print_success("Previous traefik image has been removed")
     except subprocess.CalledProcessError:
         logger.print_warning(f"No previous traefik image found")
+
+
+def update_odoo_config(odoo_container_path: str, logger: CustomLogger, target: str) -> None:
+    try:
+        logger.print_status("Verifying odoo proxy config")
+
+        config_file = os.path.join(odoo_container_path, "config", "odoo.conf")
+
+        # Verify if the file exists
+        if not os.path.exists(config_file):
+            raise FileNotFoundError(f"Config file not found: {config_file}")
+
+        # Read the existing configuration file
+        config_override = configparser.ConfigParser()
+        config_override.read(config_file)
+
+        # Ensure the 'options' section exists
+        if 'options' not in config_override:
+            config_override.add_section('options')
+
+        # Update the proxy_mode option
+        if target == "prod":
+            config_override.set('options', 'proxy_mode', 'True')
+        else:
+            config_override.set('options', 'proxy_mode', 'False')
+
+        # Write back to the file
+        with open(config_file, 'w') as configfile:
+            config_override.write(configfile)
+
+        logger.print_success("Odoo proxy config has been updated")
+    except Exception as e:
+        logger.print_error(f"Failed to update odoo proxy config: {e}")

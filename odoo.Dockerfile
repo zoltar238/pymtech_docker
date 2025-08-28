@@ -17,6 +17,7 @@ RUN apt-get update && \
         python3-pip \
         fonts-liberation \
         wget xfonts-75dpi \
+        vim \
     && \
     wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb && \
     dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb && \
@@ -37,6 +38,8 @@ RUN apt-get update && \
         fi; \
     fi && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN chmod 777 /var/log/odoo
 
 # Switch back to odoo user
 USER odoo

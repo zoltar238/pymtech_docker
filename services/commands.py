@@ -24,22 +24,24 @@ class Commands:
 
     async def start_containers(self):
         # Stop running containers
+        self.logger.print_header("STOPPING RUNNING CONTAINERS")
         self.stop_running_containers()
 
-        # Create the traefik network if it doesn't exist
+        # Configure traefik
+        self.logger.print_header("CONFIGURING TRAEFIK")
         configure_traefik(target=self.environment['DEPLOYMENT_TARGET'], logger=self.logger, odoo_dir=self.parent_dir,
                           traefik_version=self.environment['TRAEFIK_VERSION'])
-        # self._create_traefik_network()
 
+        self.logger.print_header("APPLYING CONFIGURATION CHANGES")
         # Rebuild images if necessary
         self.build_docker_images()
 
         # Launch containers
         if self.environment['AUTO_INSTALL_MODULES'] == 'true' or self.environment['AUTO_UPDATE_MODULES'] == 'true':
-            # Launch only the database to get all database names
-            self.logger.print_header("UPDATING DATABASES AND INSTALLING MODULES")
-            self.launch_database_only()
 
+            self.logger.print_header("UPDATING DATABASES AND INSTALLING MODULES")
+            # Launch database only
+            self.launch_database_only()
             # Get all database names
             databases = self.get_database_names()
 
@@ -52,6 +54,7 @@ class Commands:
             if self.environment['UPDATE_MODULE_LIST']:
                 update_addons_string = self.environment['UPDATE_MODULE_LIST']
             else:
+                self.logger.print_status("Fetching list of addons to update and install")
                 # Get the list of addons that need to be updated
                 install_addons_list = list_updated_addons_2(self.environment['ODOO_ADDONS'])
                 update_addons_list, update_addons_json = list_updated_addons(self.environment['ODOO_ADDONS'],
@@ -64,7 +67,7 @@ class Commands:
             force_update = '--dev=all' if self.environment['FORCE_UPDATE'] == 'true' else ''
 
             # Update and install modules
-            if len(databases) > 0:
+            if databases and databases != "":
                 for index, db in enumerate(databases):
                     # Install modules
                     if len(install_addons_list) > 0:
@@ -82,6 +85,9 @@ class Commands:
                             self.logger.print_success(f"Updating modules on database {db} completed")
                     else:
                         self.logger.print_success(f"No modules to update or install on database {db}")
+
+            # Launch containers again with the updated addons list
+            self.logger.print_header("DEPLOYING ENVIRONMENT")
             self.launch_containers()
 
             # Update addons_cache.json
@@ -103,37 +109,6 @@ class Commands:
             await asyncio.gather(
                 self.check_service_health(port=self.environment['ODOO_EXPOSED_PORT']),
             )
-
-    def _create_traefik_network(self):
-        """
-        This method creates a traefik network if it doesn't exist.
-        Traefik network is necessary for routing traffic to the containers.
-        :return:
-        """
-        try:
-            # Shut down running containers
-            # Check if traefik network exists
-            self.logger.print_status("Verifying traefik network")
-            output = subprocess.check_output("docker network ls", shell=True).decode()
-
-            if "traefik" in output:
-                self.logger.print_success("Traefik network already exists")
-            else:
-                self.logger.print_status("Creating traefik network")
-                subprocess.run(
-                    "docker network create traefik",
-                    shell=True,
-                    check=True,
-                    stdout=subprocess.DEVNULL,
-                    stderr=subprocess.PIPE,
-                    text=True,
-                    cwd=self.parent_dir
-                )
-                self.logger.print_success("Traefik network created successfully")
-        except subprocess.CalledProcessError as e:
-            self.logger.print_error(f"Error verifying traefik network: {str(e)}")
-            self.logger.print_critical(f"Aborting deployment: {e.stderr}")
-            exit(1)
 
     def stop_running_containers(self) -> None:
         """
@@ -183,14 +158,17 @@ class Commands:
                     cwd=self.parent_dir
                 )
 
-                # Save the config data in the json after successfully building the images
+                # Save the config data in the JSON after successfully building the images
                 replace_cache_file(cached_config_json, cache_file_dir, cached_config_file)
                 self.logger.print_success("Container images were successfully built")
+            else:
+                self.logger.print_success("No changes detected in environment variables, skipping image build")
         except subprocess.CalledProcessError as e:
             self.logger.print_error(f"Error building docker images: {str(e)} \n {e.stderr} \n {e.stdout}")
             exit(1)
 
     def launch_database_only(self) -> None:
+        self.logger.print_status("Launching database")
         try:
             subprocess.run(
                 f"docker compose up -d db",
