@@ -3,3 +3,5 @@
 /odoo/odoo.egg-info/
 /.idea/
 /pymtech_docker.iml
+/traefik/
+/odoo/cache/

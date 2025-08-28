@@ -10,6 +10,7 @@ import requests
 from .file_operations import replace_cache_file, list_updated_addons_2, list_updated_addons, \
     update_addons_cache, check_config_changes
 from .printers import CustomLogger
+from .traefik_configurator import configure_traefik
 
 
 class Commands:
@@ -21,12 +22,14 @@ class Commands:
         # Get the parent directory of this file
         self.parent_dir = dirname(dirname(os.path.abspath(__file__)))
 
-    async def start_containers(self, environment):
+    async def start_containers(self):
         # Stop running containers
         self.stop_running_containers()
 
-        # Create traefik network if it doesn't exist
-        self._create_traefik_network()
+        # Create the traefik network if it doesn't exist
+        configure_traefik(target=self.environment['DEPLOYMENT_TARGET'], logger=self.logger, odoo_dir=self.parent_dir,
+                          traefik_version=self.environment['TRAEFIK_VERSION'])
+        # self._create_traefik_network()
 
         # Rebuild images if necessary
         self.build_docker_images()
@@ -50,10 +53,10 @@ class Commands:
                 update_addons_string = self.environment['UPDATE_MODULE_LIST']
             else:
                 # Get the list of addons that need to be updated
-                install_addons_list = list_updated_addons_2(environment['ODOO_ADDONS'])
-                update_addons_list, update_addons_json = list_updated_addons(environment['ODOO_ADDONS'],
+                install_addons_list = list_updated_addons_2(self.environment['ODOO_ADDONS'])
+                update_addons_list, update_addons_json = list_updated_addons(self.environment['ODOO_ADDONS'],
                                                                              './cache/addons_cache.json', self.logger)
-                # Transform addons list to string
+                # Transform the addon list to string
                 install_addons_string = ','.join(install_addons_list)
                 update_addons_string = ','.join(update_addons_list)
 
@@ -91,24 +94,22 @@ class Commands:
 
         # Check odoo state
         self.logger.print_header("Verifying Odoo state")
-        if environment['DEPLOYMENT_TARGET'] == 'prod':
+        if self.environment['DEPLOYMENT_TARGET'] == 'prod':
             await asyncio.gather(
-                self.check_service_health(port=environment['ODOO_EXPOSED_PORT']),
-                self.check_service_health(domain=environment['DOMAIN'])
+                self.check_service_health(port=self.environment['ODOO_EXPOSED_PORT']),
+                self.check_service_health(domain=self.environment['DOMAIN'])
             )
         else:
             await asyncio.gather(
-                self.check_service_health(port=environment['ODOO_EXPOSED_PORT']),
+                self.check_service_health(port=self.environment['ODOO_EXPOSED_PORT']),
             )
 
-    # Method to create traefik network
     def _create_traefik_network(self):
         """
         This method creates a traefik network if it doesn't exist.
         Traefik network is necessary for routing traffic to the containers.
         :return:
         """
-
         try:
             # Shut down running containers
             # Check if traefik network exists
@@ -243,7 +244,7 @@ class Commands:
     def get_database_names(self) -> list[Any] | None:
         for i in range(10):
             try:
-                # Verify that the container is running properly before attemting to get the database names
+                # Verify that the container is running properly before attempting to get the database names
                 while True:
                     cmd_check = f"docker exec {self.environment['COMPOSE_PROJECT_NAME']}_db pg_isready -U odoo"
                     result = subprocess.run(

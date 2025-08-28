@@ -19,6 +19,8 @@ async def main():
 
     # Necessary environmental variables
     env_variables = {
+        'VERSION': os.getenv('VERSION'),
+        'TRAEFIK_VERSION': os.getenv('TRAEFIK_VERSION'),
         'COMPOSE_PROJECT_NAME': os.getenv('COMPOSE_PROJECT_NAME'),
         'DEPLOYMENT_TARGET': os.getenv('DEPLOYMENT_TARGET'),
         'ODOO_VERSION': os.getenv('ODOO_VERSION'),
@@ -49,7 +51,7 @@ async def main():
     commands = Commands(logger=logger, environment=env_variables)
 
     # Start the containers
-    await commands.start_containers(env_variables)
+    await commands.start_containers()
     end_time = time.time() - start_time
     logger.print_success(f"Total time:{end_time}")
 
