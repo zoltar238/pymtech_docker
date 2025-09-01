@@ -19,18 +19,16 @@ RUN apt-get update && \
         wget xfonts-75dpi \
         vim \
     && \
-    wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6.1-2/wkhtmltox_0.12.6.1-2.jammy_amd64.deb && \
-    dpkg -i wkhtmltox_0.12.6.1-2.jammy_amd64.deb && \
-    apt-get install -f && \
     if [ "$ODOO_VERSION_2" = "16" ]; then \
-        pip3 install python-barcode gevent gevent-websocket && \
+        pip3 install --no-cache-dir "Werkzeug==2.0.2" &&\
+        pip3 install python-barcode gevent gevent-websocket jingtrang && \
         pip3 install -r requirements.txt; \
         if [ "$OPTIONAL_WHISPER" = "true" ]; then \
             pip3 install openai && \
             apt-get install ffmpeg -y; \
         fi; \
     else \
-        pip3 install python-barcode gevent gevent-websocket --break-system-packages && \
+        pip3 install python-barcode gevent gevent-websocket jingtrang --break-system-packages && \
         pip3 install -r requirements.txt --break-system-packages; \
         if [ "$OPTIONAL_WHISPER" = "true" ]; then \
             apt install python3-openai -y && \
