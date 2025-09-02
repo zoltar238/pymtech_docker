@@ -97,6 +97,7 @@ def list_updated_addons(addons_folder: str, addons_cache_file: str, logger: Cust
     :raises Exception: If the provided addons folder does not exist.
     """
 
+    logger.print_status("Fetching list of addons to update")
     # Read the addons' cache file, if any error occurs, return an empty dict
     cached_addons = {}
     try:
@@ -145,7 +146,7 @@ def list_updated_addons(addons_folder: str, addons_cache_file: str, logger: Cust
         addon_path = os.path.join(addons_folder, addon)
         current_hash = calculate_addon_hash(addon_path)
 
-        # Check if addon exists in cache and compare hashes
+        # Check if addon exists in the cache and compare hashes
         if addon in cached_addons:
             cached_hash = cached_addons[addon].get('content_hash', '')
 
@@ -169,25 +170,11 @@ def list_updated_addons(addons_folder: str, addons_cache_file: str, logger: Cust
             del cached_addons[cached_addon]
             logger.print_status(f"Addon '{cached_addon}' no longer exists, removed from cache.")
 
+    if not to_update_list:
+        logger.print_success(f"No addons found to be updated")
+
     return to_update_list, cached_addons
 
 
 def update_addons_cache(addons_json, addons_cache_file):
     json.dump(addons_json, open(addons_cache_file, "w"))
-
-
-def list_updated_addons_2(addons_folder: str) -> List[str]:
-    """
-    Lists updated addons in the provided addons folder. The function checks if
-    the given folder exists and scans for directories representing addons.
-    It can also check the modified times of addon folders.
-
-    :param addons_folder: The path to the folder containing addon directories.
-    :type addons_folder: str
-    :return: A list of updated addon names.
-    :rtype: List[str]
-    :raises Exception: If the provided addons folder does not exist.
-    """
-
-    # Return the names of all the addons
-    return [item for item in os.listdir(addons_folder) if os.path.isdir(os.path.join(addons_folder, item))]

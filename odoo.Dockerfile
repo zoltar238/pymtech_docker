@@ -37,7 +37,9 @@ RUN apt-get update && \
     fi && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN chmod 777 /var/log/odoo
+RUN chmod -R 777 /var/log/odoo
+
+RUN chmod -R 777 /etc/odoo
 
 # Switch back to odoo user
 USER odoo

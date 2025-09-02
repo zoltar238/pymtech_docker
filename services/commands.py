@@ -7,8 +7,10 @@ from typing import Any
 
 import requests
 
-from .file_operations import replace_cache_file, list_updated_addons_2, list_updated_addons, \
+from .database_creator import create_database
+from .file_operations import replace_cache_file, list_updated_addons, \
     update_addons_cache, check_config_changes
+from .module_manager import list_addons_in_folder, list_to_install_addons
 from .printers import CustomLogger
 from .traefik_configurator import configure_traefik
 
@@ -16,6 +18,7 @@ from .traefik_configurator import configure_traefik
 class Commands:
     def __init__(self, logger: CustomLogger, environment: dict):
         # logger
+        self.database_list = None
         self.logger = logger
         # Environmental variables
         self.environment = environment
@@ -32,66 +35,69 @@ class Commands:
         configure_traefik(target=self.environment['DEPLOYMENT_TARGET'], logger=self.logger, odoo_dir=self.parent_dir,
                           traefik_version=self.environment['TRAEFIK_VERSION'])
 
-        self.logger.print_header("APPLYING CONFIGURATION CHANGES")
         # Rebuild images if necessary
+        self.logger.print_header("APPLYING CONFIGURATION CHANGES")
         self.build_docker_images()
 
         # Launch containers
         if self.environment['AUTO_INSTALL_MODULES'] == 'true' or self.environment['AUTO_UPDATE_MODULES'] == 'true':
-
             self.logger.print_header("UPDATING DATABASES AND INSTALLING MODULES")
             # Launch database only
             self.launch_database_only()
             # Get all database names
-            databases = self.get_database_names()
+            self.database_list = self.get_database_names()
 
-            # Get the list of addons that need to be updated
-            install_addons_list = []
-            update_addons_list = []
-            update_addons_json = {}
-            install_addons_string = ''
-            update_addons_string = ''
-            if self.environment['UPDATE_MODULE_LIST']:
-                update_addons_string = self.environment['UPDATE_MODULE_LIST']
+            # If no databases were found, skip module installation and update
+            if not self.database_list:
+                self.logger.print_status("No databases found, skipping module installation and update")
+                # Launch containers without updating nor installing modules
+                self.logger.print_header("DEPLOYING ENVIRONMENT")
+                self.launch_containers()
             else:
-                self.logger.print_status("Fetching list of addons to update and install")
                 # Get the list of addons that need to be updated
-                install_addons_list = list_updated_addons_2(self.environment['ODOO_ADDONS'])
-                update_addons_list, update_addons_json = list_updated_addons(self.environment['ODOO_ADDONS'],
-                                                                             './cache/addons_cache.json', self.logger)
-                # Transform the addon list to string
-                install_addons_string = ','.join(install_addons_list)
-                update_addons_string = ','.join(update_addons_list)
+                addons_list = list_addons_in_folder(self.environment['ODOO_ADDONS'], self.logger)
 
-            # Force update option
-            force_update = '--dev=all' if self.environment['FORCE_UPDATE'] == 'true' else ''
+                update_addons_list = []
+                update_addons_json = {}
+                update_addons_string = ''
+                if self.environment['UPDATE_MODULE_LIST']:
+                    update_addons_string = self.environment['UPDATE_MODULE_LIST']
+                else:
+                    # Get the list of addons that need to be updated
+                    update_addons_list, update_addons_json = list_updated_addons(self.environment['ODOO_ADDONS'],
+                                                                                 './cache/addons_cache.json',
+                                                                                 self.logger)
+                    # Transform the addon list to string
+                    update_addons_string = ','.join(update_addons_list)
 
-            # Update and install modules
-            if databases and databases != "":
-                for index, db in enumerate(databases):
-                    # Install modules
-                    if len(install_addons_list) > 0:
-                        if self.environment['AUTO_INSTALL_MODULES'] == "true":
-                            self.logger.print_status(f"Installing modules on database {db}")
-                            cmd = f"odoo -d {db} -i {install_addons_string} --stop-after-init"
-                            self.launch_containers(cmd)
-                            self.logger.print_success(f"Installing modules on database {db} completed")
+                # Force update option
+                force_update = '--dev=all' if self.environment['FORCE_UPDATE'] == 'true' else ''
+
+                # Update and install modules
+                for index, db in enumerate(self.database_list):
+                    # Install modules if the option is enabled, and the list of addons to be installed is not empty
+                    install_addons_string = list_to_install_addons(self.environment['COMPOSE_PROJECT_NAME'], db,
+                                                                   addons_list, self.logger)
+                    if self.environment['AUTO_INSTALL_MODULES'] == "true" and (
+                            install_addons_string and install_addons_string != ""):
+                        self.logger.print_status(f"Installing modules on database {db}")
+                        cmd = f"odoo -d {db} -i {install_addons_string} --stop-after-init"
+                        self.launch_containers(cmd)
+                        self.logger.print_success(f"Installing modules on database {db} completed")
                     # Update modules
-                    if len(update_addons_list) > 0:
-                        if self.environment['AUTO_UPDATE_MODULES'] == "true":
-                            self.logger.print_status(f"Updating modules on database {db}")
-                            cmd = f"odoo -d {db} -u {update_addons_string} {force_update} --stop-after-init"
-                            self.launch_containers(cmd)
-                            self.logger.print_success(f"Updating modules on database {db} completed")
-                    else:
-                        self.logger.print_success(f"No modules to update or install on database {db}")
+                    if self.environment['AUTO_UPDATE_MODULES'] == "true" and len(update_addons_list) > 0:
+                        self.logger.print_status(f"Updating modules on database {db}")
+                        cmd = f"odoo -d {db} -u {update_addons_string} {force_update} --stop-after-init"
+                        self.launch_containers(cmd)
+                        self.logger.print_success(f"Updating modules on database {db} completed")
 
-            # Launch containers again with the updated addons list
-            self.logger.print_header("DEPLOYING ENVIRONMENT")
-            self.launch_containers()
+                # Launch containers again with the updated addons list
+                self.logger.print_header("DEPLOYING ENVIRONMENT")
+                self.launch_containers()
 
-            # Update addons_cache.json
-            update_addons_cache(update_addons_json, './cache/addons_cache.json')
+                # Update addons_cache.json
+                update_addons_cache(update_addons_json, './cache/addons_cache.json')
+
 
         else:
             # Fully launch containers
@@ -285,6 +291,11 @@ class Commands:
 
                 if status == 303:
                     self.logger.print_success(f"Odoo is working properly on: {url} (HTTP {status})")
+
+                    # If the database list is empty, create a new database
+                    if not self.database_list and self.environment[
+                        'DEPLOYMENT_TARGET'] == 'dev':
+                        await create_database(self.environment['ODOO_EXPOSED_PORT'], self.logger)
                     return True
             except requests.RequestException:
                 pass
