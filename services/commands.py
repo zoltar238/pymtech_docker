@@ -13,6 +13,7 @@ from .file_operations import replace_cache_file, list_updated_addons, \
 from .module_manager import list_addons_in_folder, list_to_install_addons
 from .printers import CustomLogger
 from .traefik_configurator import configure_traefik
+from .config_manager import modify_config
 
 
 class Commands:
@@ -29,6 +30,9 @@ class Commands:
         # Stop running containers
         self.logger.print_header("STOPPING RUNNING CONTAINERS")
         self.stop_running_containers()
+
+        # Set values in the config file
+        modify_config()
 
         # Configure traefik
         self.logger.print_header("CONFIGURING TRAEFIK")
