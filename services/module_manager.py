@@ -1,15 +1,14 @@
 import os
 import subprocess
-import numpy as np
-from typing import List
 
-from .printers import CustomLogger
+from .constants import Constants
+from .custom_logger import CustomLogger
 
 
-def list_to_install_addons(project_name: str, db_name: str, addon_list: list, logger: CustomLogger) -> str:
-    logger.print_status(f"Checking for addons to be installed on database {db_name}")
+def list_to_install_addons(constants: Constants, addon_list: list, db_name: str) -> str | None:
+    constants.logger.print_status(f"Checking for addons to be installed on database {db_name}")
     try:
-        cmd_list_databases = f"docker exec {project_name}_db psql -U odoo -d {db_name} -t -c \"SELECT name FROM ir_module_module WHERE state='installed';\""
+        cmd_list_databases = f"docker exec {constants.COMPOSE_PROJECT_NAME}_db psql -U odoo -d {db_name} -t -c \"SELECT name FROM ir_module_module WHERE state='installed';\""
         result = subprocess.run(
             cmd_list_databases,
             shell=True,
@@ -31,15 +30,15 @@ def list_to_install_addons(project_name: str, db_name: str, addon_list: list, lo
 
         # Let the user know which addons will be installed
         if not non_installed_addons:
-            logger.print_success(f"No addons to be installed found on database {db_name}")
-            return ''
+            constants.logger.print_success(f"No addons to be installed found on database {db_name}")
+            return None
         for addon in non_installed_addons:
-            logger.print_status(f"Uninstalled addon '{addon}' will be installed on database {db_name}")
+            constants.logger.print_status(f"Uninstalled addon '{addon}' will be installed on database {db_name}")
 
         return ','.join(non_installed_addons)
     except subprocess.CalledProcessError as e:
-        logger.print_error(f"Error listing installed addons: {str(e)}")
-        logger.print_critical(f"Aborting deployment: {e.stderr}")
+        constants.logger.print_error(f"Error listing installed addons: {str(e)}")
+        constants.logger.print_critical(f"Aborting deployment: {e.stderr}")
         exit(1)
 
 

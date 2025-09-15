@@ -6,7 +6,7 @@ USER root
 
 # Get requirements.txt route
 ARG ODOO_REQUIREMENTS
-COPY ${ODOO_REQUIREMENTS} requirements.txt
+COPY addons/requirements.txt requirements.txt
 
 
 # Install pip, mandatory packages, and specific odoo python requirements

@@ -1,59 +1,169 @@
 import asyncio
 import os
-import sys
 import time
 
-from services.printers import CustomLogger
-from services.startup_validator import env_verify
+import typer
+from services.config_manager import set_config
+from services.constants import Constants
+from services.containers import stop_running_containers, build_docker_images, launch_database_only, \
+    get_database_names, launch_containers
+from services.custom_logger import CustomLogger
+from services.database_creator import create_database, check_service_health
+from services.env_validator import env_verify
+from services.file_operations import copy_requirements, list_updated_addons, update_addons_cache
+from services.module_manager import list_to_install_addons, list_addons_in_folder
+from services.traefik import configure_traefik
 
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+app = typer.Typer(add_completion=False,
+                  help="Odoo Deploy command line tool, run without arguments nor commands to start the deployment process")
+base_dir = os.getcwd()
 
-from dotenv import load_dotenv
-from services.commands import Commands
-
-
-async def main():
+async def async_main():
     start_time = time.time()
-    # Load environment variables from .env file
-    load_dotenv()
 
-    # Necessary environmental variables
-    env_variables = {
-        'VERSION': os.getenv('VERSION'),
-        'TRAEFIK_VERSION': os.getenv('TRAEFIK_VERSION'),
-        'COMPOSE_PROJECT_NAME': os.getenv('COMPOSE_PROJECT_NAME'),
-        'DEPLOYMENT_TARGET': os.getenv('DEPLOYMENT_TARGET'),
-        'ODOO_VERSION': os.getenv('ODOO_VERSION'),
-        'POSTGRES_VERSION': os.getenv('POSTGRES_VERSION'),
-        'ODOO_EXPOSED_PORT': os.getenv('ODOO_EXPOSED_PORT'),
-        'ODOO_INTERNAL_PORT': os.getenv('ODOO_INTERNAL_PORT'),
-        'ODOO_LOG': os.getenv('ODOO_LOG'),
-        'ODOO_CONFIG': os.getenv('ODOO_CONFIG'),
-        'ODOO_ADDONS': os.getenv('ODOO_ADDONS'),
-        'ODOO_REQUIREMENTS': os.getenv('ODOO_REQUIREMENTS'),
-        'DOMAIN': os.getenv('DOMAIN'),
-        'OPTIONAL_WHISPER': os.getenv('OPTIONAL_WHISPER'),
-        'AUTO_INSTALL_MODULES': os.getenv('AUTO_INSTALL_MODULES'),
-        'AUTO_UPDATE_MODULES': os.getenv('AUTO_UPDATE_MODULES'),
-        'SCRIPT_OUTPUT': os.getenv('SCRIPT_OUTPUT'),
-        'UPDATE_MODULE_LIST': os.getenv('UPDATE_MODULE_LIST'),
-        'FORCE_UPDATE': os.getenv('FORCE_UPDATE'),
-        'FORCE_REBUILD': os.getenv('FORCE_REBUILD'),
-    }
-
-    # Create logger
-    logger = CustomLogger("odoo_deploy", env_variables['SCRIPT_OUTPUT'])
+    # Load configuration
+    constants = Constants.from_env(base_dir)
 
     # Verify environment variables
-    env_verify(env_variables=env_variables, logger=logger)
+    env_verify(constants)
 
-    # Create a command class
-    commands = Commands(logger=logger, environment=env_variables)
+    # Copy the requirements file to the addons folder
+    copy_requirements(
+        base_dir=constants.BASE_DIR,
+        requirements_file=os.path.join(constants.ODOO_ADDONS, 'requirements.txt'),
+        logger=constants.logger
+    )
 
-    # Start the containers
-    await commands.start_containers()
+    # Stop running containers
+    stop_running_containers(constants)
+
+    # Configure traefik
+    configure_traefik(constants)
+
+    # Build images if necessary
+    build_docker_images(constants)
+
+    if constants.AUTO_INSTALL_MODULES == 'true' or constants.AUTO_UPDATE_MODULES == 'true':
+        constants.logger.print_header("UPDATING DATABASES AND INSTALLING MODULES")
+        launch_database_only(constants)
+
+        # Get all database names
+        database_list = get_database_names(constants)
+        # If no databases were found, and the deployment target is development, create a new database
+        if not database_list:
+            # Launch containers without updating nor installing modules
+            launch_containers(constants)
+            # After launching containers, create a new database if necessary
+            if constants.DEPLOYMENT_TARGET == 'dev' and constants.AUTO_CREATE_DATABASE == 'true':
+                # Wait for the database to be ready
+                await check_service_health(constants)
+                # Create the new database
+                await create_database(constants.ODOO_EXPOSED_PORT, constants.logger)
+
+                # Gather the new database name and the list of addons inside the addons folder
+                database_list = get_database_names(constants)
+                addons_list = list_addons_in_folder(constants.ADDONS_FOLDER, constants.logger)
+
+                for index, db in enumerate(database_list):
+                    install_addons_string = list_to_install_addons(constants, addons_list, db)
+                    if install_addons_string:
+                        constants.logger.print_status(f"Installing modules on database {db}")
+                    cmd = f"odoo -d {db} -i {install_addons_string} --stop-after-init"
+                    launch_containers(constants, cmd)
+                    constants.logger.print_success(f"Installing modules on database {db} completed")
+
+                # Launch containers again with the updated addons list
+                constants.logger.print_header("DEPLOYING ENVIRONMENT")
+                launch_containers(constants)
+        else:
+            # Get the list of addons that need to be updated
+            addons_list = list_addons_in_folder(constants.ADDONS_FOLDER, constants.logger)
+
+            update_addons_list = []
+            update_addons_json = {}
+            if constants.UPDATE_MODULE_LIST:
+                update_addons_string = constants.UPDATE_MODULE_LIST
+            else:
+                # Get the list of addons that need to be updated
+                update_addons_list, update_addons_json = list_updated_addons(constants.ADDONS_FOLDER,
+                                                                             os.path.join(constants.CACHE_ADDONS_FILE),
+                                                                             constants.logger)
+                # Transform the addon list to string
+                update_addons_string = ','.join(update_addons_list)
+
+            # Force update option
+            force_update = '--dev=all' if constants.FORCE_UPDATE == 'true' else ''
+
+            # Update and install modules
+            for index, db in enumerate(database_list):
+                # Install modules if the option is enabled, and the list of addons to be installed is not empty
+                install_addons_string = list_to_install_addons(constants, addons_list, db)
+                if constants.AUTO_INSTALL_MODULES == "true" and install_addons_string:
+                    constants.logger.print_status(f"Installing modules on database {db}")
+                    cmd = f"odoo -d {db} -i {install_addons_string} --stop-after-init"
+                    launch_containers(constants, cmd)
+                    constants.logger.print_success(f"Installing modules on database {db} completed")
+                # Update modules
+                if constants.AUTO_UPDATE_MODULES == "true" and update_addons_list:
+                    constants.logger.print_status(f"Updating modules on database {db}")
+                    cmd = f"odoo -d {db} -u {update_addons_string} {force_update} --stop-after-init"
+                    launch_containers(constants, cmd)
+                    constants.logger.print_success(f"Updating modules on database {db} completed")
+
+            # Launch containers again with the updated addons list
+            constants.logger.print_header("DEPLOYING ENVIRONMENT")
+            launch_containers(constants)
+
+            # Update addons_cache.json
+            update_addons_cache(update_addons_json, constants.CACHE_ADDONS_FILE)
+    else:
+        # Fully launch containers
+        constants.logger.print_header("DEPLOYING ENVIRONMENT")
+        launch_containers(constants)
+
+        # Create a new database if necessary
+        if constants.DEPLOYMENT_TARGET == 'dev' and constants.AUTO_CREATE_DATABASE == 'true':
+            # Get all database names
+            database_list = get_database_names(constants)
+            if not database_list:
+                await create_database(constants.ODOO_EXPOSED_PORT, constants.logger)
+
+    # Check odoo state after launching containers
+    constants.logger.print_header("Verifying Odoo state")
+    if constants.DEPLOYMENT_TARGET == 'prod':
+        await asyncio.gather(
+            check_service_health(constants),
+            check_service_health(constants, constants.DOMAIN)
+        )
+    else:
+        await asyncio.gather(
+            check_service_health(constants),
+        )
+
     end_time = time.time() - start_time
-    logger.print_success(f"Total time:{end_time}")
+    constants.logger.print_success(f"Total time: {end_time:.2f} seconds") \
 
+@app.callback(invoke_without_command=True)
+def main(ctx: typer.Context):
+    """ Launch and configure Odoo and PostgresSQL containers """
+    if not ctx.invoked_subcommand:
+        asyncio.run(async_main())
+
+
+@app.command()
+def auto_config():
+    """ Autoconfigure Odoo and PostgresSQL config files based on server capacity"""
+    logger = CustomLogger("configurator")
+    set_config(
+        base_dir=base_dir,
+        logger=logger
+    )
+
+
+def deploy():
+    app()
+
+
+# Entry point
 if __name__ == "__main__":
-    asyncio.run(main())
+    deploy()

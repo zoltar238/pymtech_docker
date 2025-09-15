@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "dv-odoo-docker"
+version = "0.1.0"
+description = ""
+authors = ["dabac <protoandrei@protonmail.com>"]
+readme = "README.md"
+packages = [{include = "docker"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+python-dotenv = "^1.1.1"
+requests = "^2.32.5"
+playwright = "^1.55.0"
+psutil = "^7.0.0"
+typer = "^0.17.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

@@ -8,7 +8,9 @@ services:
       - POSTGRES_USER=odoo
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
+      - ${POSTGRES_CONFIG}:/etc/postgresql/postgresql.conf
       - db_data:/var/lib/postgresql/data/pgdata
+    command: -c config_file=/etc/postgresql/postgresql.conf
     networks:
       # Internal network
       - internal_network
@@ -24,7 +26,6 @@ services:
       args:
         ODOO_VERSION: ${ODOO_VERSION}
         ODOO_VERSION_2: ${ODOO_VERSION}
-        ODOO_REQUIREMENTS: ${ODOO_REQUIREMENTS}
         OPTIONAL_WHISPER: ${OPTIONAL_WHISPER}
     labels:
       - traefik.enable=true
@@ -33,7 +34,7 @@ services:
     ports:
       - "${ODOO_EXPOSED_PORT}:${ODOO_INTERNAL_PORT}"
     volumes:
-      - ${ODOO_CONFIG}:/etc/odoo
+      - ${ODOO_CONFIG}:/etc/odoo/odoo.conf
       - ${ODOO_ADDONS}:/mnt/extra-addons
       - ${ODOO_LOG}:/var/log/odoo
       - odoo_data:/var/lib/odoo

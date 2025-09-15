@@ -1,51 +1,49 @@
 import hashlib
 import json
 import os
+import shutil
 from typing import List, Tuple, Dict
 
-from .printers import CustomLogger
+from .constants import Constants
+from .custom_logger import CustomLogger
 
 
-def compare_files(file1: str, file2: str) -> bool:
-    """
-    Compare two files and return True if they are the same, False otherwise.
-    :param file1: The first file to compare
-    :param file2: The second file to compare
-    :return: bool: True if the files are the same, False otherwise
-    """
+def copy_requirements(base_dir: str, requirements_file: str, logger: CustomLogger) -> None:
+    # Destination path for the requirements file inside the docker addons folder
+    destination = os.path.join(base_dir, 'addons', 'requirements.txt')
 
-    # Compare byte size first
-    if os.path.getsize(file1) != os.path.getsize(file2):
-        return False
-    # If the byte size is the same, compare content
-    else:
-        with open(file1, 'rb') as f1, open(file2, 'rb') as f2:
-            while True:
-                data1 = f1.read(1024)
-                data2 = f2.read(1024)
-                if not data1 or not data2:
-                    break
-                if data1 != data2:
-                    return False
+    # Create an empty requirements file if it doesn't exist in the provided addons folder
+    if requirements_file != './addons/requirements.txt' and not os.path.exists(requirements_file):
+        logger.print_warning(f"Requirements file not found at {requirements_file}, creating an empty file")
+        with open(requirements_file, 'w') as f:
+            f.write("")
+        logger.print_success(f"Successfully created empty requirements file at {requirements_file}")
 
-    return True
+    # Copy the requirements file from the provided addons folder to the docker addons folder
+    if requirements_file != './addons/requirements.txt':
+        shutil.copyfile(requirements_file, destination)
 
+    # Create an empty requirements file if it doesn't exist in the docker addons folder
+    if not os.path.exists(destination):
+        logger.print_warning(f"Requirements file not found, creating an empty file")
+        with open(destination, 'w') as f:
+            f.write("")
+        logger.print_success(f"Successfully created empty requirements file")
 
-def check_config_changes(env_file: str, dockerfile_file: str, config_cache_file: str, logger: CustomLogger) -> Tuple[
+def check_config_changes(constants: Constants) -> Tuple[
     bool, Dict[str, str]]:
-
     # Get modification dates
-    env_file_modified_time = os.path.getmtime(env_file)
-    dockerfile_file_modified_time = os.path.getmtime(dockerfile_file)
+    env_file_modified_time = os.path.getmtime(constants.ENV_FILE)
+    dockerfile_file_modified_time = os.path.getmtime(constants.DOCKERFILE_FILE)
 
     # Read the addons' cache file, if any error occurs, return an empty dict
     cached_config_json = {}
     try:
-        with open(config_cache_file, "r") as f:
+        with open(constants.CACHE_CONFIG_FILE, "r") as f:
             cached_config_json = json.load(f)
     except Exception as e:
-        logger.print_warning(f"Error reading config cache file: {e}. New cache file will be created.")
-        # Assign the new values to the json config
+        constants.logger.print_warning(f"Error reading config cache file: {e}. New cache file will be created.")
+        # Assign the new values to the JSON config
         cached_config_json['env_file_modified_time'] = env_file_modified_time
         cached_config_json['dockerfile_file_modified_time'] = dockerfile_file_modified_time
         return True, cached_config_json
@@ -54,7 +52,7 @@ def check_config_changes(env_file: str, dockerfile_file: str, config_cache_file:
     if cached_config_json.get('env_file_modified_time', '') != env_file_modified_time or cached_config_json.get(
             'dockerfile_file_modified_time', '') != dockerfile_file_modified_time:
 
-        # Assign new values to the json cache
+        # Assign new values to the JSON cache
         cached_config_json['env_file_modified_time'] = env_file_modified_time
         cached_config_json['dockerfile_file_modified_time'] = dockerfile_file_modified_time
         return True, cached_config_json
@@ -62,10 +60,10 @@ def check_config_changes(env_file: str, dockerfile_file: str, config_cache_file:
         return False, cached_config_json
 
 
-def replace_cache_file(cached_config_json: Dict[str, str], base_cache_dir:str, config_cache_file: str) -> None:
+def replace_cache_file(cached_config_json: Dict[str, str], base_cache_dir: str, config_cache_file: str) -> None:
     """
     Replace the cache file with the new data.
-    :param cached_config_json: json containing the new data.
+    :param cached_config_json: JSON containing the new data.
     :param config_cache_file: path to the cache file.
     :param base_cache_dir: path to the base cache directory, needed to create the cache directory if it doesn't exist.
     :return:
@@ -75,9 +73,40 @@ def replace_cache_file(cached_config_json: Dict[str, str], base_cache_dir:str, c
     if not os.path.exists(base_cache_dir):
         os.makedirs(base_cache_dir)
 
-    # Write the json data to the document
+    # Write the JSON data to the document
     json.dump(cached_config_json, open(config_cache_file, "w"))
 
+
+def calculate_addon_hash(addon_path: str, logger: CustomLogger) -> str:
+    """
+    Calculate MD5 hash for all files within an addon directory.
+
+    :param addon_path: Path to the addon directory
+    :return: Combined MD5 hash of all files in the addon
+    """
+    file_hashes = {}
+
+    # Walk through all files in the addon directory
+    for root, dirs, files in os.walk(addon_path):
+        for file in files:
+            file_path = os.path.join(root, file)
+            relative_path = os.path.relpath(file_path, addon_path)
+
+            try:
+                with open(file_path, 'rb') as f:
+                    file_hash = hashlib.md5(f.read()).hexdigest()
+                    file_hashes[relative_path] = file_hash
+            except Exception as e:
+                logger.print_warning(f"Error reading file {file_path}: {e}")
+                continue
+
+    # Create combined hash from all file hashes
+    if file_hashes:
+        combined = ''.join(sorted(file_hashes.values()))
+        return hashlib.md5(combined.encode()).hexdigest()
+    else:
+        # Return empty hash if no files found
+        return hashlib.md5(b'').hexdigest()
 
 def list_updated_addons(addons_folder: str, addons_cache_file: str, logger: CustomLogger) -> Tuple[
     List[str], Dict[str, Dict[str, str]]]:
@@ -106,45 +135,16 @@ def list_updated_addons(addons_folder: str, addons_cache_file: str, logger: Cust
     except Exception as e:
         logger.print_warning(f"Error reading addons cache file: {e}. New cache file will be created.")
 
-    def calculate_addon_hash(addon_path: str) -> str:
-        """
-        Calculate MD5 hash for all files within an addon directory.
 
-        :param addon_path: Path to the addon directory
-        :return: Combined MD5 hash of all files in the addon
-        """
-        file_hashes = {}
-
-        # Walk through all files in the addon directory
-        for root, dirs, files in os.walk(addon_path):
-            for file in files:
-                file_path = os.path.join(root, file)
-                relative_path = os.path.relpath(file_path, addon_path)
-
-                try:
-                    with open(file_path, 'rb') as f:
-                        file_hash = hashlib.md5(f.read()).hexdigest()
-                        file_hashes[relative_path] = file_hash
-                except Exception as e:
-                    logger.print_warning(f"Error reading file {file_path}: {e}")
-                    continue
-
-        # Create combined hash from all file hashes
-        if file_hashes:
-            combined = ''.join(sorted(file_hashes.values()))
-            return hashlib.md5(combined.encode()).hexdigest()
-        else:
-            # Return empty hash if no files found
-            return hashlib.md5(b'').hexdigest()
 
     to_update_list = []
 
-    # Get list of addon directories
+    # Get the list of addon directories
     addon_list = [item for item in os.listdir(addons_folder) if os.path.isdir(os.path.join(addons_folder, item))]
 
     for addon in addon_list:
         addon_path = os.path.join(addons_folder, addon)
-        current_hash = calculate_addon_hash(addon_path)
+        current_hash = calculate_addon_hash(addon_path, logger)
 
         # Check if addon exists in the cache and compare hashes
         if addon in cached_addons:
