@@ -4,3 +4,8 @@
 /traefik/
 /cache/
 /docker/
+
+/*.py
+/services/
+/pyproject.toml
+/uv.lock
