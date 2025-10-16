@@ -1,7 +1,0 @@
-services:
-  odoo:
-    labels:
-      traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo_prod.rule: "Host(`${DOMAIN}`)"
-      traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo_prod.entrypoints: "websecure"
-      traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo_prod.tls.certresolver: "myresolver"
-      traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo_prod.service: "${COMPOSE_PROJECT_NAME}_odoo"

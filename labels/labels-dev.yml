@@ -1,6 +1,0 @@
-services:
-  odoo:
-    labels:
-      traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo_dev.rule: "Host(`test.${DOMAIN}`)"
-      traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo_dev.entrypoints: "web"
-      traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo_dev.service: "${COMPOSE_PROJECT_NAME}_odoo"

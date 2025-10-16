@@ -22,7 +22,7 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_odoo
     build:
       context: .
-      dockerfile: odoo.Dockerfile
+      dockerfile: Dockerfile
       args:
         ODOO_VERSION: ${ODOO_VERSION}
         ODOO_VERSION_2: ${ODOO_VERSION}
@@ -31,6 +31,10 @@ services:
       - traefik.enable=true
       - traefik.docker.network=traefik
       - traefik.http.services.${COMPOSE_PROJECT_NAME}_odoo.loadbalancer.server.port=${ODOO_INTERNAL_PORT}
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo_prod.rule=Host(`${DOMAIN}`)
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo_prod.entrypoints=websecure
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo_prod.tls.certresolver=myresolver
+      - traefik.http.routers.${COMPOSE_PROJECT_NAME}_odoo_prod.service=${COMPOSE_PROJECT_NAME}_odoo
     ports:
       - "${ODOO_EXPOSED_PORT}:${ODOO_INTERNAL_PORT}"
     volumes:
