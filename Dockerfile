@@ -21,15 +21,14 @@ RUN apt-get update && \
     && \
     if [ "$ODOO_VERSION_2" = "16" ]; then \
         pip3 install --no-cache-dir "Werkzeug==2.0.2" &&\
-        pip3 install python-barcode gevent gevent-websocket jingtrang && \
-        pip3 install -r requirements.txt; \
+        pip3 install python-barcode gevent gevent-websocket jingtrang; \
         if [ "$OPTIONAL_WHISPER" = "true" ]; then \
             pip3 install openai && \
             apt-get install ffmpeg -y; \
         fi; \
     else \
-        pip3 install python-barcode gevent gevent-websocket jingtrang --break-system-packages && \
-        pip3 install -r requirements.txt --break-system-packages; \
+        export PIP_BREAK_SYSTEM_PACKAGES="--break-system-packages" && \
+        pip3 install python-barcode gevent gevent-websocket jingtrang --break-system-packages; \
         if [ "$OPTIONAL_WHISPER" = "true" ]; then \
             apt install python3-openai -y && \
             apt-get install ffmpeg -y; \
@@ -41,5 +40,13 @@ RUN chmod -R 777 /var/log/odoo
 
 RUN chmod -R 777 /etc/odoo
 
+ENV ODOO_VERSION_2=${ODOO_VERSION_2}
+
+COPY entrypoint.sh /custom-entrypoint.sh
+RUN chmod +x /custom-entrypoint.sh
+
 # Switch back to odoo user
 USER odoo
+
+ENTRYPOINT ["/custom-entrypoint.sh"]
+CMD ["odoo"]
