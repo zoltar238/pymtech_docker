@@ -22,10 +22,9 @@ services:
     container_name: ${COMPOSE_PROJECT_NAME}_odoo
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: odoo/Dockerfile
       args:
         ODOO_VERSION: ${ODOO_VERSION}
-        ODOO_VERSION_2: ${ODOO_VERSION}
         OPTIONAL_WHISPER: ${OPTIONAL_WHISPER}
     labels:
       - traefik.enable=true
