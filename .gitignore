@@ -9,3 +9,6 @@
 /services/
 /pyproject.toml
 /uv.lock
+
+/log/
+/addons/
