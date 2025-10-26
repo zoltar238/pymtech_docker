@@ -44,6 +44,6 @@ RUN if [ "$ODOO_VERSION" = "18" ] && [ "$OPTIONAL_WHISPER" ]; then \
     fi
 
 # Set permissions
-RUN chmod -R 777 /var/log/odoo /etc/odoo
+RUN chmod -R 777 /var/log/odoo /etc/odoo /var/lib/odoo
 
 USER odoo
