@@ -19,8 +19,7 @@ ENV PIP_BREAK_SYSTEM_PACKAGES=${ODOO_VERSION:+1}
 
 # Install Odoo Python requirements
 COPY ../odoo/requirements.txt /tmp/odoo-requirements.txt
-RUN . /etc/profile.d/pip.sh 2>/dev/null || true && \
-    pip install -r /tmp/odoo-requirements.txt
+RUN pip install --ignore-installed -r /tmp/addons-requirements.txt
 
 # Install Werkzeug for Odoo 16
 ARG ODOO_VERSION
@@ -30,8 +29,7 @@ RUN if [ "$ODOO_VERSION" = "16" ]; then \
 
 # Install addon requirements
 COPY ../addons/requirements.txt /tmp/addons-requirements.txt
-RUN . /etc/profile.d/pip.sh 2>/dev/null || true && \
-    pip install -r /tmp/addons-requirements.txt
+RUN pip install --ignore-installed -r /tmp/addons-requirements.txt
 
 # Install whisper (optional)
 ARG OPTIONAL_WHISPER
