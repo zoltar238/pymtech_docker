@@ -19,7 +19,7 @@ ENV PIP_BREAK_SYSTEM_PACKAGES=${ODOO_VERSION:+1}
 
 # Install Odoo Python requirements
 COPY ../odoo/requirements.txt /tmp/odoo-requirements.txt
-RUN pip install --ignore-installed -r /tmp/addons-requirements.txt
+RUN pip install --ignore-installed -r /tmp/odoo-requirements.txt
 
 # Install Werkzeug for Odoo 16
 ARG ODOO_VERSION
