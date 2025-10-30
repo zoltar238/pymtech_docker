@@ -12,16 +12,15 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Set pip arguments based on Odoo version
+# Set pip flags globally for Odoo 18
 ARG ODOO_VERSION
-ENV PIP_ARGS=""
-RUN if [ "$ODOO_VERSION" = "18" ]; then \
-        echo "export PIP_ARGS='--break-system-packages'" >> /etc/profile.d/pip.sh; \
-    fi
+ENV PIP_BREAK_SYSTEM_PACKAGES=${ODOO_VERSION:+1}
+
 
 # Install Odoo Python requirements
 COPY ../odoo/requirements.txt /tmp/odoo-requirements.txt
 RUN . /etc/profile.d/pip.sh 2>/dev/null || true && \
-    pip install $PIP_ARGS -r /tmp/odoo-requirements.txt
+    pip install -r /tmp/odoo-requirements.txt
 
 # Install Werkzeug for Odoo 16
 ARG ODOO_VERSION
@@ -32,7 +31,7 @@ RUN if [ "$ODOO_VERSION" = "16" ]; then \
 # Install addon requirements
 COPY ../addons/requirements.txt /tmp/addons-requirements.txt
 RUN . /etc/profile.d/pip.sh 2>/dev/null || true && \
-    pip install $PIP_ARGS -r /tmp/addons-requirements.txt
+    pip install -r /tmp/addons-requirements.txt
 
 # Install whisper (optional)
 ARG OPTIONAL_WHISPER
