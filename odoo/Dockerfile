@@ -21,10 +21,10 @@ ENV PIP_BREAK_SYSTEM_PACKAGES=${ODOO_VERSION:+1}
 COPY ../odoo/requirements.txt /tmp/odoo-requirements.txt
 RUN pip install --ignore-installed -r /tmp/odoo-requirements.txt
 
-# Install Werkzeug for Odoo 16
+# Install dependencies that are only needed on version 16
 ARG ODOO_VERSION
 RUN if [ "$ODOO_VERSION" = "16" ]; then \
-        pip3 install --no-cache-dir "Werkzeug==2.0.2"; \
+        pip3 install --no-cache-dir "Werkzeug==2.0.2" lxml-html-clean; \
     fi
 
 # Install addon requirements
